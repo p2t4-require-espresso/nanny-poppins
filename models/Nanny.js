@@ -1,4 +1,4 @@
-const { Model, DataTypes } = require('sequelize');
+const { Model, DataTypes, STRING } = require('sequelize');
 const sequelize = require('../config/connection');
 
 Coffeebean.init({
@@ -8,26 +8,37 @@ Coffeebean.init({
         primaryKey: true,
         autoIncrement: true,
       },
-    name: {
+    first_name: {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    roast: {
+    age: {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    flavor: {
-        type: DataTypes.STRING,
+    hourly_rate: {
+        type: DataTypes.DECIMAL,
         allowNull: false,
     },
-    price: {
+    email: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+            is: email
+        }
+    },
+    experience_years: {
         type: DataTypes.INTEGER,
         allowNull: false
     },
-    roastery_id: {
+    bio: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    user_id: {
         type: DataTypes.INTEGER,
         references : {
-            model: "roastery",
+            model: "user",
             key: "id"
         },
     },
@@ -39,4 +50,4 @@ sequelize,
   }
 );
 
-module.exports = Coffebean;
+module.exports = Nanny;
