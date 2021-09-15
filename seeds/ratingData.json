@@ -1,47 +1,8 @@
 [
     {
-        "name":"Metropolis Coffee Company"
-    },
-    {
-        "name":"Hexe Coffee Company"
-    },
-    {
-        "name":"Intellegentsia Coffee Company"
-    },
-    {
-        "name":"Backlot Coffee Company"
-    },
-    {
-        "name":"Metric Coffee Company"
-    },
-    {
-        "name":"Hoosier Mama Coffee Company"
-    },
-    {
-        "name":"Dollop Coffee Company"
-    },
-    {
-        "name":"Groundswell Coffee Company"
-    },
-    {
-        "name":"Elevate Coffee Company"
-    },
-    {
-        "name":"Dark Matter Coffee"
-    },
-    {
-        "name":"Big Shoulders Coffee Company"
-    },
-    {
-        "name":"Ipsento Coffee Company"
-    },
-    {
-        "name":"Sparrow Coffee Company"
-    },
-    {
-        "name":"Backlot Coffee Company"
-    },
-    {
-        "name":"Bridgeport Coffee Company"
+        "nanny_id": "integer corresponds to nanny",
+        "user_id":"integer corresponds to use",
+        "rating":"//this is an integer",
+        "review":"string"
     }
 ]
