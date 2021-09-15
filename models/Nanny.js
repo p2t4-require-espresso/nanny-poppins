@@ -1,7 +1,9 @@
-const { Model, DataTypes, STRING } = require('sequelize');
+const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-Coffeebean.init({
+class Nanny extends Model {}
+
+Nanny.init({
     id: {
         type: DataTypes.INTEGER,
         allowNull: false,
@@ -41,6 +43,13 @@ Coffeebean.init({
             model: "user",
             key: "id"
         },
+    },
+    rating_id:{
+        type:DataTypes.INTEGER,
+        references:{
+            model:'rating',
+            key:'id'
+        }
     },
 sequelize,
     timestamps: false,
