@@ -20,7 +20,7 @@ const seedDatabase = async () => {
     // individualHooks: true,
     returning: true,
   });
-///this did not push correclty
+
 
 //potentially do this to give the nannies ratings from the start
   // for (const project of projectData) {
