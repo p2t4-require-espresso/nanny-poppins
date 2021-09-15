@@ -1,6 +1,10 @@
 const router = require('express').Router();
-const { Project, User } = require('../models');
+const { Nanny, User, Rating } = require('../models');
 const withAuth = require('../utils/auth');
+
+//THIS PAGE SHOULD INCLUDE THE routes and render all nannies
+// should be able to see reviews and ratings
+// authenticate user before able to email a nanny or leave a review
 
 router.get('/', async (req, res) => {
   try {
