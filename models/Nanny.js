@@ -14,12 +14,12 @@ Nanny.init({
         type: DataTypes.STRING,
         allowNull: false,
     },
-    age: {
+    age_range: {
         type: DataTypes.STRING,
         allowNull: false,
     },
     hourly_rate: {
-        type: DataTypes.DECIMAL,
+        type: DataTypes.DECIMAL(10,2),
         allowNull: false,
     },
     email: {
