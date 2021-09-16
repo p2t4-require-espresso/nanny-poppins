@@ -26,6 +26,7 @@ Rating.init(
         model:'user',
         key:'id'
       },
+    },
     stars:{
       type: DataTypes.INTEGER,
       allowNull: true,
@@ -37,15 +38,11 @@ Rating.init(
     review:{
       type:DataTypes.TEXT,
       allowNull:true,
-      validate:{
-        isAlphanumeric: true,
-      }
     }
-    }
-  },
+    },
   {
     sequelize,
-    timestamps: true,
+    timestamps: false,
     freezeTableName: true,
     underscored: true,
     modelName: 'rating',
