@@ -19,13 +19,13 @@ Rating.init(
         key:'id'
       }
     },
-    // parent_id:{
-    //   type: DataTypes.INTEGER,
-    //   allowNull:false,
-    //   refernces:{
-    //     model:'user',
-    //     key:'id'
-    //   },
+    parent_id:{
+      type: DataTypes.INTEGER,
+      allowNull:false,
+      refernces:{
+        model:'user',
+        key:'id'
+      },
     stars:{
       type: DataTypes.INTEGER,
       allowNull: true,
@@ -34,20 +34,18 @@ Rating.init(
         max:5
       }
     },
-    //OPTION for user to leave comments as well as a rating between 1-5
     review:{
-      type:DataTypes.STRING,
+      type:DataTypes.TEXT,
       allowNull:true,
       validate:{
         isAlphanumeric: true,
-        len:[10]
       }
     }
-    // }
+    }
   },
   {
     sequelize,
-    timestamps: false,
+    timestamps: true,
     freezeTableName: true,
     underscored: true,
     modelName: 'rating',

@@ -12,14 +12,15 @@ User.hasMany(Rating,{
   foreignKey: 'nanny_id'
 })
 
-// User.belongsTo(Rating,{
-//   foreignKey:'parent_id'
-// })
-
 //rating has the foreign key called parent id
-// Rating.hasOne(User,{
-//   foreignKey: 'parent_id'
-// })
+Rating.hasOne(User,{
+  //alias that names the relationship
+  as:'parent',
+  foreignKey: 'id',
+  sourceKey:'parent_id',
+  //this prevents the cyclic reference we were running into
+  constraints:false
+})
 
 
 module.exports = { Rating, User };
