@@ -35,10 +35,45 @@ User.init(
         len: [8],
       },
     },
+    user_type:{
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate:{
+        isIn:[["parent", "nanny"]]
+      }
+    },
     photo:{
       type: DataTypes.STRING,
       allowNull: false
-    }
+    },
+    nanny_age: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+  },
+  age_range: {
+      type: DataTypes.STRING,
+      allowNull: true,
+  },
+  number_of_children:{
+    type: DataTypes.INTEGER,
+    allowNull: true,
+  },
+  hourly_rate: {
+      type: DataTypes.DECIMAL(10, 2),
+      allowNull: true,
+  },
+  experience_years: {
+      type: DataTypes.INTEGER,
+      allowNull: true
+  },
+  certification: {
+      type: DataTypes.STRING,
+      allowNull: true,
+  },
+  bio: {
+      type: DataTypes.TEXT,
+      allowNull: false
+  },
   },
   {
     hooks: {
