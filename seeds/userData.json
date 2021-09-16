@@ -1,12 +1,26 @@
 [
   {
-    "name": "first and last name",
-    "email": "sal@hotmail.com",
-    "password": "min length is 8"
+    "name": "Jennifer Jackson",
+    "email": "jenjack@hotmail.com",
+    "password": "password1",
+    "photo":"https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg"
   },
   {
-    "name": "",
-    "email": "",
-    "password": ""
+    "name": "Sammy Smith",
+    "email": "sammysmith@gmail.com",
+    "password": "password2",
+    "photo":"https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg"
+  },
+  {
+    "name": "Larry Sims ",
+    "email": "lsims@gmail.com",
+    "password": "password3",
+    "photo":"https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg"
+  },
+  {
+    "name": "Kathy Watkins",
+    "email": "katwatkins@gmail.com",
+    "password": "password4",
+    "photo":"https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg"
   }
 ]
