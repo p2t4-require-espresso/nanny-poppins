@@ -2,40 +2,92 @@ const router = require('express').Router();
 const { User , Rating} = require('../../models');
 const withAuth = require('../../utils/auth');
 
-router.get('/:id', async (req,res)=>{
-
+//gets all reviews w the parent who wrote it
+router.get('/', async (req,res)=>{
+    try{
+        const reviewData= await Rating.findAll({
+            include: [{model: User, as: "parent"}]
+        })
+        res.status(200).json(reviewData);
+    }
+    catch(err){
+        res.status(400).json(err);
+    }
 })
-// router.post('/', withAuth, async (req, res) => {
-//   try {
-//     const newProject = await Project.create({
-//       ...req.body,
-//       user_id: req.session.user_id,
-//     });
+//gets one reviews w the parent who wrote it
+router.get('/:id', async (req,res)=>{
+    try{
+        const reviewData= await Rating.findByPk(req.params.id,{
+            include: [{model: User, as: "parent"}]
+        })
+        res.status(200).json(reviewData);
+    }
+    catch(err){
+        res.status(400).json(err);
+    }
+})
+//user must be logged in to write a review, checked in insomnia
+router.post('/', withAuth, async (req, res) => {
+    try {
+    const newReview = await Rating.create({
+      ...req.body,
+      user_id: req.session.user_id,
+    });
 
-//     res.status(200).json(newProject);
-//   } catch (err) {
-//     res.status(400).json(err);
-//   }
-// });
+    res.status(200).json(newReview);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+//when logged in user is able to update a review
+router.put('/:id', withAuth, async (req,res)=>{
+    try{
+        const updateReview = await Rating.update({
+            ...req.body,
+            user_id: req.session.user_id,
+        },
+        {
+            where:{
+                id: req.params.id
+            }
+        })
+        if(!updateReview[0]){
+            res.status(404).json({message:"No Review found."})
+            return
+        }
+        res.status(200).json(updateReview)
+    }
+    catch(err){
+        res.status(500).json(err)
+    }
+})
 
-// router.delete('/:id', withAuth, async (req, res) => {
-//   try {
-//     const projectData = await Project.destroy({
-//       where: {
-//         id: req.params.id,
-//         user_id: req.session.user_id,
-//       },
-//     });
+//when logged in, user is able to delete a review
+router.delete('/:id', withAuth, async (req, res) => {
+  try {
+    const reviewData = await Rating.destroy({
+      where: {
+        id: req.params.id,
+        //ERROR HERE
+        //"sqlMessage": "Unknown column 'user_id' in 'where clause'"
+        // error because user_id is in the User model, right?
+        // user_id: req.session.user_id,
+        //tried parent_id bc its a column in the ratings model
+            //goes straight to status 500 
+        // parent_id: req.session.parent_id,
+        
+        //w out lines 51 and 54 is delete method works 
 
-//     if (!projectData) {
-//       res.status(404).json({ message: 'No project found with this id!' });
-//       return;
-//     }
-
-//     res.status(200).json(projectData);
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
+      },
+    });
+    if (!reviewData) {
+      res.status(404).json({ message: 'No review found with this id!' });
+      return;
+    }
+    res.status(200).json(reviewData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 module.exports = router;

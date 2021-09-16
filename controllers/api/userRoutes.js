@@ -25,8 +25,8 @@ router.get('/nannies', async (req,res)=>{
       },
       include:[{
         model:Rating,
-        // include:[{model:User, as:"parent"}],
-      }]
+        include:[{model:User, as:"parent"}],
+      }],
     })
     res.status(200).json(userData);
   }
@@ -39,10 +39,10 @@ router.get('/parents', async (req,res)=>{
   try{
     const userData= await User.findAll({
       where:{
-        user_type:["parent"]
+        user_type:["parent"],
       },
       include:[{
-        model:Rating
+        model:Rating,
       }]
     })
     res.status(200).json(userData);
@@ -53,15 +53,20 @@ router.get('/parents', async (req,res)=>{
 })
 
 //finding one USER
-router.get('/:id', async (req,res)=>{
-  try{
-    const oneUser= await User.findByPk(req.params.id)
-    res.status(200).json(oneUser)
-  }
-  catch(err){
-    res.status(400).json(err)
-  }
-})
+// router.get('/:id', async (req,res)=>{
+//   try{
+//     const oneUser= await User.findByPk(req.params.id,{
+//       include:[{
+//         model:Rating,
+//         include:[{model:User, as:"parent"}],
+//       }],
+//     })
+//     res.status(200).json(oneUser)
+//   }
+//   catch(err){
+//     res.status(400).json(err)
+//   }
+// })
 //CREATES A NEW USER
 router.post('/', async (req, res)=>{
   try{
@@ -125,6 +130,8 @@ router.post('/login', async (req, res) => {
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.user_type = userData.user_type;
+      //dbl if this is needed
+      // req.session.user_id= req.session.user_id,
       req.session.logged_in = true;
       
       res.json({ user: userData, message: 'You are now logged in!' });
@@ -150,7 +157,8 @@ router.delete('/:id', withAuth, async (req,res)=>{
   try{
     const deleteUser= await User.destroy({
       where:{
-        id:req.params.id
+        id:req.params.id,
+        user_id: req.session.user_id,
       }
     })
   if(!deleteUser){
@@ -163,4 +171,6 @@ catch(err){
   res.status(400).json(err);
 }
 })
+
+
 module.exports = router;
