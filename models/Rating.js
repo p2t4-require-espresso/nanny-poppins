@@ -19,14 +19,14 @@ Rating.init(
         key:'id'
       }
     },
-    parent_id:{
-      type: DataTypes.INTEGER,
-      allowNull:false,
-      refernces:{
-        model:'user',
-        key:'id'
-      },
-    rating:{
+    // parent_id:{
+    //   type: DataTypes.INTEGER,
+    //   allowNull:false,
+    //   refernces:{
+    //     model:'user',
+    //     key:'id'
+    //   },
+    stars:{
       type: DataTypes.INTEGER,
       allowNull: true,
       validate:{
@@ -43,7 +43,7 @@ Rating.init(
         len:[10]
       }
     }
-    }
+    // }
   },
   {
     sequelize,
