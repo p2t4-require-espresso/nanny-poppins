@@ -1,7 +1,10 @@
 const router = require('express').Router();
-const { User , Rating, Nanny} = require('../../models');
+const { User , Rating} = require('../../models');
 const withAuth = require('../../utils/auth');
 
+router.get('/:id', async (req,res)=>{
+
+})
 // router.post('/', withAuth, async (req, res) => {
 //   try {
 //     const newProject = await Project.create({
