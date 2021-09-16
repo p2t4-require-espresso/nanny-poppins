@@ -1,8 +1,62 @@
 [
     {
-        "nanny_id": "integer corresponds to nanny",
-        "user_id":"integer corresponds to use",
-        "rating":"//this is an integer",
-        "review":"string"
+        "nanny_id": 1,
+        "user_id":1,
+        "rating":3,
+        "review":"Elizabeth was great with my 6 month old daughter. The only issue was that she was about 30 minutes late."
+    },
+    {
+        "nanny_id": 5,
+        "user_id":1,
+        "rating":5,
+        "review":"Petra taught me great tricks and tips on how to sleep train my fussy 6 month old daughter."
+    },
+    {
+        "nanny_id": 7,
+        "user_id":2,
+        "rating":5,
+        "review":"My 2 children loved Catherine! They could not stop raving baout how fun she was."
+    },
+    {
+        "nanny_id": 8,
+        "user_id":2,
+        "rating":5,
+        "review":"Elizabeth was great with Jenny took my kids on an adventure of a lifetime! They told me they had a very busy day, which I love when my children are active. Plus they fell asleep so quickly the day she babysat!"
+    },
+    {
+        "nanny_id": 9,
+        "user_id":3,
+        "rating":5,
+        "review":"My kids loved Serena, they loved coloring and painting with her."
+    },
+    {
+        "nanny_id": 10,
+        "user_id":3,
+        "rating":2,
+        "review":"I caught Simona on her phone a little to often for my liking..."
+    },
+    {
+        "nanny_id": 2,
+        "user_id":4,
+        "rating":2,
+        "review":"I caught Simona on her phone a little to often for my liking..."
+    },
+    {
+        "nanny_id": 3,
+        "user_id":4,
+        "rating":2,
+        "review":"Emma was nice! She was very patient with my toddler."
+    },
+    {
+        "nanny_id": 4,
+        "user_id":4,
+        "rating":4,
+        "review":"Jackie was cool. I really liked her and my toddler seemed to as well. Will be booking again!"
+    },
+    {
+        "nanny_id": 6,
+        "user_id":2,
+        "rating":5,
+        "review":"Kylie was fantastic, so impressed with what she brings to the table."
     }
 ]

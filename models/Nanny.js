@@ -14,6 +14,10 @@ Nanny.init({
         type: DataTypes.STRING,
         allowNull: false,
     },
+    age: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+    },
     age_range: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -32,6 +36,14 @@ Nanny.init({
     experience_years: {
         type: DataTypes.INTEGER,
         allowNull: false
+    },
+    certification:{
+        type: DataTypes.STRING,
+        allowNull: true,
+    },
+    photo:{
+        type:DataTypes.STRING,
+        allowNull: false,
     },
     bio: {
         type: DataTypes.STRING,
