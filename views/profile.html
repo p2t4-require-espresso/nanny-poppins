@@ -1,0 +1,26 @@
+<!-- user's own profile -->
+<h2>Edit your Profile</h2>
+
+{{#if logged as nanny}}
+<!-- Show the user's profile and allow them to edit it-->
+
+
+
+{{#if logged in as parent}}
+<!-- show the user's profile and allow them to edit and write a review and give rating to nanny of their choice -->
+
+<div>
+    <form class="was-validated">
+        <div class="mb-3">
+            <label for="validationTextarea">Leave a review for your nanny:</label>
+            <select class="form-control form-control-lg">
+                <option>{{#each nanny {{name}} }}</option>
+            </select>
+            <textarea class="form-control is-invalid" id="validationTextarea" placeholder="Required example textarea"
+                required></textarea>
+            <div class="invalid-feedback">
+                Please enter a message in the textarea.
+            </div>
+        </div>
+    </form>
+</div>

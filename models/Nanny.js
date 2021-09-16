@@ -1,7 +1,7 @@
 const { Model, DataTypes, STRING } = require('sequelize');
 const sequelize = require('../config/connection');
 
-Coffeebean.init({
+Nanny.init({
     id: {
         type: DataTypes.INTEGER,
         allowNull: false,
@@ -9,10 +9,6 @@ Coffeebean.init({
         autoIncrement: true,
       },
     first_name: {
-        type: DataTypes.STRING,
-        allowNull: false,
-    },
-    age: {
         type: DataTypes.STRING,
         allowNull: false,
     },
