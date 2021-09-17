@@ -19,9 +19,41 @@
 </head>
 
 <body>
+  <nav class="navbar navbar-expand-md navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand"> <i class="bi bi-chat-square-text"></i>Nanny Poppins</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="nav-options">
+                    <ul class="navbar-nav navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/">Home</a>
+                        </li>
+                        <!-- check back in w aria-current= page and adding active to nav-link class-->
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/dashboard">Dashboard</a>
+                        </li>
+                        <!--if logged in show the log out button -->
+                        {{!-- {{#if loggedIn}} --}}
+                        <li class="nav-item">
+                            <a class="nav-link" href="/">Log Out</a>
+                        </li>
+                        {{!-- {{#else}} --}}
+                         <li class="nav-item">
+                            <a class="nav-link active " href="/login">Login</a>
+                        </li>
+                        {{!-- {{/if}} --}}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
   <header class="display-flex justify-space-between align-center p-2">
     <h1>
-      User Registry
+      Nanny Poppins
     </h1>
   </header>
   <main class="container container-fluid mt-5">
@@ -33,8 +65,8 @@
   </footer>
 </body>
 
-{{!-- <body>
-  <div class="jumbotron jumbotron-fluid">
+
+<div class="jumbotron jumbotron-fluid">
     <div class="container">
       <p class="lead">
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -58,8 +90,8 @@
         </div>
       </nav>Best babysitting service your grandmother wish she had!</p>
     </div>
-  </div> --}}
+  </div> 
 
-</body>
+
 
 </html>
