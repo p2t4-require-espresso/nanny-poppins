@@ -80,14 +80,14 @@ router.get('/edit/:id', async (req,res)=>{
 
 
 //ERROR HERE GETTING A 500 ERROR
-    //do i need a put method here? isnt this being taken care of in the user routes?
+        //updates but still 500 error
 router.put('/profile', withAuth, async (req,res)=>{
     try{
         // Find the logged in user based on the session ID
       const userData = await User.update(req.body,{
         //shouldnt the id be  for the user thats logged in?
         where:{
-             id:req.session.id
+             id:req.session.user_id
          },
 
         });
