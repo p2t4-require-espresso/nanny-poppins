@@ -26,8 +26,7 @@ Rating.init(
         model:'user',
         key:'id'
       },
-    },
-    stars:{
+    rating:{
       type: DataTypes.INTEGER,
       allowNull: true,
       validate:{
@@ -35,11 +34,17 @@ Rating.init(
         max:5
       }
     },
+    //OPTION for user to leave comments as well as a rating between 1-5
     review:{
-      type:DataTypes.TEXT,
+      type:DataTypes.STRING,
       allowNull:true,
+      validate:{
+        isAlphanumeric: true,
+        len:[10]
+      }
     }
-    },
+    }
+  },
   {
     sequelize,
     timestamps: false,
