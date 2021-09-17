@@ -1,0 +1,62 @@
+[
+    {
+        "parent_id":1,
+        "nanny_id": 5,
+        "stars":3,
+        "review":"Tyler was great with my 6 month old daughter. The only issue was that she was about 30 minutes late."
+    },
+    {
+        "parent_id":1,
+        "nanny_id": 9,
+        "stars":5,
+        "review":"Petra taught me great tricks and tips on how to sleep train my fussy 6 month old daughter."
+    },
+    {
+        "parent_id":2,
+        "nanny_id": 11,
+        "stars":5,
+        "review":"My 2 children loved Catherine! They could not stop raving baout how fun she was."
+    },
+    {
+        "parent_id":2,
+        "nanny_id": 12,
+        "stars":5,
+        "review":"Jenny took my kids on an adventure of a lifetime! They told me they had a very busy day, which I love when my children are active. Plus they fell asleep so quickly the day she babysat!"
+    },
+    {
+        "parent_id":3,
+        "nanny_id": 13,
+        "stars":5,
+        "review":"My kids loved Serena, they loved coloring and painting with her."
+    },
+    {
+        "parent_id":3,
+        "nanny_id": 14,
+        "stars":2,
+        "review":"I caught Simona on her phone a little to often for my liking..."
+    },
+    {
+        "parent_id":4,
+        "nanny_id": 5,
+        "stars":5,
+        "review":"Most babysitters and nannies have trouble with my kids and never come back. Tyler was great, the kids loved her!"
+    },
+    {
+        "parent_id":4,
+        "nanny_id": 7,
+        "stars":2,
+        "review":"Emma was nice! She was very patient with my toddler."
+    },
+    {
+        "parent_id":4,
+        "nanny_id": 8,
+        "stars":4,
+        "review":"Jackie was cool. I really liked her and my toddler seemed to as well. Will be booking again!"
+    },
+    {
+        "parent_id":2,
+        "nanny_id": 10,
+        "stars":5,
+        "review":"Kylie was fantastic, so impressed with what she brings to the table."
+    }
+]
