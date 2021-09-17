@@ -1,5 +1,6 @@
 const router= require('express').Router();
-
+const { User , Rating} = require('../models');
+const withAuth= require("../utils/auth")
 //CRUD for logged in user
 //able to delete, edit, write, update comments/reviews
 //update username, password...
