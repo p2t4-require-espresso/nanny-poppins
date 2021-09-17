@@ -10,7 +10,11 @@ User.belongsTo(Rating,{
 
 //rating has the foreign key called parent id
 Rating.hasOne(User,{
-  foreignKey: 'parent_id'
+  as:'parent',
+  foreignKey:'id',
+  sourceKey:'parent_id',
+  //this prevents the cyclic reference we were running into
+  constraints:false
 })
 
 
