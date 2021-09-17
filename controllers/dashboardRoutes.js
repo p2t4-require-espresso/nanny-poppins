@@ -1,6 +1,8 @@
 const router= require('express').Router();
-const { User , Rating} = require('../models');
-const withAuth= require("../utils/auth")
+
+//CRUD for logged in user
+//able to delete, edit, write, update comments/reviews
+//update username, password...
 
 
 
@@ -102,4 +104,6 @@ router.put('/profile', withAuth, async (req,res)=>{
   res.status(500).json(err)
   }
 })
+
+
 module.exports= router;
