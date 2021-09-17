@@ -1,9 +1,5 @@
 const router = require('express').Router();
-<<<<<<< HEAD
-const { Nanny, User } = require('../models');
-=======
 const { User, Rating } = require('../models');
->>>>>>> 7372af83d4e05b62f200864e83a127a2a0d064a3
 const withAuth = require('../utils/auth');
 
 //THIS PAGE SHOULD INCLUDE THE routes and render all nannies
