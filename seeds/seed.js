@@ -2,7 +2,6 @@ const sequelize = require('../config/connection');
 const { User, Rating } = require('../models');
 
 const userData = require('./userData.json');
-// const nannyData = require('./nannyData.json');
 const ratingData= require('./ratingData.json');
 
 const seedDatabase = async () => {

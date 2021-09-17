@@ -53,20 +53,20 @@ router.get('/parents', async (req,res)=>{
 })
 
 //finding one USER
-// router.get('/:id', async (req,res)=>{
-//   try{
-//     const oneUser= await User.findByPk(req.params.id,{
-//       include:[{
-//         model:Rating,
-//         include:[{model:User, as:"parent"}],
-//       }],
-//     })
-//     res.status(200).json(oneUser)
-//   }
-//   catch(err){
-//     res.status(400).json(err)
-//   }
-// })
+router.get('/:id', async (req,res)=>{
+  try{
+    const oneUser= await User.findByPk(req.params.id,{
+      include:[{
+        model:Rating,
+        include:[{model:User, as:"parent"}],
+      }],
+    })
+    res.status(200).json(oneUser)
+  }
+  catch(err){
+    res.status(400).json(err)
+  }
+})
 //CREATES A NEW USER
 router.post('/', async (req, res)=>{
   try{
