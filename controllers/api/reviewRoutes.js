@@ -68,16 +68,6 @@ router.delete('/:id', withAuth, async (req, res) => {
     const reviewData = await Rating.destroy({
       where: {
         id: req.params.id,
-        //ERROR HERE
-        //"sqlMessage": "Unknown column 'user_id' in 'where clause'"
-        // error because user_id is in the User model, right?
-        // user_id: req.session.user_id,
-        //tried parent_id bc its a column in the ratings model
-            //goes straight to status 500 
-        // parent_id: req.session.parent_id,
-        
-        //w out lines 51 and 54 is delete method works 
-
       },
     });
     if (!reviewData) {
