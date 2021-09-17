@@ -1,9 +1,6 @@
 const router= require('express').Router();
 const { User , Rating} = require('../models');
 const withAuth= require("../utils/auth")
-//CRUD for logged in user
-//able to delete, edit, write, update comments/reviews
-//update username, password...
 
 
 
@@ -83,14 +80,14 @@ router.get('/edit/:id', async (req,res)=>{
 
 
 //ERROR HERE GETTING A 500 ERROR
-        //updates but still 500 error
+    //do i need a put method here? isnt this being taken care of in the user routes?
 router.put('/profile', withAuth, async (req,res)=>{
     try{
         // Find the logged in user based on the session ID
       const userData = await User.update(req.body,{
         //shouldnt the id be  for the user thats logged in?
         where:{
-             id:req.session.user_id
+             id:req.session.id
          },
 
         });
@@ -105,6 +102,4 @@ router.put('/profile', withAuth, async (req,res)=>{
   res.status(500).json(err)
   }
 })
-
-
 module.exports= router;
