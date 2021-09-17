@@ -1,29 +1,34 @@
 const router = require('express').Router();
-const { Nanny, User, Rating } = require('../models');
+const { User, Rating } = require('../models');
 const withAuth = require('../utils/auth');
 
-//THIS PAGE SHOULD INCLUDE THE routes and render all nannies
-// should be able to see reviews and ratings
-// authenticate user before able to email a nanny or leave a review
 
+
+//LANDING PAGE--want users(logged in or not) to see all nannys but not see all info about them
+  //dont include hourly rate and maybe certification if user is not signed in
+      //add an if statement in the handlebars
 router.get('/', async (req, res) => {
-  try {
-    // Get all projects and JOIN with user data
-    const projectData = await Project.findAll({
-      include: [
-        {
-          model: User,
-          attributes: ['name'],
+  try{
+    const profileData= await User.findAll({
+        where:{
+            user_type:['nanny']
         },
-      ],
+        //dont include the password
+        attributes:['id','name','photo',"nanny_age","age_range","experience_years","email", "certification","bio", "hourly_rate"],
+        //when user isnt logged in dont include stars and reviews
+          //in place of them--add text to say:"SIGN UP TO SEE NANNY REVIEWS AND RATINGS"
+        include:{
+          model:Rating,
+          attributes:['stars','review']
+      }
     });
 
     // Serialize data so the template can read it
-    const projects = projectData.map((project) => project.get({ plain: true }));
+    const profiles = profileData.map((profile) => profile.get({ plain: true }));
 
     // Pass serialized data and session flag into template
     res.render('homepage', { 
-      projects, 
+      profiles, 
       logged_in: req.session.logged_in 
     });
   } catch (err) {
@@ -31,47 +36,31 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.get('/project/:id', async (req, res) => {
-  try {
-    const projectData = await Project.findByPk(req.params.id, {
-      include: [
-        {
-          model: User,
-          attributes: ['name'],
-        },
-      ],
-    });
+//USER able to click on a nanny profile and redirects to a new page
+  //dont think i need this
 
-    const project = projectData.get({ plain: true });
+// // Use withAuth middleware to prevent access to route
 
-    res.render('project', {
-      ...project,
-      logged_in: req.session.logged_in
-    });
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
+// i wrote a profile route in the dashboardroutes folder...dbl check if it should be here
 
-// Use withAuth middleware to prevent access to route
-router.get('/profile', withAuth, async (req, res) => {
-  try {
-    // Find the logged in user based on the session ID
-    const userData = await User.findByPk(req.session.user_id, {
-      attributes: { exclude: ['password'] },
-      include: [{ model: Project }],
-    });
+// router.get('/profile', withAuth, async (req, res) => {
+//   try {
+//     // Find the logged in user based on the session ID
+//     const userData = await User.findByPk(req.session.user_id, {
+//       attributes: { exclude: ['password'] },
+//       include: [{ model: Project }],
+//     });
 
-    const user = userData.get({ plain: true });
+//     const user = userData.get({ plain: true });
 
-    res.render('profile', {
-      ...user,
-      logged_in: true
-    });
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
+//     res.render('profile', {
+//       ...user,
+//       logged_in: true
+//     });
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
 
 router.get('/login', (req, res) => {
   // If the user is already logged in, redirect the request to another route
