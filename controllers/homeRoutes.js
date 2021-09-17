@@ -1,86 +1,104 @@
-const router = require('express').Router();
-const { User, Rating } = require('../models');
-const withAuth = require('../utils/auth');
+const router= require('express').Router();
+const { User , Rating} = require('../models');
+const withAuth= require("../utils/auth")
 
-//THIS PAGE SHOULD INCLUDE THE routes and render all nannies
-// should be able to see reviews and ratings
-// authenticate user before able to email a nanny or leave a review
-
-router.get('/', async (req, res) => {
-  try {
-    // Get all projects and JOIN with user data
-    const projectData = await Project.findAll({
-      include: [
-        {
-          model: User,
-          attributes: ['name'],
-        },
-      ],
-    });
-
-    // Serialize data so the template can read it
-    const projects = projectData.map((project) => project.get({ plain: true }));
-
-    // Pass serialized data and session flag into template
-    res.render('homepage', { 
-      projects, 
-      logged_in: req.session.logged_in 
-    });
-  } catch (err) {
-    res.status(500).json(err);
-  }
+//user able to see all nanny profiles with no-info hidden from nanny profile card
+router.get('/', withAuth, async (req,res)=>{
+    try{
+        const profileData= await User.findAll({
+            where:{
+                user_type:['nanny']
+            },
+            attributes:['id','name','email','photo',"nanny_age","age_range","experience_years", "certification","bio","hourly_rate"],
+            include:{
+                model:Rating,
+                attributes:['stars','review']
+            }
+        });
+        const profiles = profileData.map((profile)=> profile.get({ plain:true }))
+        res.status(200).json(profileData)
+        res.render('dashboard', { 
+            profiles, 
+            logged_in: req.session.logged_in 
+          });
+    }
+    catch(err){
+        res.status(500).json(err)
+    }
+})
+//user signs in and get redirected to their profile handlebar and sees all their info
+router.get('/profile', withAuth,async(req,res)=>{
+    try{
+          // Find the logged in user based on the session ID
+        const userData = await User.findByPk(req.session.user_id, {
+            attributes: { exclude: ['password'] },
+            include: [{ model: Rating, attributes:['stars','review'] }],
+          });
+          const user = userData.get({ plain: true });
+          console.log(user)
+          console.log(user.email)
+          res.render('profile', {
+            ...user,
+            logged_in: true
+          });
+    }
+    catch(err){
+    res.status(500).json(err)
+    }
+})
+//user able to add review for Nannys
+//HTML Will have to include a add review button
+router.get('/edit/:id', async (req,res)=>{
+    try{
+        const editReview= await User.findByPk(req.params.id,{
+            where:{
+                user_type:['nanny']
+            },
+            exclude:['id','name','email','photo',"nanny_age","age_range","experience_years", "certification","bio","hourly_rate"],
+            include:{
+                model:Rating,
+                attributes:['stars','review']
+            }
+        })
+        if(!editReview){
+            res.status(404).json({message:"No user found with that ID"})
+        }
+        const review = editReview.get({ plain:true })
+        // console.log(review)
+        const targetedReview =review.ratings[0].review;
+        const stars =review.ratings[0].stars;
+        console.log(review.ratings[0].review)
+        res.render('edit-review', {review, targetedReview, stars ,logged_in:true})
+    }
+    catch(err){
+        res.status(500).json(err)
+    }
 });
 
-router.get('/project/:id', async (req, res) => {
-  try {
-    const projectData = await Project.findByPk(req.params.id, {
-      include: [
-        {
-          model: User,
-          attributes: ['name'],
-        },
-      ],
-    });
 
-    const project = projectData.get({ plain: true });
+//ERROR HERE GETTING A 500 ERROR
+        //updates but still 500 error
+router.put('/profile', withAuth, async (req,res)=>{
+    try{
+        // Find the logged in user based on the session ID
+      const userData = await User.update(req.body,{
+        //shouldnt the id be  for the user thats logged in?
+        where:{
+             id:req.session.user_id
+         },
 
-    res.render('project', {
-      ...project,
-      logged_in: req.session.logged_in
-    });
-  } catch (err) {
-    res.status(500).json(err);
+        });
+        const user = userData.get({ plain: true });
+        console.log(user)
+        res.render('profile', {
+          ...user,
+          logged_in: true
+        });
   }
-});
-
-// Use withAuth middleware to prevent access to route
-router.get('/profile', withAuth, async (req, res) => {
-  try {
-    // Find the logged in user based on the session ID
-    const userData = await User.findByPk(req.session.user_id, {
-      attributes: { exclude: ['password'] },
-      include: [{ model: Project }],
-    });
-
-    const user = userData.get({ plain: true });
-
-    res.render('profile', {
-      ...user,
-      logged_in: true
-    });
-  } catch (err) {
-    res.status(500).json(err);
+  catch(err){
+  res.status(500).json(err)
   }
-});
+})
 
-router.get('/login', (req, res) => {
-  // If the user is already logged in, redirect the request to another route
-  if (req.session.logged_in) {
-    res.redirect('/profile');
-    return;
-  }
 
-  res.render('login');
-});
-
-module.exports = router;
+module.exports= router;
