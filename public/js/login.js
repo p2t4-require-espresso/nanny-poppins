@@ -26,6 +26,7 @@ const signupFormHandler = async (event) => {
   event.preventDefault();
   
   var selectedOption = $("input:radio[name=userRadio]:checked").val()
+  console.log(selectedOption);
 
   const name = document.querySelector('#name-signup').value.trim();
   const email = document.querySelector('#email-signup').value.trim();
