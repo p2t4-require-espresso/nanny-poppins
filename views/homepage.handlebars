@@ -1,26 +1,26 @@
 <!-- Loop over each object in the projects array -->
-{{#each profiles as |profile| }}
+{{#each projects as |project| }}
 <div class="row mb-4 project">
   <div class="col-md-5">
     <h2>
       <!-- Call helper function with triple brackets to render the emoji span as HTML -->
       {{{get_emoji}}}
+
       <img src="{{photo}}" alt="bio photo"><h2>{{name}}</h2>
+
+
     </h2>
     <p>
-      <span for="img" aria-label="money">💲{{hourly_rate}}</span>
+      <span for="img" aria-label="money">💲</span>
       <!-- Pass needed_funding value to the helper function -->
-      <span class="dollar-amount"></span>
+      <span class="dollar-amount">{{format_amount project.needed_funding}}</span>
       needed!
     </p>
-    <p>age {{nanny_age}} on {{email}}</p>
+    <p>Created by {{project.user.name}} on {{format_date project.date_created}}</p>
   </div>
   <div class="col-md-7">
     <p>
-      {{bio}}
-    </p>
-     <p>
-      {{description}}
+      {{project.description}}
     </p>
   </div>
 </div>
