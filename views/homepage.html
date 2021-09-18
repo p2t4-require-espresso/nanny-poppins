@@ -1,4 +1,4 @@
-{{#each #if nanny}}
+{{#each profiles as |profile|}}
 <div class="card" style="width: 18rem;">
   <img src="{{pic}}" class="card-img-top" alt="...">
   <div class="card-body">
@@ -22,7 +22,7 @@
 
   {{/each}}
 
-  {{#each if parent}}
+  <!-- {{#each if parent}}
   <div class="card" style="width: 18rem;">
     <img src="{{pic}}" class="card-img-top" alt="...">
     <div class="card-body">
@@ -35,4 +35,4 @@
     <div class="card-body">
       <a href="mailto:" class="{{email}}">Card link</a>
     </div>
-  </div>
+  </div> -->
