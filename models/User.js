@@ -44,6 +44,7 @@ User.init(
     },
     photo:{
       type: DataTypes.STRING,
+      //default this to the blank image in images file
       allowNull: false
     },
     nanny_age: {
