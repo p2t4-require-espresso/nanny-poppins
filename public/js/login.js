@@ -46,7 +46,6 @@ const signupFormHandler = async (event) => {
   const name = document.querySelector('#name-signup').value.trim();
   const email = document.querySelector('#email-signup').value.trim();
   const password = document.querySelector('#password-signup').value.trim();
-  const photo = document.querySelector('#profilePic').value;
   const bio = document.querySelector('#userBio').value;
   const numberOfKids = document.querySelector('#numberOfKids').value;
   const experienceYears = document.querySelector('#experience_years').value;
@@ -55,10 +54,10 @@ const signupFormHandler = async (event) => {
   const ageRange = document.querySelector('#age_range').value;
 
 
-  if (name && email && password && photo && bio && numberOfKids && experienceYears && certifications && hourlyRate && ageRange) {
+  if (name && email && password && bio && numberOfKids && experienceYears && certifications && hourlyRate && ageRange) {
     const response = await fetch('/api/users', {
       method: 'POST',
-      body: JSON.stringify({ name, email, password }),
+      body: JSON.stringify({ name, email, password, bio, numberOfKids, experienceYears, certifications,  hourlyRate, ageRange }),
       headers: { 'Content-Type': 'application/json' },
     });
 
