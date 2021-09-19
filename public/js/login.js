@@ -22,17 +22,40 @@ const loginFormHandler = async (event) => {
   }
 };
 
+var radios = document.querySelectorAll('input[name="userRadio"]');
+const nannyQuestions = document.getElementById('nannyQuestions');
+nannyQuestions.style.display = "none"
+const parentQuestions = document.getElementById('parentQuestions');
+parentQuestions.style.display= "none"
+radios.forEach(radio => {
+  radio.addEventListener('change', () => {
+    console.log(radio.value)
+    if(radio.value == "nanny"){
+      nannyQuestions.style.display = "block";
+      parentQuestions.style.display = "none";
+    } else {
+      nannyQuestions.style.display = "none"
+      parentQuestions.style.display = "block";
+    }
+})
+});
+
 const signupFormHandler = async (event) => {
   event.preventDefault();
-  
-  var selectedOption = $("input:radio[name=userRadio]:checked").val()
-  console.log(selectedOption);
 
   const name = document.querySelector('#name-signup').value.trim();
   const email = document.querySelector('#email-signup').value.trim();
   const password = document.querySelector('#password-signup').value.trim();
+  const photo = document.querySelector('#profilePic').value;
+  const bio = document.querySelector('#userBio').value;
+  const numberOfKids = document.querySelector('#numberOfKids').value;
+  const experienceYears = document.querySelector('#experience_years').value;
+  const certifications = document.querySelector('#certifications').value;
+  const hourlyRate = document.querySelector('#hourly_rate').value;
+  const ageRange = document.querySelector('#age_range').value;
 
-  if (name && email && password) {
+
+  if (name && email && password && photo && bio && numberOfKids && experienceYears && certifications && hourlyRate && ageRange) {
     const response = await fetch('/api/users', {
       method: 'POST',
       body: JSON.stringify({ name, email, password }),

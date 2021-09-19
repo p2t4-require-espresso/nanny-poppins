@@ -1,4 +1,3 @@
-{{!-- <body> --}}
   <div class="row">
     <div class="col-md-6">
 
@@ -26,12 +25,13 @@
 
     <div class="custom-control custom-radio custom-control-inline">
       <input type="radio" id="nannyUser" name="userRadio" class="custom-control-input" value="nanny">
-      <label class="custom-control-label" for="customRadioInline1">Nanny</label>
+      <label class="custom-control-label" for="nannyUser">Nanny</label>
     </div>
     <div class="custom-control custom-radio custom-control-inline">
       <input type="radio" id="parentUser" name="userRadio" class="custom-control-input" value="parent">
-      <label class="custom-control-label" for="customRadioInline2">Parent</label>
+      <label class="custom-control-label" for="parentUser">Parent</label>
     </div>
+
 
     <form class="form signup-form">
       <div class="form-group">
@@ -56,11 +56,11 @@
 
       <div class="form-group">
         <label for="biography">Tell us about yourself:</label>
-        <textarea class="userBio" id="exampleFormControlTextarea1" rows="3"></textarea>
+        <textarea class="userBio" id="userBio" rows="3"></textarea>
       </div>
 
-      {{!-- {{#if parent}} --}}
-      <div class="form-group">
+      {{!-- parent question --}}
+      <div class="form-group" id="parentQuestions">
         <label for="exampleFormControlSelect1">How many kids do you have?</label>
         <select class="form-control" id="numberOfKids">
           <option>1</option>
@@ -71,9 +71,9 @@
         </select>
       </div>
 
-{{!-- 
-      {{!-- {{#if nanny}} --}}
-      <select class="form-control">
+      {{!-- nanny questions --}}
+      <div id="nannyQuestions">
+        <select class="form-control">
         <option>How old are you?</option>
         <option>18-21</option>
         <option>22-25</option>
@@ -81,7 +81,7 @@
       </select>
       <div class="form-group">
         <label for="exampleFormControlSelect1">Years of experience</label>
-        <select class="form-control" id="exampleFormControlSelect1">
+        <select class="form-control" id="experience_years">
           <option>1</option>
           <option>2</option>
           <option>3</option>
@@ -90,18 +90,19 @@
         </select>
       </div>
 
-      <input class="form-control" type="text"
+      <input class="form-control" type="text" id="certifications"
         placeholder="What certifications do you have? ie. college degrees, CPR certified. ">
 
-      <input class="form-control" type="text" placeholder="Hourly rate">
+      <input class="form-control" type="text" placeholder="Hourly rate" id="hourly_rate">
 
-      <input class="form-control" type="text" placeholder="Age range most experienced with">
-
+      <input class="form-control" type="text" placeholder="Age range most experienced with" id="age_range">
+      </div>
+      <div class="form-group">
+          <button class="btn btn-primary" type="submit">Sign Up</button>
+      </div>
 
     </form>
-  </div> 
+  </div>
 
-  {{!-- <script src="/public/js/login.js"></script> --}}
-{{!-- </body> --}}
-{{!-- 
-</html> --}}
+  <script src="/js/login.js"></script> 
+  
