@@ -916,15 +916,15 @@ a:hover {
 }
 
 /* BACKGROUND UTILS */
-.bg-primary {
+/* .bg-primary {
   background-color: #2d3e50 !important;
 }
 
 .bg-info {
   background-color: #1bbc9b !important;
-}
+} */
 
-.bg-danger {
+/* .bg-danger {
   background-color: #e64c66 !important;
 }
 
@@ -946,7 +946,7 @@ a:hover {
 
 .bg-link {
   background-color: #1b89bc !important;
-}
+} */
 
 /* DISPLAY */
 .display-none {

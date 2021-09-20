@@ -1,8 +1,8 @@
-{{#each profiles as |profile| }}
+{{#each profiles as |profile|}}
 <div class="card" style="width: 18rem;">
   <img src="{{pic}}" class="card-img-top" alt="...">
-    <div class="card-body">
-    <h5 class="card-title">{{name}}</h5> 
+  <div class="card-body">
+    <h5 class="card-title">{{name}}</h5>
     <p class="card-text">{{bio}}</p>
   </div>
   <ul class="list-group list-group-flush">
@@ -12,11 +12,27 @@
     <li class="list-group-item">Hourly Rate:{{hourly_rate}}</li>
     <li class="list-group-item">Most experience with kids aged: {{age_range}}</li>
     <li class="list-group-item">Average rating: {{stars}}</li>
-    {{!-- {{#if logged in}} --}}
+    {{#if logged in}}
     <li class="list-group-item">Reviews:{{review}}</li>
   </ul>
   <div class="card-body">
-    <a href="mailto:" class="{{email}}">{{email}}</a>
+    <a href="mailto:" class="{{email}}">Card link</a>
   </div>
 </div>
-{{/each}}
+
+  {{/each}}
+
+  <!-- {{#each if parent}}
+  <div class="card" style="width: 18rem;">
+    <img src="{{pic}}" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">{{name}}</h5>
+      <p class="card-text">{{bio}}</p>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">{{number_of_children}}</li>
+    </ul>
+    <div class="card-body">
+      <a href="mailto:" class="{{email}}">Card link</a>
+    </div>
+  </div> -->
