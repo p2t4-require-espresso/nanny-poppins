@@ -1,6 +1,7 @@
 const { Model, DataTypes } = require('sequelize');
 const bcrypt = require('bcrypt');
 const sequelize = require('../config/connection');
+const { capitalLetter } = require('../utils/helpers');
 
 class User extends Model {
   checkPassword(loginPw) {
@@ -45,7 +46,7 @@ User.init(
     photo:{
       type: DataTypes.STRING,
       //default this to the blank image in images file
-      allowNull: false
+      allowNull: true
     },
     nanny_age: {
       type: DataTypes.INTEGER,

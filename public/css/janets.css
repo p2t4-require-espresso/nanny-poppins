@@ -3,7 +3,7 @@ nav{
     margin: 0 auto ;
     padding: 10px;
 }
-/*Tech Blog Text in nav bar*/
+/*Nanny Poppins Text in nav bar*/
 .navbar-brand{
     font-size: 10vh;
 }
@@ -34,10 +34,11 @@ li{
 	height: 430px;
 	background: #FFF;
 	border-radius: 6px;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%,-50%);
+	
+	/* position: absolute;
+	top: 50%; */
+	/* left: 50%;
+	transform: translate(-50%,-50%); */
     font-family: 'Chilanka', cursive;
 	box-shadow: 0px 1px 10px 1px #000;
 	overflow: hidden;
@@ -97,4 +98,39 @@ li{
 	background: transparent;
 	color: #7F00FF;
 	border: 2px solid #7F00FF;
+}
+
+/*login and sign up header */
+.login-header{
+	text-align: center;
+    font-family: 'Birthstone', cursive;
+	font-size: xx-large;
+	font-weight: bolder;
+}
+/*tried to minimize the width of the email and password input for login */
+.form-input{
+	height:18px;
+}
+/*contents of the forms for signup and login */
+.form-group{
+    font-family: 'Chilanka', cursive;
+	font-weight: bold;
+	text-align: center;
+}
+/*the two radio buttons for sign up*/
+.custom-radio{
+	display: inline-block;
+	padding: 5px;
+	font-family: 'Chilanka', cursive;
+	font-weight: bold;
+}
+/*sign up as section*/
+.sign-up-as{
+	align-items: center;
+	text-align: center;
+	/* display: inline-block; */
+}
+.sign-up-as h4{
+    font-family: 'Chilanka', cursive;
+	padding-top: 15px;
 }

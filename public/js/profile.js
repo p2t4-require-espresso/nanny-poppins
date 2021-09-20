@@ -1,3 +1,7 @@
+console.log("profile js connected")
+
+
+
 // const newFormHandler = async (event) => {
 //   event.preventDefault();
 

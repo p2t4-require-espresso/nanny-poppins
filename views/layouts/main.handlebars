@@ -5,14 +5,15 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel='stylesheet'  type= "text/css" href="./css/jass.css">
+  <link rel='stylesheet' type="text/css" href="/css/jass.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+  <link rel='stylesheet' type="text/css" href="/css/janets.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Birthstone&family=Birthstone+Bounce&family=Chilanka&display=swap"
     rel="stylesheet">
-  <link rel='stylesheet' type= "text/css" href="./css/janets.css">
+
   <title>Nanny Poppins</title>
 </head>
 
@@ -37,11 +38,11 @@
             <!--if logged in show the log out button -->
             {{#if logged_in}}
             <li class="nav-item">
-              <a class="nav-link active" id="logout" href="/api/users/logout">Log Out</a>
+              <a class="nav-link active" id="logout" href="/">Log Out</a>
             </li>
             {{else}}
             <li class="nav-item">
-              <a class="nav-link active" href="/api/users/login">Login</a>
+              <a class="nav-link active" href="/login">Login</a>
             </li>
             {{/if}}
           </ul>
@@ -49,14 +50,19 @@
       </div>
     </div>
   </nav>
-   
+
   <main>
     {{{ body }}}
   </main>
   <footer>
-      
-  </footer>
-</body>
 
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+    crossorigin="anonymous"></script>
+  {{#if logged_in}}
+  <script src="/js/logout.js"></script>
+  {{/if}}
+</body>
 
 </html>
