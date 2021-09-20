@@ -95,45 +95,18 @@ router.get('/:id', async (req,res)=>{
   }
 })
 //CREATES A NEW USER
-router.post('/', upload, async (req, res)=>{
+router.post('/', async (req, res)=>{
   
   //need to send in form-data to do it all at once not json
 
   try{
     const newUser = await User.create(req.body,{
-      //password hashes already due to model, does it default to true?  
       individualHooks: true    
     });
 
-    let myFile = req.file.originalname.split(".")
-    console.log(myFile)
-    // this gives us the extension jpeg
-    const fileType = myFile[myFile.length - 1]
-    console.log(fileType)
-    
-    console.log(req.file)
-  
-    // the three buckets we need to upload the file
-    const params={
-      Bucket: bucketName,
-      Key: `${uuidv4()}.${fileType}`,
-      Body: req.file.buffer
-    }
-  console.log(params)
-    //data gives us a link to the file
-    S3.upload(params, (err, data)=>{
-      if(err){
-      return  res.status(500).json(err)
-      }
-      res.status(200).send({
-        msg:"File uploaded to AWS",
-        data: data,
-        file: req.file
-      })
-    })
       req.session.save(() => {
       req.session.user_type = newUser.user_type;
-      req.session.user_id = newUser.user_id;
+      req.session.user_id = newUser.id;
       req.session.logged_in = true;
 
       res.status(200).json(newUser);
@@ -189,10 +162,11 @@ router.post('/login', async (req, res) => {
       req.session.logged_in = true;
       
       res.json({ user: userData, message: 'You are now logged in!' });
+      console.log("user logged in")
     });
 
   } catch (err) {
-    res.status(400).json(err);
+    res.status(500).json(err);
   }
 });
 
@@ -201,6 +175,7 @@ router.post('/logout', (req, res) => {
     req.session.destroy(() => {
       res.json({message:"You are now logged out."})
       res.status(204).end();
+      console.log("user logged out")
     });
   } else {
     res.status(404).end();
@@ -212,7 +187,7 @@ router.delete('/:id', withAuth, async (req,res)=>{
     const deleteUser= await User.destroy({
       where:{
         id:req.params.id,
-        user_id: req.session.user_id,
+        // user_id: req.session.user_id,
       }
     })
   if(!deleteUser){

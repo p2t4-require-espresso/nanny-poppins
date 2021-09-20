@@ -1,3 +1,5 @@
+console.log("logout js connected")
+
 const logout = async () => {
   const response = await fetch('/api/users/logout', {
     method: 'POST',
@@ -6,8 +8,10 @@ const logout = async () => {
 
   if (response.ok) {
     document.location.replace('/');
+    console.log("logout hit")
   } else {
     alert(response.statusText);
+   console.log("error w log out")
   }
 };
 

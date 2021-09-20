@@ -1,3 +1,5 @@
+console.log("login js connected")
+
 const loginFormHandler = async (event) => {
   event.preventDefault();
 
@@ -15,8 +17,14 @@ const loginFormHandler = async (event) => {
 
     if (response.ok) {
       // If successful, redirect the browser to the profile page
-      document.location.replace('/profile');
-    } else {
+      document.location.replace('/dashboard/profile');
+      console.log("user logged in")
+    } 
+    if (response.status===400){
+      //change these to modals
+      alert("Incorrect email or password, please try again")
+    }
+    else {
       alert(response.statusText);
     }
   }
@@ -27,6 +35,7 @@ const nannyQuestions = document.getElementById('nannyQuestions');
 nannyQuestions.style.display = "none"
 const parentQuestions = document.getElementById('parentQuestions');
 parentQuestions.style.display= "none"
+
 radios.forEach(radio => {
   radio.addEventListener('change', () => {
     console.log(radio.value)
@@ -43,28 +52,41 @@ radios.forEach(radio => {
 const signupFormHandler = async (event) => {
   event.preventDefault();
 
-  const name = document.querySelector('#name-signup').value.trim();
+  let user_type ="";
+  const name = document.querySelector('#name-signup').value.trim(); 
   const email = document.querySelector('#email-signup').value.trim();
   const password = document.querySelector('#password-signup').value.trim();
-  const bio = document.querySelector('#userBio').value;
+  const bio = document.querySelector('#userBio').value.trim();
   const numberOfKids = document.querySelector('#numberOfKids').value;
   const experienceYears = document.querySelector('#experience_years').value;
   const certifications = document.querySelector('#certifications').value;
   const hourlyRate = document.querySelector('#hourly_rate').value;
   const ageRange = document.querySelector('#age_range').value;
 
+  //needed to determine if the user is a parent or nanny 
+    //nannys leave this field null, parents can't
+  if (numberOfKids.value == !null){
+    user_type="parent"
+  }else{
+    user_type="nanny"
+  }
 
-  if (name && email && password && bio && numberOfKids && experienceYears && certifications && hourlyRate && ageRange) {
+  if (name && email && password && bio, numberOfKids, user_type, experienceYears, certifications, hourlyRate, ageRange) {
     const response = await fetch('/api/users', {
       method: 'POST',
-      body: JSON.stringify({ name, email, password, bio, numberOfKids, experienceYears, certifications,  hourlyRate, ageRange }),
+      body: JSON.stringify({ name, email, password, bio, numberOfKids, user_type, experienceYears, certifications, hourlyRate, ageRange }),
       headers: { 'Content-Type': 'application/json' },
     });
-
+    
     if (response.ok) {
-      document.location.replace('/profile');
+      document.location.replace('/dashboard/profile');
+      console.log("successful signup")
+      console.log(response)
     } else {
       alert(response.statusText);
+      console.log("sign up did not work")
+      console.log(response)
+
     }
   }
 };
