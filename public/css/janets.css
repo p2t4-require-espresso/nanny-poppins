@@ -134,3 +134,8 @@ li{
     font-family: 'Chilanka', cursive;
 	padding-top: 15px;
 }
+/*USER PROFILE PAGE*/
+#userprofilephoto{
+	width:200px;
+	height: 200px;
+}

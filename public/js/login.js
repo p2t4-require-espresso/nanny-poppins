@@ -52,7 +52,7 @@ radios.forEach(radio => {
 const signupFormHandler = async (event) => {
   event.preventDefault();
 
-  const user_type ="";
+  let user_type ="";
   const name = document.querySelector('#name-signup').value.trim(); 
   const email = document.querySelector('#email-signup').value.trim();
   const password = document.querySelector('#password-signup').value.trim();
@@ -63,7 +63,9 @@ const signupFormHandler = async (event) => {
   const hourlyRate = document.querySelector('#hourly_rate').value;
   const ageRange = document.querySelector('#age_range').value;
 
-  if (numberOfKids){
+  //needed to determine if the user is a parent or nanny 
+    //nannys leave this field null, parents can't
+  if (numberOfKids.value == !null){
     user_type="parent"
   }else{
     user_type="nanny"
