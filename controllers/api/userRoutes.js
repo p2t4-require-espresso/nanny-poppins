@@ -189,6 +189,7 @@ router.post('/login', async (req, res) => {
       req.session.logged_in = true;
       
       res.json({ user: userData, message: 'You are now logged in!' });
+      console.log("user logged in")
     });
 
   } catch (err) {
@@ -201,6 +202,7 @@ router.post('/logout', (req, res) => {
     req.session.destroy(() => {
       res.json({message:"You are now logged out."})
       res.status(204).end();
+      console.log("user logged out")
     });
   } else {
     res.status(404).end();

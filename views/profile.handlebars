@@ -1,10 +1,19 @@
 <div class="row">
   <div class="col-auto">
     <h2>Welcome, {{name}}!</h2>
+   <p>{{bio}}</p>
+   
+   <p>{{hourly_rate}}</p>
+   <p>{{number_of_children}}</p>
+   <p>{{user_type}}</p>
   </div>
 </div>
 
+{{#if nanny}}
 
+<p>{{bio}}</p>
+
+  {{/if}}
 
 {{#if parent}}
 <div class="row mt-4">
@@ -15,7 +24,7 @@
       <div class="form-group" id="selectNanny">
         <label for="select-nanny">Which Nanny do you want to leave a review for?</label>
         <select class="form-control form-control-lg">
-          <option>{{#each nanny {{name}} }}</option>
+          {{!-- <option>{{#each nanny {{name}} }}</option> --}}
         </select>
       </div>
       <div class="form-group">
