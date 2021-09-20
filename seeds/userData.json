@@ -120,11 +120,7 @@
     "name": "Catherine",
     "age_range": "4 to 13yo",
     "nanny_age": 20,
-    "certification": [
-      "First Aid Certification",
-      "Water Safety Certification",
-      "CPR Certified"
-    ],
+    "certification": "First Aid Certification, Water Safety Certification, CPR Certified",
     "hourly_rate": 18,
     "email": "catherinet@gmail.com",
     "experience_years": 3,
@@ -137,10 +133,7 @@
     "name": "Jenny",
     "age_range": "7 to 12yo",
     "nanny_age": 22,
-    "certification": [
-      "First Aid Certification",
-      "CPR Certified"
-    ],
+    "certification": "First Aid Certification, CPR Certified",
     "hourly_rate": 15,
     "email": "jenny@gmail.com",
     "user_type": "nanny",

@@ -1,49 +1,28 @@
-{{!-- <!-- Loop over each object in the projects array -->
 {{#each profiles as |profile| }}
-<div class="row mb-4 project">
-  <div class="col-md-5">
-    <h2>
-      <!-- Call helper function with triple brackets to render the emoji span as HTML -->
-      {{{get_emoji}}}
-      <p>{{name}}</p>
-    </h2>
-    <p>
-      <span for="img" aria-label="money">💲{{hourly_rate}}</span>
-      <!-- Pass needed_funding value to the helper function -->
-      <span class="dollar-amount"></span>
-      needed!
-    </p>
-    <p>age {{nanny_age}} on {{email}}</p>
-  </div>
-  <div class="col-md-7">
-    <p>
-      {{bio}}
-    </p>
-     <p>
-      {{description}}
-    </p>
-  </div>
-</div>
-{{/each}} --}}
-{{#each profiles as |profile| }}
-<div class="card" style="width: 18rem;">
-  <img src="{{pic}}" class="card-img-top" alt="...">
-    <div class="card-body">
-    <h5 class="card-title">{{name}}</h5> 
-    <p class="card-text">{{bio}}</p>
-  </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">{{nanny_age}}</li>
-    <li class="list-group-item">{{experience_years}}</li>
-    <li class="list-group-item">{{certification}}</li>
-    <li class="list-group-item">Hourly Rate:{{hourly_rate}}</li>
-    <li class="list-group-item">Most experience with kids aged: {{age_range}}</li>
-    <li class="list-group-item">Average rating: {{stars}}</li>
-    {{!-- {{#if logged in}} --}}
-    <li class="list-group-item">Reviews:{{review}}</li>
-  </ul>
-  <div class="card-body">
-    <a href="mailto:" class="{{email}}">Card link</a>
+<div class="position-cards">
+  <div class="card-container">
+    <div class="upper-container">
+      <div class="image-container">
+        <img src="./image/blank-user.jpeg" || {{photo}} alt="user-photo">
+      </div>
+    </div>
+
+    <div class="lower-container user-card">
+      <div>
+        <h3>{{name}}</h3>
+        <h4>Nanny</h4>
+      </div>
+      <div>
+        <p>{{certification}}</p>
+        <p>{{bio}}</p>
+      </div>
+      {{#if loggedIn}}
+      <p>{{hourly_rate}}</p>
+      <div>
+        <a href="mailto:{{email}}">Learn More about this Nanny</a>
+      </div>
+      {{/if}}
+    </div>
   </div>
 </div>
 {{/each}}

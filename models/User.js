@@ -1,6 +1,7 @@
 const { Model, DataTypes } = require('sequelize');
 const bcrypt = require('bcrypt');
 const sequelize = require('../config/connection');
+const { capitalLetter } = require('../utils/helpers');
 
 class User extends Model {
   checkPassword(loginPw) {
@@ -45,11 +46,14 @@ User.init(
     photo:{
       type: DataTypes.STRING,
       //default this to the blank image in images file
-      allowNull: false
+      allowNull: true
     },
     nanny_age: {
       type: DataTypes.INTEGER,
       allowNull: true,
+      validate:{
+        isIn:[["18-21", "22-25","26 +"]]
+      }
   },
   age_range: {
       type: DataTypes.STRING,
@@ -62,6 +66,9 @@ User.init(
   hourly_rate: {
       type: DataTypes.DECIMAL(10, 2),
       allowNull: true,
+      validate:{
+        isDecimal:true
+      }
   },
   experience_years: {
       type: DataTypes.INTEGER,
@@ -80,10 +87,14 @@ User.init(
     hooks: {
       beforeCreate: async (newUserData) => {
         newUserData.password = await bcrypt.hash(newUserData.password, 10);
+        newUserData.name = await capitalLetter(newUserData.name)
+        newUserData.user_type = await capitalLetter(newUserData.user_type)
         return newUserData;
       },
       beforeUpdate: async (updatedUserData) => {
         updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
+        updatedUserData.name = await capitalLetter(updatedUserData.name)
+        //not allowing users to change status between nanny and parent
         return updatedUserData;
       },
     },

@@ -20,7 +20,7 @@ router.get('/', withAuth, async (req, res) => {
         });
         const profiles = profileData.map((profile) => profile.get({ plain: true }))
         res.status(200).json(profileData)
-        res.render('dashboard', {
+        res.render('homepage', {
             profiles,
             logged_in: req.session.logged_in
         });
@@ -90,7 +90,6 @@ router.put('/profile', withAuth, async (req, res) => {
             where: {
                 id: req.session.user_id
             },
-
         });
         // console.log(req.body)
         const user = userData.get({ plain: true });
