@@ -57,24 +57,31 @@ const signupFormHandler = async (event) => {
   const email = document.querySelector('#email-signup').value.trim();
   const password = document.querySelector('#password-signup').value.trim();
   const bio = document.querySelector('#userBio').value.trim();
-  const numberOfKids = document.querySelector('#numberOfKids').value;
-  const experienceYears = document.querySelector('#experience_years').value;
-  const certifications = document.querySelector('#certifications').value;
-  const hourlyRate = document.querySelector('#hourly_rate').value;
-  const ageRange = document.querySelector('#age_range').value;
+  const number_of_children = document.querySelector('#numberOfKids').value;
+  const experience_years = document.querySelector('#experience_years').value;
+  const certification = document.querySelector('#certifications').value;
+  const hourly_rate = document.querySelector('#hourly_rate').value;
+  const nanny_age = document.querySelector('#nannyAge').value;
+  const age_range = document.querySelector('#age_range').value;
 
   //needed to determine if the user is a parent or nanny 
     //nannys leave this field null, parents can't
-  if (numberOfKids.value == !null){
+    console.log(number_of_children,"number of children")
+    console.log(number_of_children.value, "value of children")
+    console.log(typeof nanny_age, "nanny age type")
+    
+  if (parseInt(number_of_children.value) > 0){
     user_type="parent"
   }else{
     user_type="nanny"
   }
+  // if (name && email && password && bio && user_type &&  (numberOfKids  || (certifications && hourlyRate && ageRange && experienceYears)))
 
-  if (name && email && password && bio, numberOfKids, user_type, experienceYears, certifications, hourlyRate, ageRange) {
+  // if (name && email && password && bio, numberOfKids, user_type, experienceYears, certifications, hourlyRate, ageRange) 
+  if (name && email && password && bio && user_type &&  (number_of_children  || (certification && hourly_rate && age_range && experience_years && nanny_age))) {
     const response = await fetch('/api/users', {
       method: 'POST',
-      body: JSON.stringify({ name, email, password, bio, numberOfKids, user_type, experienceYears, certifications, hourlyRate, ageRange }),
+      body: JSON.stringify({ name, email, password, bio, number_of_children, user_type, experience_years, certification,  hourly_rate,nanny_age, age_range }),
       headers: { 'Content-Type': 'application/json' },
     });
     
@@ -85,8 +92,7 @@ const signupFormHandler = async (event) => {
     } else {
       alert(response.statusText);
       console.log("sign up did not work")
-      console.log(response)
-
+      console.log(await response.json())
     }
   }
 };

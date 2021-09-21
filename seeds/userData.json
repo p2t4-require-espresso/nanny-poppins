@@ -5,7 +5,7 @@
     "password": "password1",
     "photo": "https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg",
     "user_type": "parent",
-    "number_of_children": 2,
+    "number_of_children": "2",
     "bio": "string"
   },
   {
@@ -14,7 +14,7 @@
     "password": "password2",
     "photo": "https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg",
     "user_type": "parent",
-    "number_of_children": 2,
+    "number_of_children": "2",
     "bio": "string"
   },
   {
@@ -23,7 +23,7 @@
     "password": "password3",
     "photo": "https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg",
     "user_type": "parent",
-    "number_of_children": 2,
+    "number_of_children": "2",
     "bio": "string"
   },
   {
@@ -32,7 +32,7 @@
     "password": "password4",
     "photo": "https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg",
     "user_type": "parent",
-    "number_of_children": 2,
+    "number_of_children": "2",
     "bio": "string"
   },
   {
@@ -44,7 +44,7 @@
     "email": "tyler@gmail.com",
     "user_type": "nanny",
     "password": "password33",
-    "experience_years": 4,
+    "experience_years": "4",
     "bio": "I have a passion for working with children of all age ranges. I am skilled in tayloring my duties based on the childrens needs.",
     "photo": "https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg"
   },
@@ -57,7 +57,7 @@
     "user_type": "nanny",
     "password": "password31",
     "email": "lizSits@gmail.com",
-    "experience_years": 2,
+    "experience_years": "2",
     "bio": "I work really well with infants, and get a long really well with children. Great communicater, as well.",
     "photo": "https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg"
   },
@@ -70,20 +70,20 @@
     "user_type": "nanny",
     "password": "password30",
     "email": "emma12@yahoo.com",
-    "experience_years": 3,
+    "experience_years": "3",
     "bio": "I prefer working with infants, and most of my babysitting experience are with children who are toddlers or younger.",
     "photo": "https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg"
   },
   {
     "name": "Jackie",
     "age_range": "3 to 13yo",
-    "nanny_ge": 21,
+    "nanny_age": 21,
     "certification": "CPR Certification",
     "hourly_rate": 16,
     "user_type": "nanny",
     "password": "password34",
     "email": "jackie1@yahoo.com",
-    "experience_years": 3,
+    "experience_years": "3",
     "bio": "I prefer working with infants, most of my babysitting experience are with children who are toddlers or younger. I have great communication skills and great at adapting to the parenting style of choice.",
     "photo": "https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg"
   },
@@ -91,13 +91,10 @@
     "name": "Petra",
     "age_range": "3mos to 1yr",
     "nanny_age": 26,
-    "certification": [
-      "Sleep Training Certificate",
-      "CPR Certified"
-    ],
+    "certification": "Sleep Training Certificate, CPR Certified",
     "hourly_rate": 30,
     "email": "petra1@yahoo.com",
-    "experience_years": 3,
+    "experience_years": "3",
     "user_type": "nanny",
     "password": "password35",
     "bio": "I work exclusively with infants, and most of my past clients have had positive experiences after I sleep train their new infants.",
@@ -112,7 +109,7 @@
     "user_type": "nanny",
     "password": "password36",
     "email": "kylie2@yahoo.com",
-    "experience_years": 8,
+    "experience_years": "4",
     "bio": "I approach my role as a nanny as I did when I taught young children in my classroom. Your children will be disciplined positively, and be taugh social skills--no matter the age.",
     "photo": "https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg"
   },
@@ -138,7 +135,7 @@
     "email": "jenny@gmail.com",
     "user_type": "nanny",
     "password": "password38",
-    "experience_years": 3,
+    "experience_years": "3",
     "bio": "I am very active and like to take the children on hikes, walks, bike rides. I try to model a fun, educational, active lifestyle for children to absorb. With this approach--I prefer children older than 7. No infants, please.",
     "photo": "https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg"
   },
@@ -151,7 +148,7 @@
     "user_type": "nanny",
     "password": "password39",
     "email": "serenapaints@gmail.com",
-    "experience_years": 4,
+    "experience_years": "4",
     "bio": "I love teaching young children the joys of getting their hands dirty with paints, clay, or markers. I love showing children that art can be anything they want it to be. I am very easy going and I gurantee your children will be safe in my hands, but also enjoy their time with me.",
     "photo": "https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg"
   },
@@ -164,7 +161,7 @@
     "certification": "University Student",
     "hourly_rate": 15,
     "email": "simonataylor@gmail.com",
-    "experience_years": 3,
+    "experience_years": "3",
     "bio": "I am currently a part-time student at University but enjoy working with children of all ages. I do not have much experience working with infants, however. I hope to be a middle school teacher, and spend a lot of my time babysitting reading books, challenging children to write creative short stories, and even put on plays!",
     "photo": "https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg"
   }

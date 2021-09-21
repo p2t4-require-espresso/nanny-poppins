@@ -76,6 +76,7 @@
             <div class="form-group" id="parentQuestions">
               <label for="exampleFormControlSelect1">How many kids do you have?</label>
               <select class="form-control" id="numberOfKids">
+                <option selected disabled hidden>0</option>
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>
@@ -86,15 +87,13 @@
 
             {{!-- nanny questions --}}
             <div id="nannyQuestions">
-              <select class="form-control">
-                <option>How old are you?</option>
-                <option>18-21</option>
-                <option>22-25</option>
-                <option>26 +</option>
-              </select>
+             
+              <input class="form-control" id="nannyAge" type="text" placeholder="Input Your Age" >
+              
               <div class="form-group">
                 <label for="exampleFormControlSelect1">Years of experience</label>
                 <select class="form-control" id="experience_years">
+                  <option placeholder="Enter Your Years of Experience"></option>
                   <option>1</option>
                   <option>2</option>
                   <option>3</option>
