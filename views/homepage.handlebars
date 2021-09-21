@@ -10,13 +10,17 @@
     <div class="lower-container user-card">
       <div>
         <h3>{{name}}</h3>
-        <h4>Nanny</h4>
+        {{!-- {{#if logged_in}} --}}
+      <a href="/{{id}}"> <h4>Nanny</h4></a>
+      {{!-- {{else}} --}}
+      {{!-- <h4>Nanny</h4> --}}
+      {{!-- {{/if}} --}}
       </div>
       <div>
         <p>{{certification}}</p>
         <p>{{bio}}</p>
       </div>
-      {{#if loggedIn}}
+      {{#if logged_in}}
       <p>{{hourly_rate}}</p>
       <div>
         <a href="mailto:{{email}}">Learn More about this Nanny</a>

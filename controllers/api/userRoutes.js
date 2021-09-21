@@ -86,7 +86,9 @@ router.get('/:id', async (req,res)=>{
       include:[{
         model:Rating,
         include:[{model:User, as:"parent"}],
+        attributes:['stars','review']
       }],
+   
     })
     res.status(200).json(oneUser)
   }
@@ -97,7 +99,7 @@ router.get('/:id', async (req,res)=>{
 //CREATES A NEW USER
 router.post('/', async (req, res)=>{
   
-console.log(req.body)
+console.log(req.body, "req body from post route")
   try{
     const newUser = await User.create(req.body,{
       individualHooks: true    
@@ -111,11 +113,82 @@ console.log(req.body)
       res.status(200).json(newUser);
     
   });
-  }
+}
   catch(err){
     res.status(400).json(err)
   }
 })
+
+//testing posts by splitting it up by user 
+// router.post('/', async (req, res)=>{
+  
+//   console.log(req.body, "req body from post route")
+//   if(req.body.user_type ==="nanny"){
+//    try{
+//      const newUser= await  User.create({
+//          name: req.body.name,
+//          email: req.body.email,
+//          password: req.body.password,
+//          user_type:req.body.user_type,
+//          bio: req.body.bio,
+//          certification: req.body.certification,
+//          hourly_rate: req.body.hourly_rate,
+//          nanny_age:req.body.nanny_age,
+//          age_range: req.body.age_range,
+//          nanny_id: req.body.nanny_id
+//       },{
+//       individualHooks: true 
+//       });
+      
+//         req.session.save(() => {
+//         req.session.user_type = newUser.user_type;
+//         req.session.user_id = newUser.id;
+//         req.session.logged_in = true;
+  
+//         res.status(200).json(newUser);
+      
+//     });
+//   } 
+//   catch(err){
+//       res.status(400).json(err)
+//     }
+//   }
+//   if(req.body.user_type ==="parent"){
+//     try{
+//       const newUser= await  User.create({
+//           name: req.body.name,
+//           email: req.body.email,
+//           password: req.body.password,
+//           user_type: req.body.user_type,
+//           bio: req.body.bio,
+//           number_of_children: req.body.number_of_children
+       
+//        },{
+//        individualHooks: true 
+//        });
+//        req.session.save(() => {
+//         req.session.user_type = newUser.user_type;
+//         req.session.user_id = newUser.id;
+//         req.session.logged_in = true;
+  
+//         res.status(200).json(newUser);
+      
+//     });
+//   } 
+//   catch(err){
+//       res.status(400).json(err)
+//     }
+//   }
+//   })
+
+
+
+
+
+
+
+
+
 
 //update USER IF LOGGED In--this works, tested in Insomnia
 router.put('/:id', withAuth, async (req, res)=>{

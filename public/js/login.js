@@ -65,19 +65,20 @@ const signupFormHandler = async (event) => {
   const age_range = document.querySelector('#age_range').value;
 
   //needed to determine if the user is a parent or nanny 
-    //nannys leave this field null, parents can't
+   
     console.log(number_of_children,"number of children")
-    console.log(number_of_children.value, "value of children")
+    console.log(typeof number_of_children, "# of children type")
     console.log(typeof nanny_age, "nanny age type")
+    console.log(typeof hourly_rate, "hourly rate type")
+    console.log(typeof certification ,"certification type")
+    console.log(typeof age_range, "age range type")
     
-  if (parseInt(number_of_children.value) > 0){
-    user_type="parent"
+  if (experience_years === null){
+   return user_type="parent"
   }else{
     user_type="nanny"
   }
-  // if (name && email && password && bio && user_type &&  (numberOfKids  || (certifications && hourlyRate && ageRange && experienceYears)))
-
-  // if (name && email && password && bio, numberOfKids, user_type, experienceYears, certifications, hourlyRate, ageRange) 
+  
   if (name && email && password && bio && user_type &&  (number_of_children  || (certification && hourly_rate && age_range && experience_years && nanny_age))) {
     const response = await fetch('/api/users', {
       method: 'POST',

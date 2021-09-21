@@ -49,7 +49,7 @@ User.init(
       allowNull: true
     },
     nanny_age: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: true,
       // validate:{
       //   isIn:[["18-21", "22-25","26 +"]]
@@ -60,11 +60,11 @@ User.init(
       allowNull: true,
   },
   number_of_children:{
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
     allowNull: true,
   },
   hourly_rate: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: true,
       // validate:{
       //   isDecimal:true
@@ -88,13 +88,11 @@ User.init(
       beforeCreate: async (newUserData) => {
         newUserData.password = await bcrypt.hash(newUserData.password, 10);
         newUserData.name = await capitalLetter(newUserData.name)
-        // newUserData.user_type = await capitalLetter(newUserData.user_type)
         return newUserData;
       },
       beforeUpdate: async (updatedUserData) => {
         updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
         updatedUserData.name = await capitalLetter(updatedUserData.name)
-        //not allowing users to change status between nanny and parent
         return updatedUserData;
       },
     },
