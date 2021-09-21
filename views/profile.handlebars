@@ -7,6 +7,7 @@
     <p>{{hourly_rate}}</p>
     <p>{{number_of_children}}</p>
     <p>{{user_type}}</p>
+    <p>{{certification}}</p>
     <p>{{description}}</p>
     {{! THIS WONT WORK, must happen using JS}}
     <img id="userprofilephoto" src="../image/blank-user.jpeg" || "{{photo}}"></img>
@@ -26,29 +27,30 @@
   </div>
 </div>
 
-
-{{#if number_of_children }}
 <div class="row mt-4">
   <div class="col-md-6">
     <h3>Leave a Review for Your Nanny:</h3>
 
-    <form class="form new-project-form" id="review_nanny">
-      <div class="form-group" id="selectNanny">
-        <label for="select-nanny">Which Nanny do you want to leave a review for?</label>
-        <select class="form-control form-control-lg">
-          {{! Karla, this threw an error, lets look it over }}
-          {{!-- <option>{{#each nanny {{name}} }}</option> --}}
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="project-funding">Wrtie Your Review Here</label>
-        <input class="form-input" type="number" id="project-funding" name="project-funding" />
-      </div>
-      <div class="form-group">
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </div>
-    </form>
+    <div id="form review_form">
+      <form class="form review-form" id="review_nanny">
+        <div class="form-group" id="selectNanny">
+          <label for="select-nanny">Which Nanny do you want to leave a review for?</label>
+          <select class="form-control form-control-lg" id = "nanny_id">
+            <option>Choose Nanny</option>
+            {{#each nannies}}
+            <option value="{{id}}">{{name}}</option>
+            {{/each}}
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="project-funding">Wrtie Your Review Here</label>
+          <textarea name="nanny_review" id="nanny-review" cols="30" rows="10"></textarea>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+    </div>
   </div>
-  {{/if}}
 
   <script src="/js/profile.js"></script>
