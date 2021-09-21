@@ -51,9 +51,9 @@ User.init(
     nanny_age: {
       type: DataTypes.INTEGER,
       allowNull: true,
-      validate:{
-        isIn:[["18-21", "22-25","26 +"]]
-      }
+      // validate:{
+      //   isIn:[["18-21", "22-25","26 +"]]
+      // }
   },
   age_range: {
       type: DataTypes.STRING,
@@ -64,14 +64,14 @@ User.init(
     allowNull: true,
   },
   hourly_rate: {
-      type: DataTypes.DECIMAL(10, 2),
+      type: DataTypes.INTEGER,
       allowNull: true,
-      validate:{
-        isDecimal:true
-      }
+      // validate:{
+      //   isDecimal:true
+      // }
   },
   experience_years: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: true
   },
   certification: {
@@ -88,7 +88,7 @@ User.init(
       beforeCreate: async (newUserData) => {
         newUserData.password = await bcrypt.hash(newUserData.password, 10);
         newUserData.name = await capitalLetter(newUserData.name)
-        newUserData.user_type = await capitalLetter(newUserData.user_type)
+        // newUserData.user_type = await capitalLetter(newUserData.user_type)
         return newUserData;
       },
       beforeUpdate: async (updatedUserData) => {

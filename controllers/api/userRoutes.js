@@ -97,8 +97,7 @@ router.get('/:id', async (req,res)=>{
 //CREATES A NEW USER
 router.post('/', async (req, res)=>{
   
-  //need to send in form-data to do it all at once not json
-
+console.log(req.body)
   try{
     const newUser = await User.create(req.body,{
       individualHooks: true    
@@ -110,6 +109,7 @@ router.post('/', async (req, res)=>{
       req.session.logged_in = true;
 
       res.status(200).json(newUser);
+    
   });
   }
   catch(err){
@@ -220,7 +220,7 @@ router.post('/upload', upload, (req, res)=>{
     Key: `${uuidv4()}.${fileType}`,
     Body: req.file.buffer
   }
-
+//create a button that takes me to api/users/upload, and thats wher ei can do thi
   //data gives us a link to the file
   S3.upload(params, (err, data)=>{
     if(err){
