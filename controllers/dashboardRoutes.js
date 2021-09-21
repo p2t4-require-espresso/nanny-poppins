@@ -36,12 +36,23 @@ router.get('/profile', withAuth, async (req, res) => {
         const userData = await User.findByPk(req.session.user_id, {
             attributes: { exclude: ['password'] },
             include: [{ model: Rating, attributes: ['stars', 'review'] }],
-        });
+        }); 
+        const nannies= (await User.findAll({
+            where:{
+              user_type:["nanny"]
+            },
+            include:[{
+              model:Rating,
+              include:[{model:User, as:"parent"}],
+            }],
+          })).map(nanny=>nanny.get({plain:true}))
+          console.log(nannies)
         const user = userData.get({ plain: true });
         console.log(user)
         console.log(user.email)
         res.render('profile', {
             ...user,
+            nannies,
             logged_in: true
         });
     }
