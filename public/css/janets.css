@@ -1,3 +1,8 @@
+body {
+	background-color: lightgreen;
+
+}
+
 nav{
     font-family: 'Birthstone Bounce', cursive;
     margin: 0 auto ;
@@ -22,7 +27,9 @@ li{
 
 .position-cards{
 	display: inline-block;
-	flex-direction:column ;
+	flex-direction:column;
+	margin: 0px;
+	padding: 0px;
 }
 .card-dash{
     margin:40px 20px 0px 20px;
