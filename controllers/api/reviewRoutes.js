@@ -28,14 +28,17 @@ router.get('/:id', async (req,res)=>{
 })
 //user must be logged in to write a review, checked in insomnia
 router.post('/', withAuth, async (req, res) => {
+  console.log({...req.body,
+    user_id: req.session.user_id,})
     try {
     const newReview = await Rating.create({
       ...req.body,
-      user_id: req.session.user_id,
+      parent_id: req.session.user_id,
     });
 
     res.status(200).json(newReview);
   } catch (err) {
+    console.log(err);
     res.status(400).json(err);
   }
 });
