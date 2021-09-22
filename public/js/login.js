@@ -7,6 +7,10 @@ const loginFormHandler = async (event) => {
   const email = document.querySelector('#email-login').value.trim();
   const password = document.querySelector('#password-login').value.trim();
 
+  if(!email || !password){
+    sendAlert("Must include email and password before signing in.", 'danger', '.login-button')
+  }
+
   if (email && password) {
     // Send a POST request to the API endpoint
     const response = await fetch('/api/users/login', {
@@ -21,14 +25,23 @@ const loginFormHandler = async (event) => {
       console.log("user logged in")
     } 
     if (response.status===400){
-      //change these to modals
-      alert("Incorrect email or password, please try again")
+      sendAlert("Incorrect email or password, please try again.",'danger','.login-button');
     }
     else {
-      alert(response.statusText);
+      sendAlert("Server Error, unable to login",'danger','.login-button');
     }
   }
 };
+
+function sendAlert(status, color, element){
+  $(".bootstrap-growl").remove();
+  $.bootstrapGrowl(status,{
+    ele: element,
+    type: color,
+    align: 'center',
+    delay: 2000,
+  });
+}
 
 var radios = document.querySelectorAll('input[name="userRadio"]');
 const nannyQuestions = document.getElementById('nannyQuestions');
@@ -72,6 +85,10 @@ const signupFormHandler = async (event) => {
     console.log(typeof hourly_rate, "hourly rate type")
     console.log(typeof certification ,"certification type")
     console.log(typeof age_range, "age range type")
+
+    if (!(name && email && password && bio && user_type &&  (number_of_children  || (certification && hourly_rate && age_range && experience_years && nanny_age)))){
+      sendAlert("All Fields must have valid entries.",'danger', '.signup-button')
+    }
   
     //setting this to '' fixes the issue of all users entering the db as a nanny
   if (experience_years === ''){
@@ -83,7 +100,7 @@ const signupFormHandler = async (event) => {
   if (name && email && password && bio && user_type &&  (number_of_children  || (certification && hourly_rate && age_range && experience_years && nanny_age))) {
     const response = await fetch('/api/users', {
       method: 'POST',
-      body: JSON.stringify({ name, email, password, bio, number_of_children, user_type, photo, experience_years, certification,  hourly_rate,nanny_age, age_range }),
+      body: JSON.stringify({ name, email, password, bio, number_of_children, user_type, experience_years, certification,  hourly_rate,nanny_age, age_range }),
       headers: { 'Content-Type': 'application/json' },
     });
     
