@@ -72,9 +72,10 @@ const signupFormHandler = async (event) => {
     console.log(typeof hourly_rate, "hourly rate type")
     console.log(typeof certification ,"certification type")
     console.log(typeof age_range, "age range type")
-    
-  if (experience_years === null){
-   return user_type="parent"
+  
+    //setting this to '' fixes the issue of all users entering the db as a nanny
+  if (experience_years === ''){
+    user_type="parent"
   }else{
     user_type="nanny"
   }
@@ -82,14 +83,14 @@ const signupFormHandler = async (event) => {
   if (name && email && password && bio && user_type &&  (number_of_children  || (certification && hourly_rate && age_range && experience_years && nanny_age))) {
     const response = await fetch('/api/users', {
       method: 'POST',
-      body: JSON.stringify({ name, email, password, bio, number_of_children, user_type, experience_years, certification,  hourly_rate,nanny_age, age_range }),
+      body: JSON.stringify({ name, email, password, bio, number_of_children, user_type, photo, experience_years, certification,  hourly_rate,nanny_age, age_range }),
       headers: { 'Content-Type': 'application/json' },
     });
     
     if (response.ok) {
       document.location.replace('/dashboard/profile');
       console.log("successful signup")
-      console.log(response)
+   
     } else {
       alert(response.statusText);
       console.log("sign up did not work")
