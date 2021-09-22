@@ -55,11 +55,16 @@ router.get('/:id', async (req,res)=>{
     console.log("review", review)
     console.log("single review" ,review.review)
     console.log("parent and review", review.parent.name)
+    console.log("star rating", review.stars)
     const reviewerName = review.parent.name;
     const reviews =review.review
+    // add all star values and divide by the amount given aka the average
+    const starRatings = review.stars
+    if(reviewData){}
     res.render('viewuser',{
       ...singleProfile,
       ...review,
+      starRatings,
       reviewerName,
       reviews,
       logged_in: true
@@ -69,32 +74,25 @@ router.get('/:id', async (req,res)=>{
     res.status(400).json(err)
   }
 })
+//i am clicking on some nanny profiles while on the homepage, most take me to profile page thats populate w lines 65-69, but some nannys i click and get an empty object...
+  // tried this bc when i clicked on those profiles console log from line 53 says review data null, but still didnt work
+        // if(reviewData){
+        //   res.render('viewuser',{
+        //     ...singleProfile,
+        //     ...review,
+        //     starRatings,
+        //     reviewerName,
+        //     reviews,
+        //     logged_in: true
+        //   })
+        // }else{
+        //   res.render('viewuser',{
+        //     ...singleProfile,
+        //     logged_in: true
+        //   })
+        // }
 
-//USER able to click on a nanny profile and redirects to a new page
-  //dont think i need this
 
-// // Use withAuth middleware to prevent access to route
-
-// i wrote a profile route in the dashboardroutes folder...dbl check if it should be here
-
-// router.get('/profile', withAuth, async (req, res) => {
-//   try {
-//     // Find the logged in user based on the session ID
-//     const userData = await User.findByPk(req.session.user_id, {
-//       attributes: { exclude: ['password'] },
-//       include: [{ model: Project }],
-//     });
-
-//     const user = userData.get({ plain: true });
-
-//     res.render('profile', {
-//       ...user,
-//       logged_in: true
-//     });
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
 
 router.get('/login', (req, res) => {
   // If the user is already logged in, redirect the request to another route
