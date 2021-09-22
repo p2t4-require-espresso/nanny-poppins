@@ -7,6 +7,10 @@ const loginFormHandler = async (event) => {
   const email = document.querySelector('#email-login').value.trim();
   const password = document.querySelector('#password-login').value.trim();
 
+  if(!email || !password){
+    sendAlert("Must include email and password before signing in.", 'danger', '.login-button')
+  }
+
   if (email && password) {
     // Send a POST request to the API endpoint
     const response = await fetch('/api/users/login', {
@@ -21,14 +25,23 @@ const loginFormHandler = async (event) => {
       console.log("user logged in")
     } 
     if (response.status===400){
-      //change these to modals
-      alert("Incorrect email or password, please try again")
+      sendAlert("Incorrect email or password, please try again.",'danger','.login-button');
     }
     else {
-      alert(response.statusText);
+      sendAlert("Server Error, unable to login",'danger','.login-button');
     }
   }
 };
+
+function sendAlert(status, color, element){
+  $(".bootstrap-growl").remove();
+  $.bootstrapGrowl(status,{
+    ele: element,
+    type: color,
+    align: 'center',
+    delay: 2000,
+  });
+}
 
 var radios = document.querySelectorAll('input[name="userRadio"]');
 const nannyQuestions = document.getElementById('nannyQuestions');
@@ -72,9 +85,14 @@ const signupFormHandler = async (event) => {
     console.log(typeof hourly_rate, "hourly rate type")
     console.log(typeof certification ,"certification type")
     console.log(typeof age_range, "age range type")
-    
-  if (experience_years === null){
-   return user_type="parent"
+
+    if (!(name && email && password && bio && user_type &&  (number_of_children  || (certification && hourly_rate && age_range && experience_years && nanny_age)))){
+      sendAlert("All Fields must have valid entries.",'danger', '.signup-button')
+    }
+  
+    //setting this to '' fixes the issue of all users entering the db as a nanny
+  if (experience_years === ''){
+    user_type="parent"
   }else{
     user_type="nanny"
   }
@@ -89,7 +107,7 @@ const signupFormHandler = async (event) => {
     if (response.ok) {
       document.location.replace('/dashboard/profile');
       console.log("successful signup")
-      console.log(response)
+   
     } else {
       alert(response.statusText);
       console.log("sign up did not work")
