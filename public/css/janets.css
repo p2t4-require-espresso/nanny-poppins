@@ -1,28 +1,35 @@
-nav{
+
+
+
+.jumbotron{
+
     font-family: 'Birthstone Bounce', cursive;
     margin: 0 auto ;
     padding: 10px;
+	position: relative;
 }
 /*Nanny Poppins Text in nav bar*/
 .navbar-brand{
     font-size: 10vh;
 }
-/*styling the nav bar options*/
-#navbarNav{
-    position: absolute;
-    bottom: 0px;
-    right:0px;
-    font-size: 1.8rem;
+/*when the nav bar collapses, the font size is increased*/
+.navbar{
+	font-size: 2rem;
 }
 li{
     font-family: 'Birthstone', cursive;
     padding:10px;
 }
 /*styling the login and sign up cardoptions*/
-
+/* this stles the sign up form so that the labels are on top of the input fields*/
+.form-group label{
+	display: block;
+}
 .position-cards{
 	display: inline-block;
-	flex-direction:column ;
+	flex-direction:column;
+	margin: 0px;
+	padding: 0px;
 }
 .card-dash{
     margin:40px 20px 0px 20px;
@@ -138,4 +145,14 @@ li{
 #userprofilephoto{
 	width:200px;
 	height: 200px;
+}
+
+/*styling the nav bar options*/
+@media screen and (min-width:772px) {
+	.styledNav{
+		position: absolute;
+		top: 12px;
+		right:0px;
+		font-size: 2rem;
+	}
 }
