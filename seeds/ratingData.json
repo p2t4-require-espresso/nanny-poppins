@@ -2,61 +2,61 @@
     {
         "nanny_id": 5,
         "parent_id":1,
-        "rating":3,
+        "stars":3,
         "review":"Elizabeth was great with my 6 month old daughter. The only issue was that she was about 30 minutes late."
     },
     {
         "nanny_id": 9,
         "parent_id":1,
-        "rating":5,
+        "stars":5,
         "review":"Petra taught me great tricks and tips on how to sleep train my fussy 6 month old daughter."
     },
     {
         "nanny_id": 11,
         "parent_id":2,
-        "rating":5,
+        "stars":5,
         "review":"My 2 children loved Catherine! They could not stop raving baout how fun she was."
     },
     {
         "nanny_id": 12,
         "parent_id":2,
-        "rating":5,
-        "review":"Elizabeth was great with Jenny took my kids on an adventure of a lifetime! They told me they had a very busy day, which I love when my children are active. Plus they fell asleep so quickly the day she babysat!"
+        "stars":5,
+        "review":"Jenny took my kids on an adventure of a lifetime! They told me they had a very busy day, which I love when my children are active. Plus they fell asleep so quickly the day she babysat!"
     },
     {
         "nanny_id": 13,
         "parent_id":3,
-        "rating":5,
+        "stars":5,
         "review":"My kids loved Serena, they loved coloring and painting with her."
     },
     {
         "nanny_id": 14,
         "parent_id":3,
-        "rating":2,
+        "stars":2,
         "review":"I caught Simona on her phone a little to often for my liking..."
     },
     {
         "nanny_id": 6,
         "parent_id":4,
-        "rating":2,
-        "review":"I caught Simona on her phone a little to often for my liking..."
+        "stars":2,
+        "review":"Jackie was nice, kids loved her. What more can I say."
     },
     {
         "nanny_id": 7,
         "parent_id":4,
-        "rating":2,
+        "stars":2,
         "review":"Emma was nice! She was very patient with my toddler."
     },
     {
         "nanny_id": 8,
         "parent_id":4,
-        "rating":4,
-        "review":"Jackie was cool. I really liked her and my toddler seemed to as well. Will be booking again!"
+        "stars":4,
+        "review":"Tyler was cool. I really liked her and my toddler seemed to as well. Will be booking again!"
     },
     {
-        "nanny_id": 10,
+        "nanny_id": 9,
         "parent_id":2,
-        "rating":5,
-        "review":"Kylie was fantastic, so impressed with what she brings to the table."
+        "stars":5,
+        "review":"So impressed with what Kylie brings to the table."
     }
 ]
