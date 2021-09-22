@@ -35,6 +35,40 @@ router.get('/', async (req, res) => {
     res.status(500).json(err);
   }
 });
+//user clicks on a profile card on homepage and is taken to the nanny's profile page
+router.get('/:id', async (req,res)=>{
+  try{
+    const oneUser= await User.findByPk(req.params.id,{
+      include:[{
+        model:Rating,
+        include:[{model:User, as:"parent"}],
+        attributes:['stars','review']
+      }],
+    })
+    const reviewData= await Rating.findByPk(req.params.id,{
+      include: [{model: User, as: "parent"}]
+    })
+    
+    const singleProfile = oneUser.get({plain:true})
+    console.log(reviewData, "review data")
+    const review = reviewData.get({plain:true})
+    console.log("review", review)
+    console.log("single review" ,review.review)
+    console.log("parent and review", review.parent.name)
+    const reviewerName = review.parent.name;
+    const reviews =review.review
+    res.render('viewuser',{
+      ...singleProfile,
+      ...review,
+      reviewerName,
+      reviews,
+      logged_in: true
+    })
+  }
+  catch(err){
+    res.status(400).json(err)
+  }
+})
 
 //USER able to click on a nanny profile and redirects to a new page
   //dont think i need this

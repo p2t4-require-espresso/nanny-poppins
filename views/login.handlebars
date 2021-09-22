@@ -60,13 +60,6 @@
               <input class="userPassword" type="password" id="password-signup" />
             </div>
 
-            {{!-- <form>
-              <div class="form-group">
-                <label for="profilePicture">Upload your profile pic:</label>
-                <input type="file" class="userProfilePic" id="ProfilePic">
-              </div>
-            </form> --}}
-
             <div class="form-group">
               <label for="biography">Tell us about yourself:</label>
               <textarea class="userBio" id="userBio" rows="3"></textarea>
@@ -76,6 +69,7 @@
             <div class="form-group" id="parentQuestions">
               <label for="exampleFormControlSelect1">How many kids do you have?</label>
               <select class="form-control" id="numberOfKids">
+                <option selected disabled hidden></option>
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>
@@ -86,15 +80,13 @@
 
             {{!-- nanny questions --}}
             <div id="nannyQuestions">
-              <select class="form-control">
-                <option>How old are you?</option>
-                <option>18-21</option>
-                <option>22-25</option>
-                <option>26 +</option>
-              </select>
+             
+              <input class="form-control" id="nannyAge" type="text" placeholder="Input Your Age" >
+              
               <div class="form-group">
                 <label for="exampleFormControlSelect1">Years of experience</label>
                 <select class="form-control" id="experience_years">
+                  <option placeholder="Enter Your Years of Experience"></option>
                   <option>1</option>
                   <option>2</option>
                   <option>3</option>

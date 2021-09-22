@@ -16,6 +16,18 @@ Rating.hasOne(User,{
   //this prevents the cyclic reference we were running into
   constraints:false
 })
+// Rating.belongsTo(User,{
+//   as:'nanny',
+//   foreignKey:'id',
+//   sourceKey:'nanny_id',
+//   constraints:false
+// })
 
+// User.hasMany(Rating,{
+//   as:'nanny',
+//   foreignKey:'id',
+//   sourceKey:'nanny_id',
+//   constraints:false
+// })
 
 module.exports = { Rating, User };
