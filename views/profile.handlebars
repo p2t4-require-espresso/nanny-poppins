@@ -12,12 +12,8 @@
     {{! THIS WONT WORK, must happen using JS}}
     <img id="userprofilephoto" src="../image/blank-user.jpeg" || "{{photo}}"></img>
     {{! get this functional}}
-    <form>
-      <div class="form-group">
-        <label for="profilePicture">Upload your profile pic:</label>
-        <input type="file" class="userProfilePic" id="ProfilePic">
-      </div>
-    </form>
+
+    <a href="/upload" class="btn btn-primary">Add Profile Photo</a>
 
     <p>{{experience_years}}</p>
     <p>{{nanny_age}}</p>

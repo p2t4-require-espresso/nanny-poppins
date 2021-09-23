@@ -297,17 +297,21 @@ router.post('/upload', upload, (req, res)=>{
   //data gives us a link to the file
   S3.upload(params, (err, data)=>{
     if(err){
-    return  res.status(500).json(err)
+    return  res.status(500).json({ message:"Failed to upload", error: err.message});
     }
     res.status(200).send({
-      msg:"File uploaded to AWS",
+      message:"File uploaded to AWS",
       data: data,
-      file: req.file
+      file: req.file,
+      imagePath:`/upload/${result.key}`
     })
   })
 })
 
+
+
 module.exports = router;
+
 
 
 

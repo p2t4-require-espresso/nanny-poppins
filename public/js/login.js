@@ -83,7 +83,7 @@ const signupFormHandler = async (event) => {
   if (name && email && password && bio && user_type &&  (number_of_children  || (certification && hourly_rate && age_range && experience_years && nanny_age))) {
     const response = await fetch('/api/users', {
       method: 'POST',
-      body: JSON.stringify({ name, email, password, bio, number_of_children, user_type, photo, experience_years, certification,  hourly_rate,nanny_age, age_range }),
+      body: JSON.stringify({ name, email, password, bio, number_of_children, user_type, experience_years, certification,  hourly_rate,nanny_age, age_range }),
       headers: { 'Content-Type': 'application/json' },
     });
     

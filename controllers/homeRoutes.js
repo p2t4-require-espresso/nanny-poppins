@@ -35,45 +35,46 @@ router.get('/', async (req, res) => {
     res.status(500).json(err);
   }
 });
+
 //user clicks on a profile card on homepage and is taken to the nanny's profile page
-router.get('/:id', async (req,res)=>{
-  try{
-    const oneUser= await User.findByPk(req.params.id,{
-      include:[{
-        model:Rating,
-        include:[{model:User, as:"parent"}],
-        attributes:['stars','review']
-      }],
-    })
-    const reviewData= await Rating.findByPk(req.params.id,{
-      include: [{model: User, as: "parent"}]
-    })
+// router.get('/:id', async (req,res)=>{
+//   try{
+//     const oneUser= await User.findByPk(req.params.id,{
+//       include:[{
+//         model:Rating,
+//         include:[{model:User, as:"parent"}],
+//         attributes:['stars','review']
+//       }],
+    // })
+    // const reviewData= await Rating.findByPk(req.params.id,{
+    //   include: [{model: User, as: "parent"}]
+    // })
     
-    const singleProfile = oneUser.get({plain:true})
-    console.log(reviewData, "review data")
-    const review = reviewData.get({plain:true})
-    console.log("review", review)
-    console.log("single review" ,review.review)
-    console.log("parent and review", review.parent.name)
-    console.log("star rating", review.stars)
-    const reviewerName = review.parent.name;
-    const reviews =review.review
+    // const singleProfile = oneUser.get({plain:true})
+    // console.log(reviewData, "review data")
+    // const review = reviewData.get({plain:true})
+    // console.log("review", review)
+    // console.log("single review" ,review.review)
+    // console.log("parent and review", review.parent.name)
+    // console.log("star rating", review.stars)
+    // const reviewerName = review.parent.name;
+    // const reviews =review.review
     // add all star values and divide by the amount given aka the average
-    const starRatings = review.stars
-    if(reviewData){}
-    res.render('viewuser',{
-      ...singleProfile,
-      ...review,
-      starRatings,
-      reviewerName,
-      reviews,
-      logged_in: true
-    })
-  }
-  catch(err){
-    res.status(400).json(err)
-  }
-})
+//     const starRatings = review.stars
+//     if(reviewData){}
+//     res.render('viewuser',{
+//       ...singleProfile,
+//       ...review,
+//       starRatings,
+//       reviewerName,
+//       reviews,
+//       logged_in: true
+//     })
+//   }
+//   catch(err){
+//     res.status(400).json(err)
+//   }
+// })
 //i am clicking on some nanny profiles while on the homepage, most take me to profile page thats populate w lines 65-69, but some nannys i click and get an empty object...
   // tried this bc when i clicked on those profiles console log from line 53 says review data null, but still didnt work
         // if(reviewData){
@@ -93,7 +94,6 @@ router.get('/:id', async (req,res)=>{
         // }
 
 
-
 router.get('/login', (req, res) => {
   // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {
@@ -103,5 +103,43 @@ router.get('/login', (req, res) => {
 
   res.render('login');
 });
+
+
+
+// require('dotenv').config()
+
+// const multer = require('multer')
+// const AWS = require('aws-sdk')
+// const { v4: uuidv4 } = require('uuid');
+
+// const bucketName= process.env.bucketName;
+// const region = process.env.region;
+// const accessKeyId =process.env.accessKeyId;
+// const secretAccessKey = process.env.secretAccessKey;
+
+// const S3= new AWS.S3({
+//   secretAccessKey,
+//   accessKeyId,
+//   region,
+//   bucketName
+// })
+
+// const storage = multer.memoryStorage({
+//   destination: function(req, file, callback){
+//     // '' path for where you want to put the files that are uploaded--its a temporary folder
+//       //can leave blank
+//     callback(null, '')  
+//   }
+// })
+// const upload= multer({storage: storage}).single('image')
+
+
+
+//add with Auth when done testing 
+router.get('/upload',  (req,res)=>{
+  // if(logged_in){
+  res.render('upload') 
+// }
+})
 
 module.exports = router;
