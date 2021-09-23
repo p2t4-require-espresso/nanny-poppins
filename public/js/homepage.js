@@ -5,13 +5,13 @@ const reviewFormHandler = async (event) => {
     console.log(event.target);
 
     let nannyId = event.target.getAttribute('data-id')
-    let message = document.querySelector('#nannyMessage' + nannyId).value;
+    let message = document.querySelector('#receiver_id' + nannyId).value;
     console.log(message, nannyId);
 
     if (message) {
         const response = await fetch('/api/communication', {
             method: 'POST',
-            body: JSON.stringify({ nanny_id: nannyId, message: message }),
+            body: JSON.stringify({ receiver_id: nannyId, message: message }),
             headers: { 'Content-Type': 'application/json' },
         })
         if (response.ok) {
