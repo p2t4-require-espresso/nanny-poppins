@@ -1,33 +1,33 @@
 const User = require('./User');
 const Rating = require('./Rating');
+const Communication = require('./Communication');
 
 //SOMEONE PLEASE REVIEW THESE AND CONFRIM
 
 //one to many 
-User.belongsTo(Rating,{
+User.belongsTo(Rating, {
   foreignKey: 'nanny_id'
 })
 
 //rating has the foreign key called parent id
-Rating.hasOne(User,{
-  as:'parent',
-  foreignKey:'id',
-  sourceKey:'parent_id',
+Rating.hasOne(User, {
+  as: 'parent',
+  foreignKey: 'id',
+  sourceKey: 'parent_id',
   //this prevents the cyclic reference we were running into
-  constraints:false
+  constraints: false
 })
-// Rating.belongsTo(User,{
-//   as:'nanny',
-//   foreignKey:'id',
-//   sourceKey:'nanny_id',
-//   constraints:false
-// })
 
-// User.hasMany(Rating,{
-//   as:'nanny',
-//   foreignKey:'id',
-//   sourceKey:'nanny_id',
-//   constraints:false
-// })
+User.belongsTo(Communication, {
+  as: 'parent',
+  foreignKey: 'parent_id'
+})
 
-module.exports = { Rating, User };
+// User.belongsTo(Communication, {
+//  as: 'nanny',
+//    foreignKey: 'nanny_id'
+//  })
+
+//User.hasMany(Communication, {as:'user', constraints: false,})
+
+module.exports = { Rating, User, Communication };

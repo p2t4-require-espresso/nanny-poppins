@@ -36,6 +36,18 @@ router.get('/', async (req, res) => {
   }
 });
 
+
+router.get('/login', (req, res) => {
+  // If the user is already logged in, redirect the request to another route
+  if (req.session.logged_in) {
+    res.redirect('/profile');
+    return;
+  }
+
+  res.render('login');
+});
+
+
 //user clicks on a profile card on homepage and is taken to the nanny's profile page
 // router.get('/:id', async (req,res)=>{
 //   try{
@@ -94,15 +106,6 @@ router.get('/', async (req, res) => {
         // }
 
 
-router.get('/login', (req, res) => {
-  // If the user is already logged in, redirect the request to another route
-  if (req.session.logged_in) {
-    res.redirect('/profile');
-    return;
-  }
-
-  res.render('login');
-});
 
 
 
