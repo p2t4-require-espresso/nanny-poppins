@@ -87,6 +87,7 @@ router.get('/:id', async (req,res)=>{
     res.status(400).json(err)
   }
 })
+
 //i am clicking on some nanny profiles while on the homepage, most take me to profile page thats populate w lines 65-69, but some nannys i click and get an empty object...
   // tried this bc when i clicked on those profiles console log from line 53 says review data null, but still didnt work
         // if(reviewData){

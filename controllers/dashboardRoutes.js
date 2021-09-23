@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Rating } = require('../models');
+const { User, Rating, Communication } = require('../models');
 const withAuth = require("../utils/auth")
 
 
@@ -46,14 +46,34 @@ router.get('/profile', withAuth, async (req, res) => {
               include:[{model:User, as:"parent"}],
             }],
           })).map(nanny=>nanny.get({plain:true}))
-          console.log(nannies)
+          console.log(nannies);
+        //   check if this is ok
+        // const messages = await Communication.findByPk(req.session.user_id, {
+        //     include: [{model: Communication, attributes: ['message'], parent_id}]
+        // }).catch(err =>{
+        //     console.log(err);
+        // })
+        const messages = (await Communication.findAll({
+            where: {
+                receiver_id: req.session.user_id
+            }
+        })).map(message => message.get({plain:true}))
+        console.log(messages);
+        if (messages.length == 0) {
+            console.log("No messages!");
+        } else {
+            console.log(`You have ${messages.length} messages!!`);
+        }
+        // const messages = messageData.get({plain: true});
+        // console.log("messages: " + messageData);
         const user = userData.get({ plain: true });
         console.log(user)
         console.log(user.email)
         res.render('profile', {
             ...user,
             nannies,
-            logged_in: true
+            logged_in: true,
+            messages
         });
     }
     catch (err) {
