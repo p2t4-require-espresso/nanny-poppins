@@ -36,7 +36,7 @@
       <form class="form review-form" id="review_nanny">
         <div class="form-group" id="selectNanny">
           <label for="select-nanny">Which Nanny do you want to leave a review for?</label>
-          <select class="form-control form-control-lg" id = "nanny_id">
+          <select class="form-control form-control-lg" id="nanny_id">
             <option>Choose Nanny</option>
             {{#each nannies}}
             <option value="{{id}}">{{name}}</option>
@@ -53,5 +53,14 @@
       </form>
     </div>
   </div>
+
+  {{#each messages }}
+<div class="row align-center mb-5">
+  <div class="col-md-6">
+    <p>{{this.message}}</p>
+    <p>Sent by {{this.sender_name}}</p>
+  </div>
+</div>
+{{/each}}
 
   <script src="/js/profile.js"></script>

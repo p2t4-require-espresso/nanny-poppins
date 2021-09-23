@@ -11,21 +11,25 @@ Communication.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    nanny_id: {
+    sender_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      refernces:{
+      references:{
         model:'user',
         key:'id'
       }
     },
-    parent_id:{
+    receiver_id:{
       type: DataTypes.INTEGER,
       allowNull:false,
-      refernces:{
+      references:{
         model:'user',
         key:'id'
       },
+    },
+    sender_name: {
+      type: DataTypes.STRING,
+      allowNull: false
     },
     message:{
       type:DataTypes.TEXT,
@@ -34,7 +38,7 @@ Communication.init(
     },
   {
     sequelize,
-    timestamps: false,
+    timestamps: true,
     freezeTableName: true,
     underscored: true,
     modelName: 'communication',

@@ -1,8 +1,9 @@
 const sequelize = require('../config/connection');
-const { User, Rating } = require('../models');
+const { User, Rating, Communication } = require('../models');
 
 const userData = require('./userData.json');
 const ratingData= require('./ratingData.json');
+const communicationData = require('./communicationData.json');
 
 const seedDatabase = async () => {
   await sequelize.sync({ force: true });
@@ -17,6 +18,9 @@ const seedDatabase = async () => {
     returning: true,
   });
 
+  const communication = await Communication.bulkCreate(communicationData,{
+    returning: true,
+  })
 
 //potentially do this to give the nannies ratings from the start
   // for (const project of projectData) {

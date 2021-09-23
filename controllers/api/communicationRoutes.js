@@ -29,13 +29,23 @@ router.get('/nanny', withAuth, async (req,res)=>{
 
 // creates a new message between users
 router.post('/', withAuth, async (req,res)=>{
-    const message = req.body
+    console.log("*********************************");
+    console.log('communication Post', req.body, req.session.user_id);
+    const message = req.body.message;
+    const sender_id = req.session.user_id;
+    const sender_name = req.session.name;
     try{
-        const newMessage = await Communication.create({...message, userId: req.session.userId})
-        res.status(200).json(newMessage);
+        const newMessage = await Communication.create({message, receiver_id: req.body.receiver_id, sender_id, sender_name}).then(response => {
+            console.log(response);
+            res.status(200).json(response);
+        }).catch(err => {
+            console.log(err);
+        })
+        // res.status(200).json(newMessage);
     }
     catch(err){
+        console.log(err)
         res.status(400).json(err);
     }
-})
+});
 module.exports = router

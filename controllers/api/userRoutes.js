@@ -119,76 +119,6 @@ console.log(req.body, "req body from post route")
   }
 })
 
-//testing posts by splitting it up by user 
-// router.post('/', async (req, res)=>{
-  
-//   console.log(req.body, "req body from post route")
-//   if(req.body.user_type ==="nanny"){
-//    try{
-//      const newUser= await  User.create({
-//          name: req.body.name,
-//          email: req.body.email,
-//          password: req.body.password,
-//          user_type:req.body.user_type,
-//          bio: req.body.bio,
-//          certification: req.body.certification,
-//          hourly_rate: req.body.hourly_rate,
-//          nanny_age:req.body.nanny_age,
-//          age_range: req.body.age_range,
-//          nanny_id: req.body.nanny_id
-//       },{
-//       individualHooks: true 
-//       });
-      
-//         req.session.save(() => {
-//         req.session.user_type = newUser.user_type;
-//         req.session.user_id = newUser.id;
-//         req.session.logged_in = true;
-  
-//         res.status(200).json(newUser);
-      
-//     });
-//   } 
-//   catch(err){
-//       res.status(400).json(err)
-//     }
-//   }
-//   if(req.body.user_type ==="parent"){
-//     try{
-//       const newUser= await  User.create({
-//           name: req.body.name,
-//           email: req.body.email,
-//           password: req.body.password,
-//           user_type: req.body.user_type,
-//           bio: req.body.bio,
-//           number_of_children: req.body.number_of_children
-       
-//        },{
-//        individualHooks: true 
-//        });
-//        req.session.save(() => {
-//         req.session.user_type = newUser.user_type;
-//         req.session.user_id = newUser.id;
-//         req.session.logged_in = true;
-  
-//         res.status(200).json(newUser);
-      
-//     });
-//   } 
-//   catch(err){
-//       res.status(400).json(err)
-//     }
-//   }
-//   })
-
-
-
-
-
-
-
-
-
 
 //update USER IF LOGGED In--this works, tested in Insomnia
 router.put('/:id', withAuth, async (req, res)=>{
@@ -210,6 +140,7 @@ router.put('/:id', withAuth, async (req, res)=>{
 })
 
 router.post('/login', async (req, res) => {
+  console.log(req.body)
   try {
     const userData = await User.findOne({ 
       where:{ 
@@ -232,6 +163,7 @@ router.post('/login', async (req, res) => {
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.user_type = userData.user_type;
+      req.session.name = userData.name;
       req.session.logged_in = true;
       
       res.json({ user: userData, message: 'You are now logged in!' });
@@ -239,6 +171,7 @@ router.post('/login', async (req, res) => {
     });
 
   } catch (err) {
+    console.log(err)
     res.status(500).json(err);
   }
 });
