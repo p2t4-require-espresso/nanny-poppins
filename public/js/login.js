@@ -28,6 +28,7 @@ const loginFormHandler = async (event) => {
       sendAlert("Incorrect email or password, please try again.",'danger','.login-button');
     }
     else {
+      console.log(response)
       sendAlert("Server Error, unable to login",'danger','.login-button');
     }
   }
@@ -111,7 +112,6 @@ const signupFormHandler = async (event) => {
     } else {
       alert(response.statusText);
       console.log("sign up did not work")
-      console.log(await response.json())
     }
   }
 };

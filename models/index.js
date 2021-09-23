@@ -18,15 +18,20 @@ Rating.hasOne(User, {
   constraints: false
 })
 
-User.belongsTo(Communication, {
+// User.belongsTo(Communication, {
+//   as: 'parent',
+//   foreignKey: 'parent_id'
+// })
+
+Communication.belongsTo(User, {
   as: 'parent',
   foreignKey: 'parent_id'
 })
 
-User.belongsTo(Communication, {
- as: 'nanny',
-   foreignKey: 'nanny_id'
- })
+// User.belongsTo(Communication, {
+//  as: 'nanny',
+//    foreignKey: 'nanny_id'
+//  })
 
 //User.hasMany(Communication, {as:'user', constraints: false,})
 
