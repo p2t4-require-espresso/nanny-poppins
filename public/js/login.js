@@ -111,7 +111,6 @@ const signupFormHandler = async (event) => {
     } else {
       alert(response.statusText);
       console.log("sign up did not work")
-      console.log(await response.json())
     }
   }
 };

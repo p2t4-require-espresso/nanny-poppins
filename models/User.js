@@ -36,14 +36,14 @@ User.init(
         len: [8],
       },
     },
-    user_type:{
+    user_type: {
       type: DataTypes.STRING,
       allowNull: false,
-      validate:{
-        isIn:[["parent", "nanny"]]
+      validate: {
+        isIn: [["parent", "nanny"]]
       }
     },
-    photo:{
+    photo: {
       type: DataTypes.STRING,
       //default this to the blank image in images file
       allowNull: true
@@ -54,34 +54,34 @@ User.init(
       // validate:{
       //   isIn:[["18-21", "22-25","26 +"]]
       // }
-  },
-  age_range: {
+    },
+    age_range: {
       type: DataTypes.STRING,
       allowNull: true,
-  },
-  number_of_children:{
-    type: DataTypes.STRING,
-    allowNull: true,
-  },
-  hourly_rate: {
+    },
+    number_of_children: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    hourly_rate: {
       type: DataTypes.STRING,
       allowNull: true,
       // validate:{
       //   isDecimal:true
       // }
-  },
-  experience_years: {
+    },
+    experience_years: {
       type: DataTypes.STRING,
       allowNull: true
-  },
-  certification: {
+    },
+    certification: {
       type: DataTypes.STRING,
       allowNull: true,
-  },
-  bio: {
+    },
+    bio: {
       type: DataTypes.TEXT,
       allowNull: false
-  },
+    },
   },
   {
     hooks: {

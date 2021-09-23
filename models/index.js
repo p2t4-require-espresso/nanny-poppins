@@ -19,7 +19,6 @@ Rating.hasOne(User, {
 })
 
 User.belongsTo(Communication, {
-  // through: 'Communication',
   as: 'parent',
   foreignKey: 'parent_id'
 })
