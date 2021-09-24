@@ -36,65 +36,64 @@ User.init(
         len: [8],
       },
     },
-    user_type:{
+    user_type: {
       type: DataTypes.STRING,
       allowNull: false,
-      validate:{
-        isIn:[["parent", "nanny"]]
+      validate: {
+        isIn: [["parent", "nanny"]]
       }
     },
-    photo:{
+    photo: {
       type: DataTypes.STRING,
       //default this to the blank image in images file
-      allowNull: true
+      allowNull: false,
+      defaultValue: `https://nanny-app-photo.s3.us-east-2.amazonaws.com/b9769525-4c4a-476f-b8de-259e73add161.jpeg`
     },
     nanny_age: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
-      validate:{
-        isIn:[["18-21", "22-25","26 +"]]
-      }
-  },
-  age_range: {
       type: DataTypes.STRING,
       allowNull: true,
-  },
-  number_of_children:{
-    type: DataTypes.INTEGER,
-    allowNull: true,
-  },
-  hourly_rate: {
-      type: DataTypes.DECIMAL(10, 2),
+      // validate:{
+      //   isIn:[["18-21", "22-25","26 +"]]
+      // }
+    },
+    age_range: {
+      type: DataTypes.STRING,
       allowNull: true,
-      validate:{
-        isDecimal:true
-      }
-  },
-  experience_years: {
-      type: DataTypes.INTEGER,
+    },
+    number_of_children: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    hourly_rate: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      // validate:{
+      //   isDecimal:true
+      // }
+    },
+    experience_years: {
+      type: DataTypes.STRING,
       allowNull: true
-  },
-  certification: {
+    },
+    certification: {
       type: DataTypes.STRING,
       allowNull: true,
-  },
-  bio: {
+    },
+    bio: {
       type: DataTypes.TEXT,
       allowNull: false
-  },
+    },
   },
   {
     hooks: {
       beforeCreate: async (newUserData) => {
         newUserData.password = await bcrypt.hash(newUserData.password, 10);
         newUserData.name = await capitalLetter(newUserData.name)
-        newUserData.user_type = await capitalLetter(newUserData.user_type)
         return newUserData;
       },
       beforeUpdate: async (updatedUserData) => {
         updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
         updatedUserData.name = await capitalLetter(updatedUserData.name)
-        //not allowing users to change status between nanny and parent
         return updatedUserData;
       },
     },

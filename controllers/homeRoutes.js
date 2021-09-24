@@ -36,40 +36,61 @@ router.get('/', async (req, res) => {
   }
 });
 
-//USER able to click on a nanny profile and redirects to a new page
-  //dont think i need this
-
-// // Use withAuth middleware to prevent access to route
-
-// i wrote a profile route in the dashboardroutes folder...dbl check if it should be here
-
-// router.get('/profile', withAuth, async (req, res) => {
-//   try {
-//     // Find the logged in user based on the session ID
-//     const userData = await User.findByPk(req.session.user_id, {
-//       attributes: { exclude: ['password'] },
-//       include: [{ model: Project }],
-//     });
-
-//     const user = userData.get({ plain: true });
-
-//     res.render('profile', {
-//       ...user,
-//       logged_in: true
-//     });
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
-
 router.get('/login', (req, res) => {
   // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {
     res.redirect('/profile');
     return;
   }
-
   res.render('login');
 });
+
+
+router.get('/upload',  (req,res)=>{
+  console.log("test", req)
+  // if(logged_in){
+  res.render('upload') 
+// }
+})
+
+//user clicks on a profile card on homepage and is taken to the nanny's profile page
+router.get('/:id', async (req,res)=>{
+  try{
+    const oneUser= await User.findByPk(req.params.id,{
+      include:[{
+        model:Rating,
+        include:[{model:User, as:"parent"}],
+        attributes:['stars','review']
+      }],
+    })
+    const reviewData= await Rating.findByPk(req.params.id,{
+      include: [{model: User, as: "parent"}]
+    })
+    
+    const singleProfile = oneUser.get({plain:true})
+    console.log(reviewData, "review data")
+    const review = reviewData.get({plain:true})
+    console.log("review", review)
+    console.log("single review" ,review.review)
+    console.log("parent and review", review.parent.name)
+    console.log("star rating", review.stars)
+    const reviewerName = review.parent.name;
+    const reviews =review.review
+    // add all star values and divide by the amount given aka the average
+    const starRatings = review.stars
+    if(reviewData){}
+    res.render('viewuser',{
+      ...singleProfile,
+      ...review,
+      starRatings,
+      reviewerName,
+      reviews,
+      logged_in: true
+    })
+  }
+  catch(err){
+    res.status(400).json(err)
+  }
+})
 
 module.exports = router;

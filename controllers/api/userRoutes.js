@@ -1,32 +1,9 @@
 const router = require('express').Router();
 const { User , Rating} = require('../../models');
 const withAuth= require("../../utils/auth")
-require('dotenv').config()
+const {uploadFile  }= require("../../awsS3")
 
-const multer = require('multer')
-const AWS = require('aws-sdk')
-const { v4: uuidv4 } = require('uuid');
 
-const bucketName= process.env.bucketName;
-const region = process.env.region;
-const accessKeyId =process.env.accessKeyId;
-const secretAccessKey = process.env.secretAccessKey;
-
-const S3= new AWS.S3({
-  secretAccessKey,
-  accessKeyId,
-  region,
-  bucketName
-})
-
-const storage = multer.memoryStorage({
-  destination: function(req, file, callback){
-    // '' path for where you want to put the files that are uploaded--its a temporary folder
-      //can leave blank
-    callback(null, '')  
-  }
-})
-const upload= multer({storage: storage}).single('image')
 
 
 //GET ALL USERS 
@@ -86,7 +63,9 @@ router.get('/:id', async (req,res)=>{
       include:[{
         model:Rating,
         include:[{model:User, as:"parent"}],
+        attributes:['stars','review']
       }],
+   
     })
     res.status(200).json(oneUser)
   }
@@ -97,9 +76,16 @@ router.get('/:id', async (req,res)=>{
 //CREATES A NEW USER
 router.post('/', async (req, res)=>{
   
-  //need to send in form-data to do it all at once not json
+console.log(req.body, "req body from post route")
 
   try{
+    //photo upload is now optional:
+    if(req.file){
+      console.log("req.file",req.file)
+      const uploadresult= await uploadFile(req.file)
+      req.body.photo= uploadresult.Location;
+      console.log(uploadresult)
+    }
     const newUser = await User.create(req.body,{
       individualHooks: true    
     });
@@ -110,12 +96,14 @@ router.post('/', async (req, res)=>{
       req.session.logged_in = true;
 
       res.status(200).json(newUser);
+    
   });
-  }
+}
   catch(err){
     res.status(400).json(err)
   }
 })
+
 
 //update USER IF LOGGED In--this works, tested in Insomnia
 router.put('/:id', withAuth, async (req, res)=>{
@@ -137,6 +125,7 @@ router.put('/:id', withAuth, async (req, res)=>{
 })
 
 router.post('/login', async (req, res) => {
+  console.log(req.body)
   try {
     const userData = await User.findOne({ 
       where:{ 
@@ -159,6 +148,7 @@ router.post('/login', async (req, res) => {
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.user_type = userData.user_type;
+      req.session.name = userData.name;
       req.session.logged_in = true;
       
       res.json({ user: userData, message: 'You are now logged in!' });
@@ -166,6 +156,7 @@ router.post('/login', async (req, res) => {
     });
 
   } catch (err) {
+    console.log(err)
     res.status(500).json(err);
   }
 });
@@ -203,38 +194,78 @@ catch(err){
 
 
 
-router.post('/upload', upload, (req, res)=>{
+// require('dotenv').config()
 
-  //had to change the header 
+// const multer = require('multer')
+// const AWS = require('aws-sdk')
+// const { v4: uuidv4 } = require('uuid');
+// const fs = require('fs')
+// const bucketName= process.env.bucketName;
+// const region = process.env.region;
+// const accessKeyId =process.env.accessKeyId;
+// const secretAccessKey = process.env.secretAccessKey;
 
-  //seperates the file from the .jpeg
-  let myFile = req.file.originalname.split(".")
-  // this gives us the extension jpeg
-  const fileType = myFile[myFile.length - 1]
+// const S3= new AWS.S3({
+//     secretAccessKey,
+//     accessKeyId,
+//     region,
+//     bucketName
+//   })
+//     //the three buckets we need to upload the file
+//     // const params={
+//     //   Bucket: bucketName,
+//     //   Key: `${uuidv4()}.${fileType}`,
+//     //   Body: req.file.buffer
+//     // }
   
-  console.log(req.file)
+//   const storage = multer.memoryStorage({
+//     destination: function(req, file, callback){
+//       // '' path for where you want to put the files that are uploaded--its a temporary folder
+//         //can leave blank
+//       callback(null, '')  
+//     }
+//   })
+//   const upload= multer({storage: storage}).single('image')
 
-  //the three buckets we need to upload the file
-  const params={
-    Bucket: bucketName,
-    Key: `${uuidv4()}.${fileType}`,
-    Body: req.file.buffer
-  }
 
-  //data gives us a link to the file
-  S3.upload(params, (err, data)=>{
-    if(err){
-    return  res.status(500).json(err)
-    }
-    res.status(200).send({
-      msg:"File uploaded to AWS",
-      data: data,
-      file: req.file
-    })
-  })
-})
+
+
+// router.post('/upload', upload, (req, res)=>{
+
+//   //had to change the header 
+
+//   //seperates the file from the .jpeg
+//   let myFile = req.file.originalname.split(".")
+//   // this gives us the extension jpeg
+//   const fileType = myFile[myFile.length - 1]
+  
+//   console.log(req.file)
+
+//   //the three buckets we need to upload the file
+//   const params={
+//     Bucket: bucketName,
+//     Key: `${uuidv4()}.${fileType}`,
+//     Body: req.file.buffer
+//   }
+// //create a button that takes me to api/users/upload, and thats wher ei can do thi
+//   //data gives us a link to the file
+//   S3.upload(params, (err, data)=>{
+//     if(err){
+//     return  res.status(500).json({ message:"Failed to upload", error: err.message});
+//     }
+//     res.status(200).send({
+//       message:"File uploaded to AWS",
+//       data: data,
+//       file: req.file,
+//       // imagePath:`/upload/${result.key}`
+//     })
+//   })
+// })
+
+
 
 module.exports = router;
+
 
 
 
