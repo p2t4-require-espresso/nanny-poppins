@@ -32,9 +32,10 @@ router.post('/', withAuth, async (req,res)=>{
     console.log("*********************************");
     console.log('communication Post', req.body, req.session.user_id);
     const message = req.body.message;
-    const nanny_id = req.body.nanny_id;
+    const sender_id = req.session.user_id;
+    const sender_name = req.session.name;
     try{
-        const newMessage = await Communication.create({message, parent_id: req.session.user_id, nanny_id}).then(response => {
+        const newMessage = await Communication.create({message, receiver_id: req.body.receiver_id, sender_id, sender_name}).then(response => {
             console.log(response);
             res.status(200).json(response);
         }).catch(err => {
