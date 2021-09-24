@@ -1,6 +1,4 @@
 
-
-
 .jumbotron{
 
     font-family: 'Birthstone Bounce', cursive;
@@ -155,4 +153,25 @@ li{
 		right:0px;
 		font-size: 2rem;
 	}
+}
+
+/* Profile bio-card */
+.bio-card{
+	align-self: center;
+	/* display:flex; */
+	justify-content: center;
+	/* justify-items: center; */
+
+}
+/* Profile image-card */
+.image-card{
+	align-self: center;
+	justify-content: center;
+
+}
+/* Profile review-card */
+.review-card{
+	justify-content: center;
+	/* display:flex; */
+	align-content: center;
 }
