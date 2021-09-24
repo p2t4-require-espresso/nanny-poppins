@@ -41,9 +41,9 @@ const checkFileUploadType = (file, cb) => {
 
 
 
-function uploadFile(input) {
-        //threw an error on split
-    // const myfile = input.split(".");
+function uploadFile(file) {
+        //threw an error onsplit 
+    // const myfile = file.split(".");
     // const fileType = myfile[myfile.length - 1];
 
     //the three buckets we need to upload the file
