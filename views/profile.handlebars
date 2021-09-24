@@ -60,7 +60,7 @@
     <p>{{this.message}}</p>
     <p>Sent by {{this.sender_name}}</p>
 
-    <!-- Button trigger modal -->
+    <!-- Button to trigger response modal -->
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
   Reply to this message
 </button>
@@ -80,7 +80,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Send Reply</button>
+        <button type="button" class="btn btn-primary send-reply" data-id="{{id}}">Send Reply</button>
       </div>
     </div>
   </div>
