@@ -65,27 +65,51 @@ radios.forEach(radio => {
 
 const signupFormHandler = async (event) => {
   event.preventDefault();
+try{
+ const fd = new FormData();
 
   let user_type = "";
+  // fd.append('user_type', user_type)
   const name = document.querySelector('#name-signup').value.trim();
+  fd.append('name', name)
   const email = document.querySelector('#email-signup').value.trim();
+  fd.append('email', email)
   const password = document.querySelector('#password-signup').value.trim();
+  fd.append('password', password)
   const bio = document.querySelector('#userBio').value.trim();
+  fd.append('bio', bio)
   const number_of_children = document.querySelector('#numberOfKids').value;
+  fd.append('number_of_children', number_of_children)
   const experience_years = document.querySelector('#experience_years').value;
+  fd.append('experience_years', experience_years)
   const certification = document.querySelector('#certifications').value;
+  fd.append('certification', certification)
   const hourly_rate = document.querySelector('#hourly_rate').value;
+  fd.append('hourly_rate', hourly_rate)
   const nanny_age = document.querySelector('#nannyAge').value;
+  fd.append('nanny_age', nanny_age)
   const age_range = document.querySelector('#age_range').value;
+  fd.append('age_range', age_range)
+  const photo= document.querySelector('#photo').files[0];
+  fd.append('photo', photo)
+
 
   //needed to determine if the user is a parent or nanny 
-
-  console.log(number_of_children, "number of children")
-  console.log(typeof number_of_children, "# of children type")
-  console.log(typeof nanny_age, "nanny age type")
-  console.log(typeof hourly_rate, "hourly rate type")
-  console.log(typeof certification, "certification type")
-  console.log(typeof age_range, "age range type")
+  // console.log(fd.getAll(`user_type`))
+  // console.log(fd.getAll(`number of children`))
+  // console.log(fd.getAll(`age_range`))
+  // console.log(fd.getAll(`bio`))
+  // console.log(fd.getAll(`hourly_rate`))
+  // console.log(fd.getAll(`number_of_children`))
+  // console.log(fd.getAll(`photo`))
+  // console.log(fd.getAll(`certification`))
+  
+  // console.log(number_of_children, "number of children")
+  // console.log(typeof number_of_children, "# of children type")
+  // console.log(typeof nanny_age, "nanny age type")
+  // console.log(typeof hourly_rate, "hourly rate type")
+  // console.log(typeof certification, "certification type")
+  // console.log(typeof age_range, "age range type")
 
   if (!(name && email && password && bio && user_type && (number_of_children || (certification && hourly_rate && age_range && experience_years && nanny_age)))) {
     sendAlert("All Fields must have valid entries.", 'danger', '.signup-button')
@@ -94,26 +118,32 @@ const signupFormHandler = async (event) => {
   //setting this to '' fixes the issue of all users entering the db as a nanny
   if (experience_years === '') {
     user_type = "parent"
+    fd.append('user_type', user_type)
   } else {
     user_type = "nanny"
+    fd.append('user_type', user_type)
   }
 
   if (name && email && password && bio && user_type && (number_of_children || (certification && hourly_rate && age_range && experience_years && nanny_age))) {
     const response = await fetch('/api/users', {
       method: 'POST',
-      body: JSON.stringify({ name, email, password, bio, number_of_children, user_type, experience_years, certification, hourly_rate, nanny_age, age_range }),
-      headers: { 'Content-Type': 'application/json' },
+      body: fd
+      // body: JSON.stringify({ name, email, password, bio, number_of_children, user_type, experience_years, certification, hourly_rate, nanny_age, age_range }),
+      // headers: { 'Content-Type': 'application/json' },
     });
 
     if (response.ok) {
-      document.location.replace('/dashboard/profile');
+      // document.location.replace('/dashboard/profile');
       console.log("successful signup")
 
     } else {
       alert(response.statusText);
-      console.log("sign up did not work")
+      console.log("sign up did not work", response)
     }
   }
+} catch(err){
+  console.log(err)
+}
 };
 
 document

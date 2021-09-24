@@ -3,7 +3,7 @@
     "name": "Jennifer Jackson",
     "email": "jenjack@hotmail.com",
     "password": "password1",
-    "photo": "https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg",
+    "photo": "https://nanny-app-photo.s3.us-east-2.amazonaws.com/b9769525-4c4a-476f-b8de-259e73add161.jpeg",
     "user_type": "parent",
     "number_of_children": "2",
     "bio": "string"
@@ -12,7 +12,7 @@
     "name": "Sammy Smith",
     "email": "sammysmith@gmail.com",
     "password": "password2",
-    "photo": "https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg",
+    "photo": "https://nanny-app-photo.s3.us-east-2.amazonaws.com/b9769525-4c4a-476f-b8de-259e73add161.jpeg",
     "user_type": "parent",
     "number_of_children": "2",
     "bio": "string"
@@ -21,7 +21,7 @@
     "name": "Larry Sims ",
     "email": "lsims@gmail.com",
     "password": "password3",
-    "photo": "https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg",
+    "photo": "https://nanny-app-photo.s3.us-east-2.amazonaws.com/b9769525-4c4a-476f-b8de-259e73add161.jpeg",
     "user_type": "parent",
     "number_of_children": "2",
     "bio": "string"
@@ -30,7 +30,7 @@
     "name": "Kathy Watkins",
     "email": "katwatkins@gmail.com",
     "password": "password4",
-    "photo": "https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg",
+    "photo": "https://nanny-app-photo.s3.us-east-2.amazonaws.com/b9769525-4c4a-476f-b8de-259e73add161.jpeg",
     "user_type": "parent",
     "number_of_children": "2",
     "bio": "string"
@@ -43,10 +43,11 @@
     "hourly_rate": 23,
     "email": "tyler@gmail.com",
     "user_type": "nanny",
+    "photo": "https://nanny-app-photo.s3.us-east-2.amazonaws.com/b9769525-4c4a-476f-b8de-259e73add161.jpeg",
     "password": "password33",
     "experience_years": "4",
     "bio": "I have a passion for working with children of all age ranges. I am skilled in tayloring my duties based on the childrens needs.",
-    "photo": "https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg"
+  
   },
   {
     "name": "Elizabeth",
@@ -59,7 +60,7 @@
     "email": "lizSits@gmail.com",
     "experience_years": "2",
     "bio": "I work really well with infants, and get a long really well with children. Great communicater, as well.",
-    "photo": "https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg"
+    "photo": "https://nanny-app-photo.s3.us-east-2.amazonaws.com/b9769525-4c4a-476f-b8de-259e73add161.jpeg"
   },
   {
     "name": "Emma",
@@ -72,7 +73,7 @@
     "email": "emma12@yahoo.com",
     "experience_years": "3",
     "bio": "I prefer working with infants, and most of my babysitting experience are with children who are toddlers or younger.",
-    "photo": "https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg"
+    "photo": "https://nanny-app-photo.s3.us-east-2.amazonaws.com/b9769525-4c4a-476f-b8de-259e73add161.jpeg"
   },
   {
     "name": "Jackie",
@@ -85,7 +86,7 @@
     "email": "jackie1@yahoo.com",
     "experience_years": "3",
     "bio": "I prefer working with infants, most of my babysitting experience are with children who are toddlers or younger. I have great communication skills and great at adapting to the parenting style of choice.",
-    "photo": "https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg"
+    "photo": "https://nanny-app-photo.s3.us-east-2.amazonaws.com/b9769525-4c4a-476f-b8de-259e73add161.jpeg"
   },
   {
     "name": "Petra",
@@ -98,7 +99,7 @@
     "user_type": "nanny",
     "password": "password35",
     "bio": "I work exclusively with infants, and most of my past clients have had positive experiences after I sleep train their new infants.",
-    "photo": "https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg"
+    "photo": "https://nanny-app-photo.s3.us-east-2.amazonaws.com/b9769525-4c4a-476f-b8de-259e73add161.jpeg"
   },
   {
     "name": "Kylie",
@@ -111,7 +112,7 @@
     "email": "kylie2@yahoo.com",
     "experience_years": "4",
     "bio": "I approach my role as a nanny as I did when I taught young children in my classroom. Your children will be disciplined positively, and be taugh social skills--no matter the age.",
-    "photo": "https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg"
+    "photo": "https://nanny-app-photo.s3.us-east-2.amazonaws.com/b9769525-4c4a-476f-b8de-259e73add161.jpeg"
   },
   {
     "name": "Catherine",
@@ -124,7 +125,7 @@
     "user_type": "nanny",
     "password": "password37",
     "bio": "Most children I have worked with enjoy my collaborative play time. Parents have previously said I have been a positive force in their children's lives. I enjoy what I do and would love to nanny your children",
-    "photo": "https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg"
+    "photo": "https://nanny-app-photo.s3.us-east-2.amazonaws.com/b9769525-4c4a-476f-b8de-259e73add161.jpeg"
   },
   {
     "name": "Jenny",
@@ -137,7 +138,7 @@
     "password": "password38",
     "experience_years": "3",
     "bio": "I am very active and like to take the children on hikes, walks, bike rides. I try to model a fun, educational, active lifestyle for children to absorb. With this approach--I prefer children older than 7. No infants, please.",
-    "photo": "https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg"
+    "photo": "https://nanny-app-photo.s3.us-east-2.amazonaws.com/b9769525-4c4a-476f-b8de-259e73add161.jpeg"
   },
   {
     "name": "Serena",
@@ -150,7 +151,7 @@
     "email": "serenapaints@gmail.com",
     "experience_years": "4",
     "bio": "I love teaching young children the joys of getting their hands dirty with paints, clay, or markers. I love showing children that art can be anything they want it to be. I am very easy going and I gurantee your children will be safe in my hands, but also enjoy their time with me.",
-    "photo": "https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg"
+    "photo": "https://nanny-app-photo.s3.us-east-2.amazonaws.com/b9769525-4c4a-476f-b8de-259e73add161.jpeg"
   },
   {
     "name": "Simona",
@@ -163,6 +164,6 @@
     "email": "simonataylor@gmail.com",
     "experience_years": "3",
     "bio": "I am currently a part-time student at University but enjoy working with children of all ages. I do not have much experience working with infants, however. I hope to be a middle school teacher, and spend a lot of my time babysitting reading books, challenging children to write creative short stories, and even put on plays!",
-    "photo": "https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg"
+    "photo": "https://nanny-app-photo.s3.us-east-2.amazonaws.com/b9769525-4c4a-476f-b8de-259e73add161.jpeg"
   }
 ]
