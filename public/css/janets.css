@@ -1,5 +1,5 @@
 body {
-	background-color: lightgreen;
+	background-color: #da837e;
 
 }
 
@@ -28,8 +28,8 @@ li{
 .position-cards{
 	display: inline-block;
 	flex-direction:column;
-	margin: 0px;
-	padding: 0px;
+	margin: 20px;
+	padding: 20px;
 }
 .card-dash{
     margin:40px 20px 0px 20px;
