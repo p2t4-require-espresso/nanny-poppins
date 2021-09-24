@@ -18,34 +18,28 @@
 </head>
 
 <body>
-  <div class="jumbotron">
-  <h1 class="navbar-brand"> Nanny Poppins</h1>
-  </div>
-  <nav class="navbar navbar-expand-md navbar-light styledNav">
-    <div class="container-fluid">
-      <!-- <h1 class="navbar-brand"> Nanny Poppins</h1> -->
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+<div class="jumbotron">
+ <img src="/public/image/circleLogo.png" alt="">
+ <h1 class="navbar-brand"> Nanny Poppins</h1>
+ </div>
+ <nav class="navbar navbar-expand-md navbar-light styledNav">
+   <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+       <span class="navbar-toggler-icon"></span>
+     </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <div class="nav-options">
           <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/">Home</a>
+              <a class="nav-link active" aria-current="page" href="/" style="color: #df6474;">Home</a>
             </li>
             <!-- check back in w aria-current= page and adding active to nav-link class-->
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/dashboard">Dashboard</a>
+              <a class="nav-link active" aria-current="page" href="/dashboard"style="color: #df6474;"">Dashboard</a>
             </li>
-            <!--if logged in show the log out button -->
-            <!-- {{#if loggedIn}} -->
             <li class="nav-item">
-              <a class="nav-link" href="/">Log Out</a>
-            </li>
-            <!-- {{#else}}  -->
-            <li class="nav-item">
-              <a class="nav-link active " href="/login">Login</a>
+              <a class="nav-link active " href="/login" style="color: #df6474;">Login</a>
             </li>
             <!-- {{/if}}  -->
           </ul>

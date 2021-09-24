@@ -18,7 +18,7 @@
     "bio": "string"
   },
   {
-    "name": "Larry Sims ",
+    "name": "Larry Sims",
     "email": "lsims@gmail.com",
     "password": "password3",
     "photo": "https://nanny-app-photo.s3.us-east-2.amazonaws.com/b9769525-4c4a-476f-b8de-259e73add161.jpeg",
@@ -46,8 +46,7 @@
     "photo": "https://nanny-app-photo.s3.us-east-2.amazonaws.com/b9769525-4c4a-476f-b8de-259e73add161.jpeg",
     "password": "password33",
     "experience_years": "4",
-    "bio": "I have a passion for working with children of all age ranges. I am skilled in tayloring my duties based on the childrens needs.",
-  
+    "bio": "I have a passion for working with children of all age ranges. I am skilled in tayloring my duties based on the childrens needs."
   },
   {
     "name": "Elizabeth",
