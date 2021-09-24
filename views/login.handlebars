@@ -79,9 +79,9 @@
 
             {{!-- nanny questions --}}
             <div id="nannyQuestions">
-             
-              <input class="form-control" id="nannyAge" type="text" placeholder="Input Your Age" >
-              
+
+              <input class="form-control" id="nannyAge" type="text" placeholder="Input Your Age">
+
               <div class="form-group">
                 <label for="exampleFormControlSelect1">Years of experience</label>
                 <select class="form-control" id="experience_years">
@@ -101,9 +101,20 @@
 
               <input class="form-control" type="text" placeholder="Age range most experienced with" id="age_range">
             </div>
+            {{!-- <form id="imageForm"> --}}
+              <div class="form-group">
+                <label for="profilePicture">Upload your profile pic:</label>
+                <input type="file" id="photo" accept="image/*">
+                {{!-- <a class="btn btn-primary" type="submit">Upload</a> --}}
+              </div>
+            {{!-- </form> --}}
+
             <div class="form-group">
               <button class="btn btn-primary signup-button" type="submit">Sign Up</button>
             </div>
+
+            
+  
 
           </form>
         </div>

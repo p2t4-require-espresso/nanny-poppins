@@ -36,17 +36,22 @@ router.get('/', async (req, res) => {
   }
 });
 
-
 router.get('/login', (req, res) => {
   // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {
     res.redirect('/profile');
     return;
   }
-
   res.render('login');
 });
 
+
+router.get('/upload',  (req,res)=>{
+  console.log("test", req)
+  // if(logged_in){
+  res.render('upload') 
+// }
+})
 
 //user clicks on a profile card on homepage and is taken to the nanny's profile page
 router.get('/:id', async (req,res)=>{
@@ -87,26 +92,5 @@ router.get('/:id', async (req,res)=>{
     res.status(400).json(err)
   }
 })
-
-//i am clicking on some nanny profiles while on the homepage, most take me to profile page thats populate w lines 65-69, but some nannys i click and get an empty object...
-  // tried this bc when i clicked on those profiles console log from line 53 says review data null, but still didnt work
-        // if(reviewData){
-        //   res.render('viewuser',{
-        //     ...singleProfile,
-        //     ...review,
-        //     starRatings,
-        //     reviewerName,
-        //     reviews,
-        //     logged_in: true
-        //   })
-        // }else{
-        //   res.render('viewuser',{
-        //     ...singleProfile,
-        //     logged_in: true
-        //   })
-        // }
-
-
-
 
 module.exports = router;
