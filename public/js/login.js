@@ -124,7 +124,7 @@ try{
     fd.append('user_type', user_type)
   }
 
-  if (name && email && password && bio && user_type && (number_of_children || (certification && hourly_rate && age_range && experience_years && nanny_age))) {
+  // if (name && email && password && bio && user_type && (number_of_children || (certification && hourly_rate && age_range && experience_years && nanny_age))) {
     const response = await fetch('/api/users', {
       method: 'POST',
       body: fd
@@ -133,14 +133,14 @@ try{
     });
 
     if (response.ok) {
-      // document.location.replace('/dashboard/profile');
+      document.location.replace('/dashboard/profile');
       console.log("successful signup")
 
     } else {
       alert(response.statusText);
       console.log("sign up did not work", response)
     }
-  }
+  // }
 } catch(err){
   console.log(err)
 }

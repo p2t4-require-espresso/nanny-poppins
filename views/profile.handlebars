@@ -5,23 +5,19 @@
         <div class="card">
           <img class="card-img-top" src="" alt="">
 
-          <div class="card-body bio-card">
-            <h2>Welcome, {{name}}!</h2>
-            <p>{{bio}}</p>
-            <p>{{hourly_rate}}</p>
-            <p>{{number_of_children}}</p>
-            <p>{{user_type}}</p>
-            <p>{{certification}}</p>
-            <p>{{description}}</p>
-            <!-- {{! THIS WONT WORK, must happen using JS}} -->
-            <img id="userprofilephoto" src="../image/blank-user.jpeg" || "{{photo}}"></img>
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-12 mb-4">
-        <div class="card">
-          <img class="card-img-top" src="" alt="">
+
+    <p>{{hourly_rate}}</p>
+    <p>{{number_of_children}}</p>
+    <p>{{user_type}}</p>
+    <p>{{certification}}</p>
+    <p>{{description}}</p>
+    {{! THIS WONT WORK, must happen using JS}}
+    <img id="userprofilephoto" src="{{photo}}"></img>
+    {{! get this functional}}
+
+    <a href="/upload" class="btn btn-primary">Add Profile Photo</a>
+    <a href="/api/users/{{id}}" class="btn btn-primary">edit profile</a>
+
 
           <div class="card-body image-card">
             <h2 class="card-title">Add Image</h2>
