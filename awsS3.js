@@ -42,13 +42,14 @@ const checkFileUploadType = (file, cb) => {
 
 
 function uploadFile(file) {
-    const myfile = file.split(".");
-    const fileType = myfile[myfile.length - 1];
+        //threw an error onsplit 
+    // const myfile = file.split(".");
+    // const fileType = myfile[myfile.length - 1];
 
     //the three buckets we need to upload the file
     const params = {
         Bucket: bucketName,
-        Key: `${uuidv4()}.${fileType}`,
+        Key: `${uuidv4()}-${file.originalname}`,
         Body: file.buffer
     }
     return S3.upload(params).promise()
