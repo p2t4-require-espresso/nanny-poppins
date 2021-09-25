@@ -112,20 +112,19 @@ router.get('/edit/:id', async (req, res) => {
 
 //ERROR HERE GETTING A 500 ERROR
 //do i need a put method here? isnt this being taken care of in the user routes?
-router.put('/profile', withAuth, async (req, res) => {
+router.get('/edit-profile', withAuth, async (req, res) => {
     console.log(req.body)
     console.log(req.session.user_id)
     try {
         // Find the logged in user based on the session.user_id
-        const userData = await User.update(req.body, {
-            where: {
-                id: req.session.user_id
-            },
-        });
+        const userData = await User.findByPk(req.session.user_id, {
+            attributes: { exclude: ['password'] },
+            // include: [{ model: Rating, attributes: ['stars', 'review'] }],
+        }); 
         // console.log(req.body)
         const user = userData.get({ plain: true });
         console.log(user)
-        res.render('profile', {
+        res.render('edit-profile', {
             ...user,
             logged_in: true
         });
@@ -134,4 +133,8 @@ router.put('/profile', withAuth, async (req, res) => {
         res.status(500).json(err)
     }
 })
+
+
+
+
 module.exports = router;
