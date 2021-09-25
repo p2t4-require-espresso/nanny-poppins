@@ -1,3 +1,95 @@
+
+{{! put this all in a card so user can edit their info}}
+<div class="row">
+  <div class="col-auto">
+    <h2>Welcome, {{name}}!</h2>
+    <p>{{bio}}</p>
+
+    <p>{{hourly_rate}}</p>
+    <p>{{number_of_children}}</p>
+    <p>{{user_type}}</p>
+    <p>{{certification}}</p>
+    <p>{{description}}</p>
+    {{! THIS WONT WORK, must happen using JS}}
+    <img id="userprofilephoto" src="../image/blank-user.jpeg" || "{{photo}}"></img>
+    {{! get this functional}}
+    <form>
+      <div class="form-group">
+        <label for="profilePicture">Upload your profile pic:</label>
+        <input type="file" class="userProfilePic" id="ProfilePic">
+      </div>
+    </form>
+
+    <p>{{experience_years}}</p>
+    <p>{{nanny_age}}</p>
+    <p>reviews {{review}}</p>
+    <p>{{age_range}}</p>
+    <p>{{email}}</p>
+
+  </div>
+</div>
+
+<div class="row mt-4">
+  <div class="col-md-6">
+    <h3>Leave a Review for Your Nanny:</h3>
+
+    <div id="form review_form">
+      <form class="form review-form" id="review_nanny">
+        <div class="form-group" id="selectNanny">
+          <label for="select-nanny">Which Nanny do you want to leave a review for?</label>
+          <select class="form-control form-control-lg" id="nanny_id">
+            <option>Choose Nanny</option>
+            {{#each nannies}}
+            <option value="{{id}}">{{name}}</option>
+            {{/each}}
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="project-funding">Wrtie Your Review Here</label>
+          <textarea name="nanny_review" id="nanny-review" cols="30" rows="10"></textarea>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  {{#each messages }}
+<div class="row align-center mb-5">
+  <div class="col-md-6">
+    <p>{{this.message}}</p>
+    <p>Sent by {{this.sender_name}}</p>
+
+    <!-- Button to trigger response modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
+  Reply to this message
+</button>
+
+<!-- Respond to message Modal -->
+<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Send message to {{this.sender_name}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <textarea name="contactMessage" id="receiver_id{{id}}" cols="50" rows="5"></textarea>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary send-reply" data-id="{{id}}">Send Reply</button>
+      </div>
+    </div>
+  </div>
+</div>
+  </div>
+</div>
+{{/each}}
+
 {{! put this all in a card so user can edit their info}}
 <div class="container">
   <div class="row">
@@ -94,3 +186,4 @@
 </div>
 
 <script src="/js/profile.js"></script>
+

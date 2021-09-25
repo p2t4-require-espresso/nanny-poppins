@@ -1,5 +1,28 @@
 console.log("profile js connected")
 
+const communicationFormHandler = async (event) => {
+  event.preventDefault();
+  console.log(event.target);
+
+  let parentId = event.target.getAttribute('data-id')
+  let message = document.querySelector('#receiver_id' + parentId).value;
+  console.log(message, parentId);
+
+  if (message) {
+      const response = await fetch('/api/communication', {
+          method: 'POST',
+          body: JSON.stringify({ receiver_id: parentId, message: message }),
+          headers: { 'Content-Type': 'application/json' },
+      })
+      if (response.ok) {
+          console.log("Success!")
+      }
+  }
+}
+
+const btns = document.querySelectorAll('.send-reply');
+[...btns].forEach(btn => btn.addEventListener('click', communicationFormHandler))
+
 function sendAlert(status, color, element) {
   $(".bootstrap-growl").remove();
   $.bootstrapGrowl(status, {
