@@ -34,6 +34,7 @@ const loginFormHandler = async (event) => {
   }
 };
 
+//put this in helpers 
 function sendAlert(status, color, element) {
   $(".bootstrap-growl").remove();
   $.bootstrapGrowl(status, {
