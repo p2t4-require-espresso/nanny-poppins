@@ -6,7 +6,9 @@
         <img class="card-img-top" src="" alt="">
 
         <h2 style="font-family: 'Birthstone';">Welcome, {{name}}</h2>
-        <p>{{hourly_rate}}</p>
+        {{#if hourly_rate}}
+        <p>My Hourly Rate:{{hourly_rate}}</p>
+        {{/if}}
         <p>{{number_of_children}}</p>
         <p>{{user_type}}</p>
         <p>{{certification}}</p>
@@ -20,8 +22,10 @@
           <p>{{experience_years}}</p>
           <p>{{nanny_age}}</p>
           <p>Review{{review}}</p>
-          <p>{{age_range}}</p>
-          <p>{{email}}</p>
+          {{#if age_range}}
+          <p>Age:Range:{{age_range}}</p>
+          {{/if}}
+          <p>Email:{{email}}</p>
           </p>
         </div>
       </div>
