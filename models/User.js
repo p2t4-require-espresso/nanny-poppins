@@ -46,7 +46,8 @@ User.init(
     photo: {
       type: DataTypes.STRING,
       //default this to the blank image in images file
-      allowNull: true
+      allowNull: false,
+      defaultValue: `https://nanny-app-photo.s3.us-east-2.amazonaws.com/b9769525-4c4a-476f-b8de-259e73add161.jpeg`
     },
     nanny_age: {
       type: DataTypes.STRING,

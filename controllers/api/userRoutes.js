@@ -1,32 +1,9 @@
 const router = require('express').Router();
 const { User , Rating} = require('../../models');
 const withAuth= require("../../utils/auth")
-require('dotenv').config()
+const {uploadFile  }= require("../../awsS3")
 
-const multer = require('multer')
-const AWS = require('aws-sdk')
-const { v4: uuidv4 } = require('uuid');
 
-const bucketName= process.env.bucketName;
-const region = process.env.region;
-const accessKeyId =process.env.accessKeyId;
-const secretAccessKey = process.env.secretAccessKey;
-
-const S3= new AWS.S3({
-  secretAccessKey,
-  accessKeyId,
-  region,
-  bucketName
-})
-
-const storage = multer.memoryStorage({
-  destination: function(req, file, callback){
-    // '' path for where you want to put the files that are uploaded--its a temporary folder
-      //can leave blank
-    callback(null, '')  
-  }
-})
-const upload= multer({storage: storage}).single('image')
 
 
 //GET ALL USERS 
@@ -100,7 +77,15 @@ router.get('/:id', async (req,res)=>{
 router.post('/', async (req, res)=>{
   
 console.log(req.body, "req body from post route")
+
   try{
+    //photo upload is now optional:
+    if(req.file){
+      console.log("req.file",req.file)
+      const uploadresult= await uploadFile(req.file)
+      req.body.photo= uploadresult.Location;
+      console.log(uploadresult)
+    }
     const newUser = await User.create(req.body,{
       individualHooks: true    
     });
@@ -209,51 +194,64 @@ catch(err){
 
 
 
-router.post('/upload', upload, (req, res)=>{
+// require('dotenv').config()
 
-  //had to change the header 
+// const multer = require('multer')
+// const AWS = require('aws-sdk')
+// const { v4: uuidv4 } = require('uuid');
+// const fs = require('fs')
+// const bucketName= process.env.bucketName;
+// const region = process.env.region;
+// const accessKeyId =process.env.accessKeyId;
+// const secretAccessKey = process.env.secretAccessKey;
 
-  //seperates the file from the .jpeg
-  let myFile = req.file.originalname.split(".")
-  // this gives us the extension jpeg
-  const fileType = myFile[myFile.length - 1]
+// const S3= new AWS.S3({
+//     secretAccessKey,
+//     accessKeyId,
+//     region,
+//     bucketName
+//   })
+//     //the three buckets we need to upload the file
+//     // const params={
+//     //   Bucket: bucketName,
+//     //   Key: `${uuidv4()}.${fileType}`,
+//     //   Body: req.file.buffer
+//     // }
   
-  console.log(req.file)
+//   const storage = multer.memoryStorage({
+//     destination: function(req, file, callback){
+//       // '' path for where you want to put the files that are uploaded--its a temporary folder
+//         //can leave blank
+//       callback(null, '')  
+//     }
+//   })
+//   const upload= multer({storage: storage}).single('image')
 
-  //the three buckets we need to upload the file
-  const params={
-    Bucket: bucketName,
-    Key: `${uuidv4()}.${fileType}`,
-    Body: req.file.buffer
-  }
-//create a button that takes me to api/users/upload, and thats wher ei can do thi
-  //data gives us a link to the file
-  S3.upload(params, (err, data)=>{
-    if(err){
-    return  res.status(500).json(err)
+
+
+
+router.post('/upload', withAuth, async(req, res)=>{
+  console.log(req.file)
+  //uploading the photo 
+  const upload = await uploadFile(req.file)
+  console.log("uploaded image", upload)
+  const newphoto =upload.Location
+  try{
+    const updateUserPhoto= await User.update({
+      photo: newphoto
+    },
+    {
+    where:{
+      id:req.session.user_id
     }
-    res.status(200).send({
-      msg:"File uploaded to AWS",
-      data: data,
-      file: req.file
     })
-  })
+    res.status(200).json({msg:"Successful image upload"})
+   console.log(updateUserPhoto)
+  } catch(err){
+    res.status(500).json(err)
+  }
 })
 
+
+
 module.exports = router;
-
-
-
-// var formdata = new FormData();
-// formdata.append("image", fileInput.files[0], "IMG_5401.jpg");
-
-// var requestOptions = {
-//   method: 'POST',
-//   body: formdata,
-//   redirect: 'follow'
-// };
-
-// fetch("http://localhost:3001/api/users", requestOptions)
-//   .then(response => response.text())
-//   .then(result => console.log(result))
-//   .catch(error => console.log('error', error));

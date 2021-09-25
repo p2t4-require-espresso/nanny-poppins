@@ -1,54 +1,60 @@
 {{#each profiles as |profile| }}
-<div class="position-cards">
-  <div class="card-container">
-    <div class="upper-container">
-      <div class="image-container">
-        <img src="./image/blank-user.jpeg" || {{photo}} alt="user-photo">
+<div class="col-md-4">
+  <div class="position-cards">
+    <div class="card-container">
+      <div class="upper-container">
+        <div class="image-container">
+          <img src="./image/blank-user.jpeg" || {{photo}} alt="user-photo">
+        </div>
       </div>
-    </div>
 
-    <div class="lower-container user-card">
-      <div>
-        <h3>{{name}}</h3>
-        {{!-- {{#if logged_in}} --}}
-      <a href="/{{id}}"> <h4>Nanny</h4></a>
-      {{!-- {{else}} --}}
-      {{!-- <h4>Nanny</h4> --}}
-      {{!-- {{/if}} --}}
-      </div>
-      <div>
-        <p>{{certification}}</p>
-        <p>{{bio}}</p>
-      </div>
-      <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#nannyModal{{id}}">
-  Contact!
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="nannyModal{{id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="contactMessage">Leave message for {{name}}</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
+      <div class="lower-container user-card">
+        <div>
+          <h3>{{name}}</h3>
+          {{#if logged_in}}
+          <a href="/{{id}}">
+            <h6>Nanny</h6>
+          </a>
+          {{else}}
+          <h6>Nanny</h6>
+          {{/if}}
+        </div>
+        <div>
+          <p>{{certification}}</p>
+          <p>{{bio}}</p>
+        </div>
+        {{#if logged_in}}
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#nannyModal{{id}}">
+          Contact!
         </button>
-      </div>
-      <div class="modal-body">
-        <textarea name="contactMessage" id="receiver_id{{id}}" cols="40" rows="10"></textarea>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary send-message" data-id="{{id}}">Send Message</button>
+          {{/if}}
+
+        <!-- Modal -->
+        <div class="modal fade" id="nannyModal{{id}}" tabindex="-1" aria-labelledby="exampleModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="contactMessage">Leave message for {{name}}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <textarea name="contactMessage" id="receiver_id{{id}}" cols="40" rows="10"></textarea>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary send-message" data-id="{{id}}">Send Message</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
 </div>
-
-    </div>
-  </div>
-</div>
-
-{{/each}}
-<script src="/js/homepage.js"></script>
+  {{/each}}
+  <script src="/js/homepage.js"></script>
