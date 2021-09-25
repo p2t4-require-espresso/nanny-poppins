@@ -1,1 +1,2 @@
-# require-espresso
+# Nanny-Poppins
+Is a app that helps get immediate daycare for busy parents. By having them make an account, hire a nanny, and be able to write a reveiw about their nanny. This app also helps nannies get signed up and ready to work by having them create an account and be made able for on the spot hire. Features included are being able message your nanny and look at reveiws of each nannies on their profile.
