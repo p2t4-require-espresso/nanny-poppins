@@ -230,55 +230,28 @@ catch(err){
 
 
 
-// router.post('/upload', upload, (req, res)=>{
-
-//   //had to change the header 
-
-//   //seperates the file from the .jpeg
-//   let myFile = req.file.originalname.split(".")
-//   // this gives us the extension jpeg
-//   const fileType = myFile[myFile.length - 1]
-  
-//   console.log(req.file)
-
-//   //the three buckets we need to upload the file
-//   const params={
-//     Bucket: bucketName,
-//     Key: `${uuidv4()}.${fileType}`,
-//     Body: req.file.buffer
-//   }
-// //create a button that takes me to api/users/upload, and thats wher ei can do thi
-//   //data gives us a link to the file
-//   S3.upload(params, (err, data)=>{
-//     if(err){
-//     return  res.status(500).json({ message:"Failed to upload", error: err.message});
-//     }
-//     res.status(200).send({
-//       message:"File uploaded to AWS",
-//       data: data,
-//       file: req.file,
-//       // imagePath:`/upload/${result.key}`
-//     })
-//   })
-// })
+router.post('/upload', withAuth, async(req, res)=>{
+  console.log(req.file)
+  //uploading the photo 
+  const upload = await uploadFile(req.file)
+  console.log("uploaded image", upload)
+  const newphoto =upload.Location
+  try{
+    const updateUserPhoto= await User.update({
+      photo: newphoto
+    },
+    {
+    where:{
+      id:req.session.user_id
+    }
+    })
+    res.status(200).json({msg:"Successful image upload"})
+   console.log(updateUserPhoto)
+  } catch(err){
+    res.status(500).json(err)
+  }
+})
 
 
 
 module.exports = router;
-
-
-
-
-// var formdata = new FormData();
-// formdata.append("image", fileInput.files[0], "IMG_5401.jpg");
-
-// var requestOptions = {
-//   method: 'POST',
-//   body: formdata,
-//   redirect: 'follow'
-// };
-
-// fetch("http://localhost:3001/api/users", requestOptions)
-//   .then(response => response.text())
-//   .then(result => console.log(result))
-//   .catch(error => console.log('error', error));

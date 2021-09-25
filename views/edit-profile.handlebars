@@ -1,4 +1,4 @@
-{{#each profiles as |profile|}}
+{{!-- {{#each profiles as |profile|}} --}}
 <div class="card" style="width: 18rem;">
   <img src="{{photo}}" class="card-img-top" alt="...">
   <div class="card-body">
@@ -16,20 +16,4 @@
     <li class="list-group-item">Reviews:{{review}}</li>
   </ul>
 </div>
-  {{/each}}
-  
-
-  <!-- {{#each if parent}}
-  <div class="card" style="width: 18rem;">
-    <img src="{{pic}}" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">{{name}}</h5>
-      <p class="card-text">{{bio}}</p>
-    </div>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">{{number_of_children}}</li>
-    </ul>
-    <div class="card-body">
-      <a href="mailto:" class="{{email}}">Card link</a>
-    </div>
-  </div> -->
+<script src="/js/editprofile.js"></script>

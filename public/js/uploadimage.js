@@ -1,28 +1,22 @@
-// const { response } = require("express");
 
-// const { response } = require("express");
 
 console.log("upload image js connected")
 
 
 const formImageHandler = async function(event){
     event.preventDefault();
-const imageForm = document.querySelector("#imageForm")
-const imageInput = document.querySelector("#imageInput")
-    event.preventDefault();
-    var formdata = new FormData();
-    formdata.append("image", fileInput.files[0], 'IMG_5401.jpg');
-    var requestOptions = {
+    console.log('~~~~~~~~~~~~~~~~~~~~~~~~')
+    var fd = new FormData();
+    const photo = document.querySelector('#photo').files[0]
+    fd.append("photo", photo);
+
+  const response=  await fetch('api/users/upload',{
       method: 'POST',
-      body: formdata, 
-      redirect: 'follow'
-    };
-    await fetch('/upload', requestOptions)
-       .then(response => response.text())
-       .then(result => console.log(result))
-       .catch(error => console.log(
-           'error', error));
+      body: fd
+  })
+  if(response.ok){
+  document.location.replace('/dashboard/profile');
     }
-    
-    document.querySelector('#imageForm')
+}
+    document.querySelector('#submitForm')
 .addEventListener('submit', formImageHandler)

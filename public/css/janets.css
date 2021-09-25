@@ -1,10 +1,25 @@
 
-.jumbotron{
 
+body{
+	background-image:url('../image/simplebackground.png')
+}
+.jumbotron{
+	display: flex;
+	/* background-color: #ed9679; */
+}
+
+.jumbotron h1{
     font-family: 'Birthstone Bounce', cursive;
     margin: 0 auto ;
     padding: 10px;
+	/* display: inline; */
 	position: relative;
+}
+.jumbotron img{
+	width: 100px;
+	height: 100px;
+	position: relative;
+	padding: 10px;
 }
 /*Nanny Poppins Text in nav bar*/
 .navbar-brand{
@@ -18,6 +33,10 @@ li{
     font-family: 'Birthstone', cursive;
     padding:10px;
 }
+
+/* main .container{
+	background-color:#da837e ;
+} */
 /*styling the login and sign up cardoptions*/
 /* this stles the sign up form so that the labels are on top of the input fields*/
 .form-group label{
@@ -25,9 +44,10 @@ li{
 }
 .position-cards{
 	display: inline-block;
-	flex-direction:column;
-	margin: 0px;
-	padding: 0px;
+	/* display: flex; */
+	/* flex-direction:column; */
+	margin-top: 10px;
+	padding: 30px;
 }
 .card-dash{
     margin:40px 20px 0px 20px;
@@ -39,7 +59,6 @@ li{
 	height: 430px;
 	background: #FFF;
 	border-radius: 6px;
-	
 	/* position: absolute;
 	top: 50%; */
 	/* left: 50%;
@@ -78,7 +97,7 @@ li{
 	line-height: .6;
 	font-weight: lighter;
 }
-.lower-container h4{
+.lower-container h6{
 	color: #7F00FF;
 	opacity: .6;
 	font-weight: bold;
@@ -106,6 +125,11 @@ li{
 }
 
 /*login and sign up header */
+
+#login-card ,#signup-card{
+	background-image:url('../image/kidphoto.jpg');
+	border: 2px solid #a3cebb;
+}
 .login-header{
 	text-align: center;
     font-family: 'Birthstone', cursive;
@@ -146,13 +170,46 @@ li{
 }
 
 /*styling the nav bar options*/
-@media screen and (min-width:772px) {
+@media screen and (min-width:1334px) {
 	.styledNav{
 		position: absolute;
 		top: 12px;
 		right:0px;
 		font-size: 2rem;
 	}
+
+	ul{
+		display: inline;
+	}
+}
+@media screen and (min-width:768px) and (max-width:990px){
+	/* .col-md-4{
+		display:block;
+		flex-direction: column;
+	} */
+	.position-cards{
+		display:flex;
+		flex-direction:row
+	}
+	 .upper-container{
+		margin-left:-50px;
+	 }
+}
+
+@media screen and (max-width:375px){
+	body{
+		width:auto;
+		background-image: url('../image/iphonesize.jpg');
+	}
+	.jumbotron{
+		display: block;
+	}
+	.jumbotron img{
+		display: block;
+		margin: 0 auto;
+	}
+
+
 }
 
 /* Profile bio-card */
@@ -182,5 +239,6 @@ li{
     font-family: 'Chilanka', cursive;
 	align-self: center;
 	justify-content: center;
+
 
 }

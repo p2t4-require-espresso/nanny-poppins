@@ -1,6 +1,6 @@
 console.log("homepage js connected")
 
-const reviewFormHandler = async (event) => {
+const communicationFormHandler = async (event) => {
     event.preventDefault();
     console.log(event.target);
 
@@ -21,4 +21,4 @@ const reviewFormHandler = async (event) => {
 }
 
 const btns = document.querySelectorAll('.send-message');
-[...btns].forEach(btn => btn.addEventListener('click', reviewFormHandler))
+[...btns].forEach(btn => btn.addEventListener('click', communicationFormHandler))
