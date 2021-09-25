@@ -25,7 +25,7 @@ router.get('/', async (req, res) => {
 
     // Serialize data so the template can read it
     const profiles = profileData.map((profile) => profile.get({ plain: true }));
-
+    console.log("home route session*********", req.session);
     // Pass serialized data and session flag into template
     res.render('homepage', { 
       profiles, 
@@ -42,6 +42,7 @@ router.get('/login', (req, res) => {
     res.redirect('/profile');
     return;
   }
+  console.log(req.session)
   res.render('login');
 });
 
