@@ -34,6 +34,7 @@ const loginFormHandler = async (event) => {
   }
 };
 
+//put this in helpers 
 function sendAlert(status, color, element) {
   $(".bootstrap-growl").remove();
   $.bootstrapGrowl(status, {
@@ -66,6 +67,7 @@ radios.forEach(radio => {
 const signupFormHandler = async (event) => {
   event.preventDefault();
 try{
+  //this allows the user to sign up with multipart form data
  const fd = new FormData();
 
   let user_type = "";
@@ -94,23 +96,6 @@ try{
   fd.append('photo', photo)
 
 
-  //needed to determine if the user is a parent or nanny 
-  // console.log(fd.getAll(`user_type`))
-  // console.log(fd.getAll(`number of children`))
-  // console.log(fd.getAll(`age_range`))
-  // console.log(fd.getAll(`bio`))
-  // console.log(fd.getAll(`hourly_rate`))
-  // console.log(fd.getAll(`number_of_children`))
-  // console.log(fd.getAll(`photo`))
-  // console.log(fd.getAll(`certification`))
-  
-  // console.log(number_of_children, "number of children")
-  // console.log(typeof number_of_children, "# of children type")
-  // console.log(typeof nanny_age, "nanny age type")
-  // console.log(typeof hourly_rate, "hourly rate type")
-  // console.log(typeof certification, "certification type")
-  // console.log(typeof age_range, "age range type")
-
   if (!(name && email && password && bio && user_type && (number_of_children || (certification && hourly_rate && age_range && experience_years && nanny_age)))) {
     sendAlert("All Fields must have valid entries.", 'danger', '.signup-button')
   }
@@ -137,7 +122,7 @@ try{
       console.log("successful signup")
 
     } else {
-      alert(response.statusText);
+      sendAlert('Error with signing up', 'danger', '.signup-button')
       console.log("sign up did not work", response)
     }
   // }
