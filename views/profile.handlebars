@@ -9,23 +9,31 @@
         {{#if hourly_rate}}
         <p>My Hourly Rate:{{hourly_rate}}</p>
         {{/if}}
-        <p>{{number_of_children}}</p>
-        <p>{{user_type}}</p>
-        <p>{{certification}}</p>
-        <p>{{description}}</p>
+        {{#if number_of_children}}
+        <p>My Number of Children: {{number_of_children}}</p>
+        {{/if}}
+        <p>I am a {{user_type}}!</p>
+        {{#if certification}}
+        <p>My certifications: {{certification}}</p>
+        {{/if}}
+        <p>My Bio:{{bio}}</p>
         <img id="userprofilephoto" src="{{photo}}"></img>
 
         <a href="/upload" class="btn btn-primary">Add Profile Photo</a>
      
- 
-
-          <p>{{experience_years}}</p>
-          <p>{{nanny_age}}</p>
-          <p>Review{{review}}</p>
-          {{#if age_range}}
-          <p>Age:Range:{{age_range}}</p>
+           {{#if experience_years}}
+          <p>My Experience in years:{{experience_years}}</p>
           {{/if}}
-          <p>Email:{{email}}</p>
+          {{#if nanny_age}}
+          <p>My Age: {{nanny_age}}</p>
+          {{/if}}
+          {{#if review}}
+          <p>Review:{{review}}</p>
+          {{/if}}
+          {{#if age_range}}
+          <p>Age Range of Kids I like to nanny:{{age_range}}</p>
+          {{/if}}
+          <p>Email: {{email}}</p>
           </p>
         </div>
       </div>
