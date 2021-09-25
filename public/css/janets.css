@@ -157,6 +157,7 @@ li{
 
 /* Profile bio-card */
 .bio-card{
+    font-family: 'Chilanka', cursive;
 	align-self: center;
 	/* display:flex; */
 	justify-content: center;
@@ -165,13 +166,21 @@ li{
 }
 /* Profile image-card */
 .image-card{
+    font-family: 'Chilanka', cursive;
 	align-self: center;
 	justify-content: center;
 
 }
 /* Profile review-card */
 .review-card{
+	font-family: 'Chilanka', cursive;
 	justify-content: center;
 	/* display:flex; */
 	align-content: center;
+}
+.message-section{
+    font-family: 'Chilanka', cursive;
+	align-self: center;
+	justify-content: center;
+
 }
