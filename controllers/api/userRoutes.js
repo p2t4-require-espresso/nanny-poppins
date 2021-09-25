@@ -194,42 +194,6 @@ catch(err){
 
 
 
-// require('dotenv').config()
-
-// const multer = require('multer')
-// const AWS = require('aws-sdk')
-// const { v4: uuidv4 } = require('uuid');
-// const fs = require('fs')
-// const bucketName= process.env.bucketName;
-// const region = process.env.region;
-// const accessKeyId =process.env.accessKeyId;
-// const secretAccessKey = process.env.secretAccessKey;
-
-// const S3= new AWS.S3({
-//     secretAccessKey,
-//     accessKeyId,
-//     region,
-//     bucketName
-//   })
-//     //the three buckets we need to upload the file
-//     // const params={
-//     //   Bucket: bucketName,
-//     //   Key: `${uuidv4()}.${fileType}`,
-//     //   Body: req.file.buffer
-//     // }
-  
-//   const storage = multer.memoryStorage({
-//     destination: function(req, file, callback){
-//       // '' path for where you want to put the files that are uploaded--its a temporary folder
-//         //can leave blank
-//       callback(null, '')  
-//     }
-//   })
-//   const upload= multer({storage: storage}).single('image')
-
-
-
-
 router.post('/upload', withAuth, async(req, res)=>{
   console.log(req.file)
   //uploading the photo 
