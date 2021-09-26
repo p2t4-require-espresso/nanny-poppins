@@ -43,10 +43,11 @@ Parents are able to message their nanny's by sending a message, nannys are able 
 Users are able to upload and update their profile photos and have them stored on the AWS S3 server
 
 ## Credits
-[Janet Iqal](www.github.com/janetiqal)
-[Karla Goo](www.github.com/karlagoo)
-[Ricky Ramos](www.github.com/rickyramos)
-[Stephany Alcaide](www.github.com/stephanyalcaide)
+The contributors to this app include:
+-[Janet Iqal](www.github.com/janetiqal)
+-[Karla Goo](www.github.com/karlagoo)
+-[Ricky Ramos](www.github.com/rickyramos)
+-[Stephany Alcaide](www.github.com/stephanyalcaide)
 
 ## Questions
 Please reach out to any one of the users above, or visit our organization at https://github.com/p2t4-require-espresso
