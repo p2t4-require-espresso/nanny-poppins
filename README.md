@@ -7,7 +7,6 @@ By having them make an account, hire a nanny, and be able to write a reveiw abou
   
   * [User Story](#userstory)
   * [Deployment](#deployment)
-<!--   * [Screenshots](#screenshots) -->
   * [Technologies](#technologies)
   * [License](#license)
   * [Credits](#credits)
@@ -44,10 +43,10 @@ Users are able to upload and update their profile photos and have them stored on
 
 ## Credits
 The contributors to this app include:
--[Janet Iqal](www.github.com/janetiqal)
--[Karla Goo](www.github.com/karlagoo)
--[Ricky Ramos](www.github.com/rickyramos)
--[Stephany Alcaide](www.github.com/stephanyalcaide)
+  * [Janet Iqal](www.github.com/janetiqal)
+  * [Karla Goo](www.github.com/karlagoo)
+  * [Ricky Ramos](www.github.com/rickyramos)
+  * [Stephany Alcaide](www.github.com/stephanyalcaide)
 
 ## Questions
 Please reach out to any one of the users above, or visit our organization at https://github.com/p2t4-require-espresso
