@@ -18,7 +18,8 @@ By having them make an account, hire a nanny, and be able to write a reveiw abou
   AS A parent
   I WANT to go to a website to browse qualified nannies to babysit my children
   I WANT to be able to learn about a nanny's qualifications, learn about the person, know their hourly-rate, years of experience in child care and education level.
-  I WANT to be able to sign up and contact a nanny of my preference 
+  I WANT to be able to sign up 
+  SO THAT I can contact a nanny of my preference 
   SO THAT I may potential hire a nanny for my children
   
   AS A nanny
