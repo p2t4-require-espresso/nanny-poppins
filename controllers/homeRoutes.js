@@ -26,6 +26,7 @@ router.get('/', async (req, res) => {
     // Serialize data so the template can read it
     const profiles = profileData.map((profile) => profile.get({ plain: true }));
     console.log("home route session*********", req.session);
+    console.log(profiles)
     // Pass serialized data and session flag into template
     res.render('homepage', { 
       profiles, 
@@ -69,12 +70,13 @@ router.get('/:id', async (req,res)=>{
     })
     
     const singleProfile = oneUser.get({plain:true})
-    console.log(reviewData, "review data")
+    console.log("sing progile",singleProfile)
+    // console.log(reviewData, "review data")
     const review = reviewData.get({plain:true})
     console.log("review", review)
-    console.log("single review" ,review.review)
-    console.log("parent and review", review.parent.name)
-    console.log("star rating", review.stars)
+    // console.log("single review" ,review.review)
+    // console.log("parent and review", review.parent.name)
+    // console.log("star rating", review.stars)
     const reviewerName = review.parent.name;
     const reviews =review.review
     // add all star values and divide by the amount given aka the average

@@ -16,8 +16,8 @@ body{
 	position: relative;
 }
 .jumbotron img{
-	width: 100px;
-	height: 100px;
+	width: 170px;
+	height: 170px;
 	position: relative;
 	padding: 10px;
 }
@@ -170,6 +170,59 @@ li{
 	height: 200px;
 }
 
+
+/* Profile bio-card */
+.bio-card{
+    font-family: 'Chilanka', cursive;
+	align-self: center;
+	/* display:flex; */
+	justify-content: center;
+	background-image:url('../image/simplebackground.png');
+	/* justify-items: center; */
+
+}
+/* Profile image-card */
+.image-card{
+    font-family: 'Chilanka', cursive;
+	align-self: center;
+	justify-content: center;
+	background-image:url('../image/simplebackground.png');
+
+}
+/* Profile review-card */
+.review-card, .profile-card{
+	font-family: 'Chilanka', cursive;
+	font-weight: bold;
+}
+.profile-card {
+	display: flex;
+	/* flex-direction: column; */
+	/* flex-wrap: wrap; */
+ /* justify-items: center;  */
+ } 
+ .profile-card h2{
+	 font-size: 6vh;
+ }
+.message-section{
+    font-family: 'Chilanka', cursive;
+	align-self: center;
+	justify-content: center;
+	background-image:url('../image/simplebackground.png');
+
+
+}
+.profile-card, .review-card{
+	background-image:url('../image/sun950x.jpg');
+
+}
+#viewUser{
+	font-family: 'Chilanka', cursive;
+	font-size: 22px;
+	text-align: center;
+	font-weight: bold;
+}
+
+
 /*styling the nav bar options*/
 @media screen and (min-width:1334px) {
 	.styledNav{
@@ -195,12 +248,21 @@ li{
 	 .upper-container{
 		margin-left:-50px;
 	 }
+	 .profile-card, .review-card{
+		background-image:url('../image/sunimage.jpg');
+	}
+}
+
+@media screen and (min-width:376px) and (max-width:766px){
+	.profile-card, .review-card{
+		background-image:url('../image/sunimage.jpg');
+	}
 }
 
 @media screen and (max-width:375px){
 	body{
 		width:auto;
-		background-image: url('../image/iphonesize.jpg');
+		/* background-image: url('../image/iphonesize.jpg'); */
 	}
 	.jumbotron{
 		display: block;
@@ -209,44 +271,8 @@ li{
 		display: block;
 		margin: 0 auto;
 	}
+	.profile-card, .review-card{
+		background-image:url('../image/sunimage.jpg');
+	}
 
-
-}
-
-/* Profile bio-card */
-.bio-card{
-    font-family: 'Chilanka', cursive;
-	align-self: center;
-	/* display:flex; */
-	justify-content: center;
-	background-image:url('../image/simplebackground.png');
-	/* justify-items: center; */
-
-}
-/* Profile image-card */
-.image-card{
-    font-family: 'Chilanka', cursive;
-	align-self: center;
-	justify-content: center;
-	background-image:url('../image/simplebackground.png');
-
-}
-/* Profile review-card */
-.review-card{
-	font-family: 'Chilanka', cursive;
-	justify-content: center;
-	/* display:flex; */
-	align-content: center;
-	background-image:url('../image/simplebackground.png');
-}
-.message-section{
-    font-family: 'Chilanka', cursive;
-	align-self: center;
-	justify-content: center;
-	background-image:url('../image/simplebackground.png');
-
-
-}
-.card{
-	background-image:url('../image/simplebackground.png');
 }
