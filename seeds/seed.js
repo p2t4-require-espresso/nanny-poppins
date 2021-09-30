@@ -22,14 +22,6 @@ const seedDatabase = async () => {
     returning: true,
   })
 
-//potentially do this to give the nannies ratings from the start
-  // for (const project of projectData) {
-  //   await Project.create({
-  //     ...project,
-  //     user_id: users[Math.floor(Math.random() * users.length)].id,
-  //   });
-  // }
-
   process.exit(0);
 };
 
