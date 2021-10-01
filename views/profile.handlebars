@@ -114,11 +114,11 @@
         </button>
       </div>
       <div class="modal-body">
-        <textarea name="contactMessage" id="receiver_id{{id}}" cols="50" rows="5"></textarea>
+        <textarea name="contactMessage" id="receiver_id{{this.sender_id}}" cols="50" rows="5"></textarea>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary send-reply" data-id="{{id}}">Send Reply</button>
+        <button type="button" class="btn btn-primary send-reply" data-id="{{this.sender_id}}">Send Reply</button>
       </div>
     </div>
   </div>
