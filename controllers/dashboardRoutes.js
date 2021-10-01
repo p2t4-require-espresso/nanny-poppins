@@ -81,7 +81,6 @@ router.get('/profile', withAuth, async (req, res) => {
     }
 })
 //user able to add review for Nannys
-//HTML Will have to include a add review button
 router.get('/edit/:id', async (req, res) => {
     try {
         const editReview = await User.findByPk(req.params.id, {
