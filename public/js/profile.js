@@ -4,18 +4,19 @@ const communicationFormHandler = async (event) => {
   event.preventDefault();
   console.log(event.target);
 
-  let parentId = event.target.getAttribute('data-id')
-  let message = document.querySelector('#receiver_id' + parentId).value;
-  console.log(message, parentId);
+  let receiverId = event.target.getAttribute('data-id')
+  let message = document.querySelector('#receiver_id' + receiverId).value;
+  console.log(message, receiverId);
 
   if (message) {
       const response = await fetch('/api/communication', {
           method: 'POST',
-          body: JSON.stringify({ receiver_id: parentId, message: message }),
+          body: JSON.stringify({ receiver_id: receiverId, message: message }),
           headers: { 'Content-Type': 'application/json' },
       })
       if (response.ok) {
           console.log("Success!")
+          document.querySelector('#receiver_id' + receiverId).value="";
       }
   }
 }

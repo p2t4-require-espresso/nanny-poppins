@@ -16,6 +16,7 @@ const communicationFormHandler = async (event) => {
         })
         if (response.ok) {
             console.log("Success!")
+            document.querySelector('#receiver_id' + nannyId).value = "";
         }
     }
 }
