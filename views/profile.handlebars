@@ -67,15 +67,14 @@
 </div>
 
 
+
 <div class="col-sm-12 mb-4">
-  <div class="card">
+
     <div class="card-body review-card">
       <div class="row">
-        {{!-- {{this hides the leave a review for nanny portion}} --}}
         {{#if number_of_children}}
-        <div class="col-md-6">
+        <div class="col-md-6 reviews">
           <h3>Leave a Review for Your Nanny:</h3>
-
           <form class="form review-form" id="review_nanny">
             <div class="form-group" id="selectNanny">
               <label for="select-nanny">Which Nanny do you want to leave a review for?</label>
@@ -104,53 +103,49 @@
           </form>
         </div>
         {{/if}}
+        {{#if hourly_rate}}
+        <div class="col-md-12">
+        {{else}}
         <div class="col-md-6">
-          {{#each messages}}
-          <div class="row align-center mb-5">
+          {{/if}}
+          {{#each messages }}
+          <div class="row align-center mb-5 message-section">
             <div class="col-md-6">
               <p>{{this.message}}</p>
               <p>Sent by {{this.sender_name}}</p>
+
+              <!-- Button to trigger response modal -->
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
+                Reply to this message
+              </button>
+
+              <!-- Respond to message Modal -->
+              <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1"
+                aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="staticBackdropLabel">Send message to {{this.sender_name}}</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <textarea name="contactMessage" id="receiver_id{{this.sender_id}}" cols="50" rows="5"></textarea>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-primary send-reply" data-id="{{this.sender_id}}">Send
+                        Reply</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
             </div>
           </div>
           {{/each}}
         </div>
-      </div>
     </div>
-  </div>
-</div>
-
-{{#each messages }}
-<div class="row align-center mb-5">
-  <div class="col-md-6">
-    <p>{{this.message}}</p>
-    <p>Sent by {{this.sender_name}}</p>
-
-    <!-- Button to trigger response modal -->
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
-      Reply to this message
-    </button>
-
-    <!-- Respond to message Modal -->
-    <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1"
-      aria-labelledby="staticBackdropLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="staticBackdropLabel">Send message to {{this.sender_name}}</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <textarea name="contactMessage" id="receiver_id{{this.sender_id}}" cols="50" rows="5"></textarea>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary send-reply" data-id="{{this.sender_id}}">Send Reply</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    {{/each}}
 
     <script src="/js/profile.js"></script>
