@@ -1,3 +1,4 @@
+
 console.log("profile js connected")
 
 const communicationFormHandler = async (event) => {
@@ -46,13 +47,23 @@ const reviewFormHandler = async (event) => {
   if(nannyId==='Choose Nanny'){
     sendAlert('Must choose a nanny before submitting a review.', 'danger', '#reviewSubmit')
   }
-  //user able to send either a review of a nanny by submitting a star rating alone, or also typing in a review alongside a star rating
-  if (nannyId !=='Choose Nanny' && (nanny_review || nanny_star)) {
+  //can not leave a blank review
+  if(nannyId !== 'Choose Nanny' && nanny_review===""){
+    sendAlert('Can not leave review text-field empty.', 'danger', '#reviewSubmit')
+  }
+
+  if (nannyId !=='Choose Nanny' && nanny_review) {
     const response = await fetch('/api/reviews', {
       method: 'POST',
       body: JSON.stringify({ nanny_id: nannyId, review: nanny_review , stars: nanny_star}),
       headers: { 'Content-Type': 'application/json' },
     })
+    if(response.ok){
+      document.location.reload('/dashboard/profile')
+    }
+    if(!response.ok){
+      sendAlert('Error with submitting review.', 'danger', '#reviewSubmit')
+    }
   }
 }
 document

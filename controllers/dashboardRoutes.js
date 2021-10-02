@@ -81,7 +81,6 @@ router.get('/profile', withAuth, async (req, res) => {
     }
 })
 //user able to add review for Nannys
-//HTML Will have to include a add review button
 router.get('/edit/:id', async (req, res) => {
     try {
         const editReview = await User.findByPk(req.params.id, {
@@ -109,9 +108,6 @@ router.get('/edit/:id', async (req, res) => {
     }
 });
 
-
-//ERROR HERE GETTING A 500 ERROR
-//do i need a put method here? isnt this being taken care of in the user routes?
 router.get('/edit-profile', withAuth, async (req, res) => {
     console.log(req.body)
     console.log(req.session.user_id)
