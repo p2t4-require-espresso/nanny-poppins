@@ -11,7 +11,7 @@ const logout = async () => {
     console.log("logout hit")
   } else {
     alert(response.statusText);
-   console.log("error w log out")
+    console.log("error w log out")
   }
 };
 

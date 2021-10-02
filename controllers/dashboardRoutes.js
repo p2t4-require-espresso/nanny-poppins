@@ -3,8 +3,6 @@ const { User, Rating, Communication } = require('../models');
 const withAuth = require("../utils/auth")
 
 
-
-
 //user able to see all nanny profiles with no-info hidden from nanny profile card
 router.get('/', withAuth, async (req, res) => {
     try {
@@ -47,12 +45,7 @@ router.get('/profile', withAuth, async (req, res) => {
             }],
           })).map(nanny=>nanny.get({plain:true}))
           console.log(nannies);
-        //   check if this is ok
-        // const messages = await Communication.findByPk(req.session.user_id, {
-        //     include: [{model: Communication, attributes: ['message'], parent_id}]
-        // }).catch(err =>{
-        //     console.log(err);
-        // })
+    
         const messages = (await Communication.findAll({
             where: {
                 receiver_id: req.session.user_id
@@ -80,33 +73,7 @@ router.get('/profile', withAuth, async (req, res) => {
         res.status(500).json(err)
     }
 })
-//user able to add review for Nannys
-router.get('/edit/:id', async (req, res) => {
-    try {
-        const editReview = await User.findByPk(req.params.id, {
-            where: {
-                user_type: ['nanny']
-            },
-            exclude: ['id', 'name', 'email', 'photo', "nanny_age", "age_range", "experience_years", "certification", "bio", "hourly_rate"],
-            include: {
-                model: Rating,
-                attributes: ['stars', 'review']
-            }
-        })
-        if (!editReview) {
-            res.status(404).json({ message: "No user found with that ID" })
-        }
-        const review = editReview.get({ plain: true })
-        // console.log(review)
-        const targetedReview = review.ratings[0].review;
-        const stars = review.ratings[0].stars;
-        console.log(review.ratings[0].review)
-        res.render('edit-review', { review, targetedReview, stars, logged_in: true })
-    }
-    catch (err) {
-        res.status(500).json(err)
-    }
-});
+
 
 router.get('/edit-profile', withAuth, async (req, res) => {
     console.log(req.body)
@@ -129,8 +96,5 @@ router.get('/edit-profile', withAuth, async (req, res) => {
         res.status(500).json(err)
     }
 })
-
-
-
 
 module.exports = router;

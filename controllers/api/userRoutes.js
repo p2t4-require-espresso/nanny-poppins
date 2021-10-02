@@ -1,125 +1,125 @@
 const router = require('express').Router();
-const { User , Rating} = require('../../models');
-const withAuth= require("../../utils/auth")
-const {uploadFile  }= require("../../awsS3")
+const { User, Rating } = require('../../models');
+const withAuth = require("../../utils/auth")
+const { uploadFile } = require("../../awsS3")
 
 
 
 
 //GET ALL USERS 
-router.get('/', async (req,res)=>{
-  try{
-    const userData= await User.findAll({
-      include:[{
-        model:Rating
+router.get('/', async (req, res) => {
+  try {
+    const userData = await User.findAll({
+      include: [{
+        model: Rating
       }]
     })
     res.status(200).json(userData);
   }
-  catch(err){
+  catch (err) {
     res.status(500).json(err)
   }
 })
 //gets all nanny users
-router.get('/nannies', async (req,res)=>{
-  try{
-    const userData= await User.findAll({
-      where:{
-        user_type:["nanny"]
+router.get('/nannies', async (req, res) => {
+  try {
+    const userData = await User.findAll({
+      where: {
+        user_type: ["nanny"]
       },
-      include:[{
-        model:Rating,
-        include:[{model:User, as:"parent"}],
+      include: [{
+        model: Rating,
+        include: [{ model: User, as: "parent" }],
       }],
     })
     res.status(200).json(userData);
   }
-  catch(err){
+  catch (err) {
     res.status(400).json(err)
   }
 })
 //gets all users: parents
-router.get('/parents', async (req,res)=>{
-  try{
-    const userData= await User.findAll({
-      where:{
-        user_type:["parent"],
+router.get('/parents', async (req, res) => {
+  try {
+    const userData = await User.findAll({
+      where: {
+        user_type: ["parent"],
       },
-      include:[{
-        model:Rating,
+      include: [{
+        model: Rating,
       }]
     })
     res.status(200).json(userData);
   }
-  catch(err){
+  catch (err) {
     res.status(400).json(err)
   }
 })
 
 //finding one USER
-router.get('/:id', async (req,res)=>{
-  try{
-    const oneUser= await User.findByPk(req.params.id,{
-      include:[{
-        model:Rating,
-        include:[{model:User, as:"parent"}],
-        attributes:['stars','review']
+router.get('/:id', async (req, res) => {
+  try {
+    const oneUser = await User.findByPk(req.params.id, {
+      include: [{
+        model: Rating,
+        include: [{ model: User, as: "parent" }],
+        attributes: ['stars', 'review']
       }],
-   
+
     })
     res.status(200).json(oneUser)
   }
-  catch(err){
+  catch (err) {
     res.status(400).json(err)
   }
 })
 //CREATES A NEW USER
-router.post('/', async (req, res)=>{
-  
-console.log(req.body, "req body from post route")
+router.post('/', async (req, res) => {
 
-  try{
+  console.log(req.body, "req body from post route")
+
+  try {
     //photo upload is now optional:
-    if(req.file){
-      console.log("req.file",req.file)
-      const uploadresult= await uploadFile(req.file)
-      req.body.photo= uploadresult.Location;
+    if (req.file) {
+      console.log("req.file", req.file)
+      const uploadresult = await uploadFile(req.file)
+      req.body.photo = uploadresult.Location;
       console.log(uploadresult)
     }
-    const newUser = await User.create(req.body,{
-      individualHooks: true    
+    const newUser = await User.create(req.body, {
+      individualHooks: true
     });
 
-      req.session.save(() => {
+    req.session.save(() => {
       req.session.user_type = newUser.user_type;
       req.session.user_id = newUser.id;
       req.session.logged_in = true;
 
       res.status(200).json(newUser);
-    
-  });
-}
-  catch(err){
+
+    });
+  }
+  catch (err) {
     res.status(400).json(err)
   }
 })
 
 
 //update USER IF LOGGED In--this works, tested in Insomnia
-router.put('/:id', withAuth, async (req, res)=>{
-  try{
-    const userData = await User.update(req.body,{
-      where:{
+router.put('/:id', withAuth, async (req, res) => {
+  try {
+    const userData = await User.update(req.body, {
+      where: {
         id: req.params.id
       }
     })
     if (!userData[0]) {
       res.status(404).json({ message: "No User found with that ID" })
       return
+    }
+    res.status(200).json(userData)
   }
-  res.status(200).json(userData)
-  }
-  catch(err){
+  catch (err) {
     res.status(400).json(err)
   }
 })
@@ -127,11 +127,11 @@ router.put('/:id', withAuth, async (req, res)=>{
 router.post('/login', async (req, res) => {
   console.log(req.body)
   try {
-    const userData = await User.findOne({ 
-      where:{ 
-        email: req.body.email 
-        }
-       });
+    const userData = await User.findOne({
+      where: {
+        email: req.body.email
+      }
+    });
 
     if (!userData) {
       res.status(400).json({ message: 'Incorrect email or password, please try again' });
@@ -150,7 +150,7 @@ router.post('/login', async (req, res) => {
       req.session.user_type = userData.user_type;
       req.session.name = userData.name;
       req.session.logged_in = true;
-      
+
       res.json({ user: userData, message: 'You are now logged in!' });
       console.log("user logged in")
     });
@@ -164,7 +164,7 @@ router.post('/login', async (req, res) => {
 router.post('/logout', (req, res) => {
   if (req.session.logged_in) {
     req.session.destroy(() => {
-      res.json({message:"You are now logged out."})
+      res.json({ message: "You are now logged out." })
       res.status(204).end();
       console.log("user logged out")
     });
@@ -173,81 +173,45 @@ router.post('/logout', (req, res) => {
   }
 });
 //delete a user account, but user must be logged in.
-router.delete('/:id', withAuth, async (req,res)=>{
-  try{
-    const deleteUser= await User.destroy({
-      where:{
-        id:req.params.id,
+router.delete('/:id', withAuth, async (req, res) => {
+  try {
+    const deleteUser = await User.destroy({
+      where: {
+        id: req.params.id,
         // user_id: req.session.user_id,
       }
     })
-  if(!deleteUser){
-    res.status(404).json({message:"No User found"})
-    return
+    if (!deleteUser) {
+      res.status(404).json({ message: "No User found" })
+      return
+    }
+    res.status(200).json(deleteUser)
   }
-  res.status(200).json(deleteUser)
-}
-catch(err){
-  res.status(400).json(err);
-}
+  catch (err) {
+    res.status(400).json(err);
+  }
 })
 
 
 
-// require('dotenv').config()
-
-// const multer = require('multer')
-// const AWS = require('aws-sdk')
-// const { v4: uuidv4 } = require('uuid');
-// const fs = require('fs')
-// const bucketName= process.env.bucketName;
-// const region = process.env.region;
-// const accessKeyId =process.env.accessKeyId;
-// const secretAccessKey = process.env.secretAccessKey;
-
-// const S3= new AWS.S3({
-//     secretAccessKey,
-//     accessKeyId,
-//     region,
-//     bucketName
-//   })
-//     //the three buckets we need to upload the file
-//     // const params={
-//     //   Bucket: bucketName,
-//     //   Key: `${uuidv4()}.${fileType}`,
-//     //   Body: req.file.buffer
-//     // }
-  
-//   const storage = multer.memoryStorage({
-//     destination: function(req, file, callback){
-//       // '' path for where you want to put the files that are uploaded--its a temporary folder
-//         //can leave blank
-//       callback(null, '')  
-//     }
-//   })
-//   const upload= multer({storage: storage}).single('image')
-
-
-
-
-router.post('/upload', withAuth, async(req, res)=>{
+router.post('/upload', withAuth, async (req, res) => {
   console.log(req.file)
   //uploading the photo 
   const upload = await uploadFile(req.file)
   console.log("uploaded image", upload)
-  const newphoto =upload.Location
-  try{
-    const updateUserPhoto= await User.update({
+  const newphoto = upload.Location
+  try {
+    const updateUserPhoto = await User.update({
       photo: newphoto
     },
-    {
-    where:{
-      id:req.session.user_id
-    }
-    })
-    res.status(200).json({msg:"Successful image upload"})
-   console.log(updateUserPhoto)
-  } catch(err){
+      {
+        where: {
+          id: req.session.user_id
+        }
+      })
+    res.status(200).json({ msg: "Successful image upload" })
+    console.log(updateUserPhoto)
+  } catch (err) {
     res.status(500).json(err)
   }
 })

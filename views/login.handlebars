@@ -1,74 +1,91 @@
 {{! the login and sign up forms should be styled so they are side by side}}
 
-  <div class="col-md-6" >
-    <div class="card">
-      <div class="card-body" id="login-card">
-        <h2 class="login-header">LOGIN</h2>
-        <div class="mb-3">
-          <form class="form login-form">
-            <div class="form-group">
-              <label for="email-login">Email:</label>
-              <input class="form-input" type="email" id="email-login" />
-            </div>
-            <div class="form-group">
-              <label for="password-login">Password:</label>
-              <input class="form-input" type="password" id="password-login" />
-            </div>
-            <div class="form-group">
-              <button class="btn btn-primary login-button" type="submit">Login</button>
-            </div>
-          </form>
-        </div>
+<div class="col-md-6">
+  <div class="card">
+    <div class="card-body" id="login-card">
+      <h2 class="login-header">LOGIN</h2>
+      <div class="mb-3">
+        <form class="form login-form">
+          <div class="form-group">
+            <label for="email-login">Email:</label>
+            <input class="form-input" type="email" id="email-login" />
+          </div>
+          <div class="form-group">
+            <label for="password-login">Password:</label>
+            <input class="form-input" type="password" id="password-login" />
+          </div>
+          <div class="form-group">
+            <button class="btn btn-primary login-button" type="submit">Login</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
+</div>
 
 
 
-  <div class="col-md-6">
-    <div class="card">
-      <div class="card-body" id="signup-card">
+<div class="col-md-6">
+  <div class="card">
+    <div class="card-body" id="signup-card">
 
-        <h2 class="login-header">SIGN UP</h2>
-        <div class="mb-3">
+      <h2 class="login-header">SIGN UP</h2>
+      <div class="mb-3">
 
-          <div class="sign-up-as">
-            <h4>Sign up as a:</h4>
-            <div class="custom-control custom-radio custom-control-inline">
-              <input type="radio" id="nannyUser" name="userRadio" class="custom-control-input" value="nanny">
-              <label class="custom-control-label" for="nannyUser">Nanny</label>
-            </div>
-            <div class="custom-control custom-radio custom-control-inline">
-              <input type="radio" id="parentUser" name="userRadio" class="custom-control-input" value="parent">
-              <label class="custom-control-label" for="parentUser">Parent</label>
-            </div>
+        <div class="sign-up-as">
+          <h4>Sign up as a:</h4>
+          <div class="custom-control custom-radio custom-control-inline">
+            <input type="radio" id="nannyUser" name="userRadio" class="custom-control-input" value="nanny">
+            <label class="custom-control-label" for="nannyUser">Nanny</label>
+          </div>
+          <div class="custom-control custom-radio custom-control-inline">
+            <input type="radio" id="parentUser" name="userRadio" class="custom-control-input" value="parent">
+            <label class="custom-control-label" for="parentUser">Parent</label>
+          </div>
+        </div>
+
+
+        <form class="form signup-form">
+          <div class="form-group">
+            <label for="name-signup">name:</label>
+            <input class="username" type="text" id="name-signup" />
+          </div>
+          <div class="form-group">
+            <label for="email-signup">email:</label>
+            <input class="userEmail" type="text" id="email-signup" />
+          </div>
+          <div class="form-group">
+            <label for="password-signup">password:</label>
+            <input class="userPassword" type="password" id="password-signup" />
           </div>
 
+          <div class="form-group">
+            <label for="biography">Tell us about yourself:</label>
+            <textarea class="userBio" id="userBio" rows="3"></textarea>
+          </div>
 
-          <form class="form signup-form">
-            <div class="form-group">
-              <label for="name-signup">name:</label>
-              <input class="username" type="text" id="name-signup" />
-            </div>
-            <div class="form-group">
-              <label for="email-signup">email:</label>
-              <input class="userEmail" type="text" id="email-signup" />
-            </div>
-            <div class="form-group">
-              <label for="password-signup">password:</label>
-              <input class="userPassword" type="password" id="password-signup" />
-            </div>
+          {{!-- parent question --}}
+          <div class="form-group" id="parentQuestions">
+            <label for="exampleFormControlSelect1">How many kids do you have?</label>
+            <select class="form-control" id="numberOfKids">
+              <option selected disabled hidden></option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5 +</option>
+            </select>
+          </div>
+
+          {{!-- nanny questions --}}
+          <div id="nannyQuestions">
+
+            <input class="form-control" id="nannyAge" type="text" placeholder="Input Your Age">
 
             <div class="form-group">
-              <label for="biography">Tell us about yourself:</label>
-              <textarea class="userBio" id="userBio" rows="3"></textarea>
-            </div>
-
-            {{!-- parent question --}}
-            <div class="form-group" id="parentQuestions">
-              <label for="exampleFormControlSelect1">How many kids do you have?</label>
-              <select class="form-control" id="numberOfKids">
-                <option selected disabled hidden></option>
+              <label for="exampleFormControlSelect1">Years of experience</label>
+              <select class="form-control" id="experience_years">
+                <option placeholder="Enter Your Years of Experience"></option>
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>
@@ -77,49 +94,33 @@
               </select>
             </div>
 
-            {{!-- nanny questions --}}
-            <div id="nannyQuestions">
+            <input class="form-control" type="text" id="certifications"
+              placeholder="What certifications do you have? ie. college degrees, CPR certified. ">
 
-              <input class="form-control" id="nannyAge" type="text" placeholder="Input Your Age">
+            <input class="form-control" type="text" placeholder="Hourly rate" id="hourly_rate">
 
-              <div class="form-group">
-                <label for="exampleFormControlSelect1">Years of experience</label>
-                <select class="form-control" id="experience_years">
-                  <option placeholder="Enter Your Years of Experience"></option>
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5 +</option>
-                </select>
-              </div>
-
-              <input class="form-control" type="text" id="certifications"
-                placeholder="What certifications do you have? ie. college degrees, CPR certified. ">
-
-              <input class="form-control" type="text" placeholder="Hourly rate" id="hourly_rate">
-
-              <input class="form-control" type="text" placeholder="Age range most experienced with" id="age_range">
+            <input class="form-control" type="text" placeholder="Age range most experienced with" id="age_range">
+          </div>
+          {{!-- <form id="imageForm"> --}}
+            <div class="form-group">
+              <label for="profilePicture">Upload your profile pic:</label>
+              <input type="file" id="photo" accept="image/*">
+              {{!-- <a class="btn btn-primary" type="submit">Upload</a> --}}
             </div>
-            {{!-- <form id="imageForm"> --}}
-              <div class="form-group">
-                <label for="profilePicture">Upload your profile pic:</label>
-                <input type="file" id="photo" accept="image/*">
-                {{!-- <a class="btn btn-primary" type="submit">Upload</a> --}}
-              </div>
-            {{!-- </form> --}}
+            {{!--
+          </form> --}}
 
-            <div class="form-group" >
-              <button class="btn btn-primary signup-button"type="submit">Sign Up</button>
-            </div>
+          <div class="form-group">
+            <button class="btn btn-primary signup-button" type="submit">Sign Up</button>
+          </div>
 
-            
 
-          </form>
-        </div>
+
+        </form>
       </div>
     </div>
   </div>
+</div>
 
 
 

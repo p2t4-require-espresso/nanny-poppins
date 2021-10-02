@@ -1,42 +1,44 @@
+<div class="col-md-9 border-right" style="margin:0 auto;">
+  <div class="p-3 py-5">
 
-  <div class="col-md-9 border-right"style="margin:0 auto;">
-    <div class="p-3 py-5">
+    <div class="col-auto">
+      <div class="container col-md-12">
+        <div class="row mt-3" id="viewUser">
+          <h2>Welcome, to {{name}}'s profile!</h2>
+          <img id="userprofilephoto" src="{{photo}}" style="margin:0 auto;"></img>
 
-      <div class="col-auto">
-        <div class="container col-md-12">
-          <div class="row mt-3" id="viewUser">
-            <h2>Welcome, to {{name}}'s profile!</h2>
-            <img id="userprofilephoto" src="{{photo}}" style="margin:0 auto;"></img>
-          
-            <div class="col-md-12"><label class="labels">About Me</label>
+          <div class="col-md-12"><label class="labels">About Me</label>
             <p>{{bio}}</p>
-            </div>
-            <div class="col-md-12"><label class="labels">My Hourly Rate</label>
+          </div>
+          <div class="col-md-12"><label class="labels">My Hourly Rate</label>
             <p>${{hourly_rate}}</p>
-            </div>
+          </div>
           <div class="col-md-12"><label class="labels">Certifications</label>
             <p>{{certification}}</p>
-            </div>
-             <div class="col-md-12"><label class="labels">Age Range of Children I prefer to babysit or nanny</label>
-            <p>{{age_range}}</p>
-            </div> <div class="col-md-12"><label class="labels">Years working in this field</label>
-            <p>{{experience_years}}</p>
-            </div> <div class="col-md-12"><label class="labels">My Age</label>
-            <p>{{nanny_age}}</p>
-            </div>
-        
-             {{#if review}}
-            <div class="col-md-12"><label class="labels">Last Star Rating<i class="fas fa-star" style="color:yellow;"></i></label>
-            <p>{{this.stars}}</p>
-            </div>
-             <div class="col-md-12"><label class="labels">Last Review</label>
-            <p>{{this.review}} </br>Written by: {{this.parent.name}}</p> 
-            </div>
-             {{else}}
-            <p>User has no reviews or star ratings.</p> 
-             {{/if}}
           </div>
+          <div class="col-md-12"><label class="labels">Age Range of Children I prefer to babysit or nanny</label>
+            <p>{{age_range}}</p>
+          </div>
+          <div class="col-md-12"><label class="labels">Years working in this field</label>
+            <p>{{experience_years}}</p>
+          </div>
+          <div class="col-md-12"><label class="labels">My Age</label>
+            <p>{{nanny_age}}</p>
+          </div>
+
+          {{#if review}}
+          <div class="col-md-12"><label class="labels">Last Star Rating<i class="fas fa-star"
+                style="color:yellow;"></i></label>
+            <p>{{this.stars}}</p>
+          </div>
+          <div class="col-md-12"><label class="labels">Last Review</label>
+            <p>{{this.review}} </br>Written by: {{this.parent.name}}</p>
+          </div>
+          {{else}}
+          <p>User has no reviews or star ratings.</p>
+          {{/if}}
         </div>
       </div>
     </div>
   </div>
+</div>

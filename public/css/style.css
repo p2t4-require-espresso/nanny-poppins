@@ -1,24 +1,278 @@
-/* header, .project:not(:last-child) {
-  border-bottom: 1px solid #ccc;
+
+
+body{
+	background-image:url('../image/simplebackground.png')
+}
+.jumbotron{
+	display: flex;
+	/* background-color: #ed9679; */
 }
 
-.no-button {
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  color: #1b89bc;
-  text-decoration: none;
-  font-size: 100%;
+.jumbotron h1{
+    font-family: 'Birthstone Bounce', cursive;
+    margin: 0 auto ;
+    padding: 10px;
+	/* display: inline; */
+	position: relative;
+}
+.jumbotron img{
+	width: 170px;
+	height: 170px;
+	position: relative;
+	padding: 10px;
+}
+/*Nanny Poppins Text in nav bar*/
+.navbar-brand{
+    font-size: 10vh;
+}
+/*when the nav bar collapses, the font size is increased*/
+.navbar{
+	font-size: 2rem;
+}
+li{
+    font-family: 'Birthstone', cursive;
+    padding:10px;
 }
 
-.no-button:hover {
-  color: #065b83;
-  text-decoration: underline;
-}
-
-.dollar-amount {
-  color: #056605;
-  font-weight: bold;
-  margin-left: -5px;
+/* main .container{
+	background-color:#da837e ;
 } */
+/*styling the login and sign up cardoptions*/
+/* this stles the sign up form so that the labels are on top of the input fields*/
+.form-group label{
+	display: block;
+}
+.position-cards{
+	display: inline-block;
+	/* display: flex; */
+	/* flex-direction:column; */
+	margin-top: 10px;
+	padding: 30px;
+}
+.card-dash{
+    margin:40px 20px 0px 20px;
+    font-family: 'Chilanka', cursive;
+    font-size:x-large;
+}
+.card-container{
+	width: 300px;
+	height: 430px;
+	background: #FFF;
+	border-radius: 6px;
+	/* position: absolute;
+	top: 50%; */
+	/* left: 50%;
+	transform: translate(-50%,-50%); */
+    font-family: 'Chilanka', cursive;
+	box-shadow: 0px 1px 10px 1px #000;
+	overflow: hidden;
+	display: inline-block;
+	
+}
+.upper-container{
+	height: 150px;
+	background: url("../image/logo.png");
+}
+.image-container{
+	background: white;
+	width: 80px;
+	height: 80px;
+	border-radius: 50%;
+
+	transform: translate(100px,100px);
+}
+.image-container img{
+	width: 80px;
+	height: 80px;
+	border-radius: 50%;
+}
+.lower-container{
+	height: 280px;
+	background: #FFF;
+	padding: 20px;
+	padding-top: 40px;
+	text-align: center;
+}
+.lower-container h3, h4{
+	box-sizing: border-box;
+	line-height: .6;
+	font-weight: lighter;
+}
+.lower-container h6{
+	color: #7F00FF;
+	opacity: .6;
+	font-weight: bold;
+}
+.lower-container p{
+	font-size: 16px;
+	color: gray;
+	margin-bottom: 30px;
+}
+.lower-container .btn{
+	padding: 12px 20px;
+	background: #7F00FF;
+	border: none;
+	color: white;
+	border-radius: 30px;
+	font-size: 12px;
+	text-decoration: none;
+	font-weight: bold;
+	transition: all .3s ease-in;
+}
+.lower-container .btn:hover{
+	background: transparent;
+	color: #7F00FF;
+	border: 2px solid #7F00FF;
+}
+
+/*login and sign up header */
+
+#login-card ,#signup-card{
+	background-image:url('../image/kidphoto.jpg');
+	border: 2px solid #a3cebb;
+}
+.login-header{
+	text-align: center;
+    font-family: 'Birthstone', cursive;
+	font-size: xx-large;
+	font-weight: bolder;
+}
+/*tried to minimize the width of the email and password input for login */
+.form-input{
+	height:18px;
+}
+/*contents of the forms for signup and login */
+.form-group{
+    font-family: 'Chilanka', cursive;
+	font-weight: bold;
+	text-align: center;
+}
+/*the two radio buttons for sign up*/
+.custom-radio{
+	display: inline-block;
+	padding: 5px;
+	font-family: 'Chilanka', cursive;
+	font-weight: bold;
+}
+/*sign up as section*/
+.sign-up-as{
+	align-items: center;
+	text-align: center;
+	/* display: inline-block; */
+}
+.sign-up-as h4{
+    font-family: 'Chilanka', cursive;
+	padding-top: 15px;
+}
+/*USER PROFILE PAGE*/
+#userprofilephoto{
+	width:200px;
+	height: 200px;
+}
+
+
+/* Profile bio-card */
+.bio-card{
+    font-family: 'Chilanka', cursive;
+	align-self: center;
+	/* display:flex; */
+	justify-content: center;
+	background-image:url('../image/simplebackground.png');
+	/* justify-items: center; */
+
+}
+/* Profile image-card */
+.image-card{
+    font-family: 'Chilanka', cursive;
+	align-self: center;
+	justify-content: center;
+	background-image:url('../image/simplebackground.png');
+
+}
+/* Profile review-card */
+.review-card, .profile-card{
+	font-family: 'Chilanka', cursive;
+	font-weight: bold;
+}
+.profile-card {
+	display: flex;
+	/* flex-direction: column; */
+	/* flex-wrap: wrap; */
+ /* justify-items: center;  */
+ } 
+ .profile-card h2{
+	 font-size: 6vh;
+ }
+.message-section{
+    font-family: 'Chilanka', cursive;
+	align-self: center;
+	justify-content: center;
+	background-image:url('../image/simplebackground.png');
+
+
+}
+.profile-card, .review-card{
+	background-image:url('../image/sun950x.jpg');
+
+}
+#viewUser{
+	font-family: 'Chilanka', cursive;
+	font-size: 22px;
+	text-align: center;
+	font-weight: bold;
+}
+
+
+/*styling the nav bar options*/
+@media screen and (min-width:1334px) {
+	.styledNav{
+		position: absolute;
+		top: 12px;
+		right:0px;
+		font-size: 2rem;
+	}
+
+	ul{
+		display: inline;
+	}
+}
+@media screen and (min-width:768px) and (max-width:990px){
+	/* .col-md-4{
+		display:block;
+		flex-direction: column;
+	} */
+	.position-cards{
+		display:flex;
+		flex-direction:row
+	}
+	 .upper-container{
+		margin-left:-50px;
+	 }
+	 .profile-card, .review-card{
+		background-image:url('../image/sunimage.jpg');
+	}
+}
+
+@media screen and (min-width:376px) and (max-width:766px){
+	.profile-card, .review-card{
+		background-image:url('../image/sunimage.jpg');
+	}
+}
+
+@media screen and (max-width:375px){
+	body{
+		width:auto;
+		/* background-image: url('../image/iphonesize.jpg'); */
+	}
+	.jumbotron{
+		display: block;
+	}
+	.jumbotron img{
+		display: block;
+		margin: 0 auto;
+	}
+	.profile-card, .review-card{
+		background-image:url('../image/sunimage.jpg');
+	}
+
+}
