@@ -1,11 +1,11 @@
 {{! put this all in a card so user can edit their info}}
 
 
-<div class="col-sm-12 mb-4">
+<div class="col-sm-12 mb-4 bio-card">
   <div class="card profile-card">
-    <div class="card-body ">
+    <div class="card-body">
       <div class="col-md-3 border-right">
-        <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+        <div class="d-flex flex-column p-3 ">
           <h2 style="font-family: 'Birthstone';">Welcome, {{name}}</h2><img id="userprofilephoto"
             src="{{photo}}"></img><span class="font-weight-bold">
             <a href="/upload" class="btn btn-primary" id="addPhoto">Add Profile Photo</a>
@@ -14,20 +14,20 @@
       </div>
     </div>
 
-  {{!TRYING TO GET THESE SIDE BY SIDE INSTEAD OF UNDNEATH EACH OTHER IN THE FIRST CARD}}
+    {{!TRYING TO GET THESE SIDE BY SIDE INSTEAD OF UNDNEATH EACH OTHER IN THE FIRST CARD}}
     <div class="col-md-4 border-right">
-      <div class="p-3 py-5 text-center">
+      <div class="p-3 text-center">
         {{#if hourly_rate}}
-        <p>My Hourly Rate:{{hourly_rate}}</p>
+        <p>My Hourly Rate: {{hourly_rate}}$ per hour</p>
         {{/if}}
         {{#if number_of_children}}
         <p>My Number of Children: {{number_of_children}}</p>
         {{/if}}
         <p>I am a {{user_type}}!</p>
         {{#if certification}}
-        <p>My certifications: {{certification}}</p>
+        <p>My certifications are: {{certification}}</p>
         {{/if}}
-        <p>My Bio:{{bio}}</p>
+        <p>Bio: {{bio}}</p>
         <p>Email: {{email}}</p>
 
         {{#if experience_years}}
@@ -47,48 +47,14 @@
   </div>
 </div>
 
-
-
-
-{{!-- <div>
-  {{#if hourly_rate}}
-  <p>My Hourly Rate:{{hourly_rate}}</p>
-  {{/if}}
-  {{#if number_of_children}}
-  <p>My Number of Children: {{number_of_children}}</p>
-  {{/if}}
-  <p>I am a {{user_type}}!</p>
-  {{#if certification}}
-  <p>My certifications: {{certification}}</p>
-  {{/if}}
-  <p>My Bio:{{bio}}</p>
-  <p>Email: {{email}}</p>
-
-  {{#if experience_years}}
-  <p>My Experience in years:{{experience_years}}</p>
-  {{/if}}
-  {{#if nanny_age}}
-  <p>My Age: {{nanny_age}}</p>
-  {{/if}}
-  {{#if review}}
-  <p>Review:{{review}}</p>
-  {{/if}}
-  {{#if age_range}}
-  <p>Age Range of Kids I like to nanny:{{age_range}}</p>
-  {{/if}}
-</div> --}}
-
-
-
 <div class="col-sm-12 mb-4">
-  <div class="card">
-    <img class="card-img-top" src="" alt="">
+  {{!-- <div class="card"> --}}
+    {{!-- <img class="card-img-top" src="" alt=""> --}}
 
     <div class="card-body review-card">
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-6 reviews">
           <h3>Leave a Review for Your Nanny:</h3>
-
           <form class="form review-form" id="review_nanny">
             <div class="form-group" id="selectNanny">
               <label for="select-nanny">Which Nanny do you want to leave a review for?</label>
@@ -116,52 +82,48 @@
             </div>
           </form>
         </div>
-        <div class="col-md-6">
-          {{#each messages}}
-          <div class="row align-center mb-5">
-            <div class="col-md-6">
-              <p>{{this.message}}</p>
-              <p>Sent by {{this.sender_name}}</p>
+        <div class="col-md-6">{{#each messages }}
+        <div class="row align-center mb-5 message-section">
+          <div class="col-md-6">
+            <p>{{this.message}}</p>
+            <p>Sent by {{this.sender_name}}</p>
+
+            <!-- Button to trigger response modal -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
+              Reply to this message
+            </button>
+
+            <!-- Respond to message Modal -->
+            <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1"
+              aria-labelledby="staticBackdropLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Send message to {{this.sender_name}}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <textarea name="contactMessage" id="receiver_id{{this.sender_id}}" cols="50" rows="5"></textarea>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary send-reply" data-id="{{this.sender_id}}">Send
+                      Reply</button>
+                  </div>
+                </div>
+              </div>
             </div>
+
           </div>
-          {{/each}}
         </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-{{#each messages }}
-<div class="row align-center mb-5">
-  <div class="col-md-6">
-    <p>{{this.message}}</p>
-    <p>Sent by {{this.sender_name}}</p>
-
-    <!-- Button to trigger response modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
-  Reply to this message
-</button>
-
-<!-- Respond to message Modal -->
-<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Send message to {{this.sender_name}}</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <textarea name="contactMessage" id="receiver_id{{this.sender_id}}" cols="50" rows="5"></textarea>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary send-reply" data-id="{{this.sender_id}}">Send Reply</button>
+        {{/each}}
         </div>
+        {{!--
+      </div> --}}
     </div>
-  </div>
-</div>
-{{/each}}
 
-<script src="/js/profile.js"></script>
+
+
+    <script src="/js/profile.js"></script>

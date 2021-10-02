@@ -201,19 +201,29 @@ li{
  /* justify-items: center;  */
  } 
  .profile-card h2{
-	 font-size: 6vh;
+	 font-size: 10vh;
+	 margin: 0%;
  }
+
+ .font-weight-bold {
+	 margin-top: 10px;
+ }
+
 .message-section{
     font-family: 'Chilanka', cursive;
 	align-self: center;
-	justify-content: center;
-	background-image:url('../image/simplebackground.png');
+	/* justify-content: center; */
+	background-color: whitesmoke;
 
 
 }
 .profile-card, .review-card{
-	background-image:url('../image/sun950x.jpg');
+	background-color: whitesmoke;
+	align-items: center;
+}
 
+.card-body {
+	text-align: center;
 }
 #viewUser{
 	font-family: 'Chilanka', cursive;
@@ -221,7 +231,6 @@ li{
 	text-align: center;
 	font-weight: bold;
 }
-
 
 /*styling the nav bar options*/
 @media screen and (min-width:1334px) {

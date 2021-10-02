@@ -6,7 +6,7 @@
     "photo": "https://nanny-app-photo.s3.us-east-2.amazonaws.com/b9769525-4c4a-476f-b8de-259e73add161.jpeg",
     "user_type": "parent",
     "number_of_children": "2",
-    "bio": "string"
+    "bio": "Hello, I am a day-time accountant and a country singer on the side so my days are pretty jampacked. My two kids' names are Linnea and Fredrick, Linny is 5 and Freddy is 3. They are smart kids but have a ton of energy so I am looking for someone who is active and willing to take them out to the park often to blow some steam off. They are in advanced classes, so if you can help them with homework that would be a plus! Looking forward to working with this app!"
   },
   {
     "name": "Sammy Smith",
@@ -15,7 +15,7 @@
     "photo": "https://nanny-app-photo.s3.us-east-2.amazonaws.com/b9769525-4c4a-476f-b8de-259e73add161.jpeg",
     "user_type": "parent",
     "number_of_children": "2",
-    "bio": "string"
+    "bio": "I am a single mother of two lovely children. My eldest is Isla who is 4 years old and my youngest is Levy who is 6 months old. I am the bassist of a heavy metal band and our band is getting more popularity due to one of our songs going viral on Tik Tok. We are going on tour soon and I don't feel comfortable taking my kids on the road with me so I need help taking care of my kids while I am gone."
   },
   {
     "name": "Larry Sims",
@@ -24,7 +24,7 @@
     "photo": "https://nanny-app-photo.s3.us-east-2.amazonaws.com/b9769525-4c4a-476f-b8de-259e73add161.jpeg",
     "user_type": "parent",
     "number_of_children": "2",
-    "bio": "string"
+    "bio": "Howdy! I am a dad of two kids. Star who is 10 an William who is 12. My husband and I just opened a coffee shop and have been needing extra help watching the kiddos. They get bored being in the shop all the time so we are looking for someone that will keep them entertained while helping them with their homework. Someone with a degree in education would be amazing! "
   },
   {
     "name": "Kathy Watkins",
@@ -32,8 +32,8 @@
     "password": "password4",
     "photo": "https://nanny-app-photo.s3.us-east-2.amazonaws.com/b9769525-4c4a-476f-b8de-259e73add161.jpeg",
     "user_type": "parent",
-    "number_of_children": "2",
-    "bio": "string"
+    "number_of_children": "5",
+    "bio": "My husband and I are college professors who are constantly on the run. Our kids, Jenna, Jilbert, Jaxon, Jeremy and Jimbo are 10, 9, 8, 7, 6 respectively. As college professors we only want what is best for our kids and are looking for someone who is very educated. We are a biracial family, my husband is Argentinian and I am German. If you speak either of these languages please reach out! We would like our kids to be more exposed to the languages. Looking forward to hearing from someone who is able to watch the kids weekdays from 6am - 5pm."
   },
   {
     "name": "Tyler",
