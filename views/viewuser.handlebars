@@ -26,14 +26,16 @@
             <p>{{nanny_age}}</p>
           </div>
 
-          {{#if review}}
+          {{#if reviews}}
+          {{#each reviews as |review| }}
           <div class="col-md-12"><label class="labels">Last Star Rating<i class="fas fa-star"
                 style="color:yellow;"></i></label>
-            <p>{{this.stars}}</p>
+            <p>{{stars}}</p>
           </div>
           <div class="col-md-12"><label class="labels">Last Review</label>
-            <p>{{this.review}} </br>Written by: {{this.parent.name}}</p>
+            <p>{{review.review}} </br></p>
           </div>
+          {{/each}}
           {{else}}
           <p>User has no reviews or star ratings.</p>
           {{/if}}

@@ -56,18 +56,24 @@ router.get('/:id', withAuth, async (req, res) => {
         attributes: ['stars', 'review']
       }],
     })
-    const reviewData = await Rating.findByPk(req.params.id, {
-      include: [{ model: User, as: "parent" }]
+    const reviewData = await Rating.findAll({
+      where:{
+        nanny_id:req.params.id
+      },
+      // include:[{ 
+      // model:Rating,
+      // include: [{ model: User, as: "parent" }],
+      // attributes: ['stars', 'review']
+      // }]
     })
 
     const singleProfile = oneUser.get({ plain: true })
-    console.log(singleProfile)
-    //coming back as null on some user profiles...
-    const review = reviewData.get({plain:true})
-
+    const reviews = reviewData.map((review) => review.get({ plain: true }));
+ 
+    // console.log(reviews)
     res.render('viewuser', {
       ...singleProfile,
-      ...review,
+      reviews,
       logged_in: true
     })
   }
