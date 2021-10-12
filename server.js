@@ -5,6 +5,9 @@ const exphbs = require('express-handlebars');
 const routes = require('./controllers');
 const helpers = require('./utils/helpers');
 const multer = require('multer');
+
+var compression = require('compression')
+
 const { checkFileUploadType } = require('./awsS3')
 const upload = multer({
   //2MB file upload limit
@@ -38,6 +41,8 @@ const sess = {
 };
 
 app.use(session(sess));
+
+app.use(compression())
 
 // Inform Express.js on which template engine to use
 app.engine('handlebars', hbs.engine);
