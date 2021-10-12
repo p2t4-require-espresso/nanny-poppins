@@ -71,7 +71,6 @@ const signupFormHandler = async (event) => {
     const fd = new FormData();
 
     let user_type = "";
-    // fd.append('user_type', user_type)
     const name = document.querySelector('#name-signup').value.trim();
     fd.append('name', name)
     const email = document.querySelector('#email-signup').value.trim();
@@ -109,12 +108,9 @@ const signupFormHandler = async (event) => {
       fd.append('user_type', user_type)
     }
 
-    // if (name && email && password && bio && user_type && (number_of_children || (certification && hourly_rate && age_range && experience_years && nanny_age))) {
     const response = await fetch('/api/users', {
       method: 'POST',
       body: fd
-      // body: JSON.stringify({ name, email, password, bio, number_of_children, user_type, experience_years, certification, hourly_rate, nanny_age, age_range }),
-      // headers: { 'Content-Type': 'application/json' },
     });
 
     if (response.ok) {
@@ -125,7 +121,6 @@ const signupFormHandler = async (event) => {
       sendAlert('Error with signing up', 'danger', '.signup-button')
       console.log("sign up did not work", response)
     }
-    // }
   } catch (err) {
     console.log(err)
   }

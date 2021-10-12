@@ -13,24 +13,17 @@
       <div class="lower-container user-card">
         <div>
           <h3>{{name}}</h3>
-          {{!-- {{#if logged_in}} --}}
           <a href="/{{id}}">
             <h6 style="text-decoration:none;">Nanny</h6>
           </a>
-          {{!-- {{#else}} --}}
-          {{!-- <h6>Nanny</h6> --}}
-          {{!-- {{/else}}
-          {{/if}} --}}
         </div>
         <div>
           <p>{{certification}}</p>
           <p>{{bio}}</p>
-          {{!-- {{#if logged_in}} --}}
           <!-- Button trigger modal -->
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#nannyModal{{id}}">
             Contact!
           </button>
-          {{!-- {{/if}} --}}
 
           <!-- Modal -->
           <div class="modal fade" id="nannyModal{{id}}" tabindex="-1" aria-labelledby="exampleModalLabel"
