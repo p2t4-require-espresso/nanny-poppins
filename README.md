@@ -37,9 +37,9 @@ By having them make an account, hire a nanny, and be able to write a reveiw abou
 * Sequelize ORM was used to create and implement our database (dotenv package was used to securely store our variables)
 
 ## Features
-Parent users are able to leave a review and a star rating for their nanny
-Parents are able to message their nanny's by sending a message, nannys are able to respond, as well
-Users are able to upload and update their profile photos and have them stored on the AWS S3 server
+* Parent users are able to leave a review and a star rating for their nanny
+* Parents are able to message their nanny's by sending a message, nannys are able to respond, as well
+* Users are able to upload and update their profile photos and have them stored on the AWS S3 server
 
 ## Credits
 The contributors to this app include:
