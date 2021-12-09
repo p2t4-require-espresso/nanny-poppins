@@ -30,11 +30,11 @@ By having them make an account, hire a nanny, and be able to write a reveiw abou
 [Link to deployed app](https://nanny-poppins.herokuapp.com/)
 
 ## Technologies
-A RESTful API was created using Node.js and Express
-Handlebars.js were used to create our webpage templates
-AWS-SDK and the Multer package were used for users to be able to upload and update their profile photo
-bcrypt was used to hash user passwords
-Sequelize ORM was used to create and implement our database (dotenv package was used to securely store our variables)
+* A RESTful API was created using Node.js and Express 
+* Handlebars.js were used to create our webpage templates
+* AWS-SDK and the Multer package were used for users to be able to upload and update their profile photo
+* bcrypt was used to hash user passwords
+* Sequelize ORM was used to create and implement our database (dotenv package was used to securely store our variables)
 
 ## Features
 Parent users are able to leave a review and a star rating for their nanny
